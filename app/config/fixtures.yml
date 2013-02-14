@@ -1,0 +1,16 @@
+Sandbox\AppBundle\Entity\Author:
+    user{1..50}:
+        name: <firstName()>
+
+Sandbox\AppBundle\Entity\Tag:
+    tag{1..200}:
+        name: <word()>
+
+Sandbox\AppBundle\Entity\Article:
+    post{1..10}:
+        title: <text(100)>
+        body: <text(500)>
+        author: @user*
+        editor: @user*
+        tags: <numberBetween(0, 3)>x @tag*
+        date: <dateTimeBetween('-5 years')>

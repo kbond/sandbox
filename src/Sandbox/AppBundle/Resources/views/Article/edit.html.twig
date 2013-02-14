@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Edit Article{% endblock %}
+
+{% block body %}
+    <form class="form-horizontal" method="post" novalidate="novalidate" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Edit</button>
+            <a class="btn" href="{{ path('article') }}">Cancel</a>
+            <a class="btn offset1 btn-danger method-delete" href="{{ path('article_delete', { 'id': entity.id }) }}">Delete</a>
+        </div>
+    </form>
+{% endblock %}
+
