@@ -1,0 +1,22 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Sandbox{% endblock %}
+
+{% block body %}
+    <h2>Demos</h2>
+
+    <table class="table table-striped table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Demo</th>
+                <th>Bundles Used</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="{{ path('article') }}">Article Admin</a></td>
+                <td><a href="https://github.com/kbond/ZenstruckFormBundle">ZenstruckFormBundle</a></td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

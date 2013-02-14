@@ -1,0 +1,14 @@
+
+#sandbox {
+    font-size: 3em;
+    font-weight: bold;
+    margin-left: 1em;
+    color: #888;
+    position: absolute;
+    left: 280px;
+    top: 33px;
+}
+
+.zenstruck-ajax-entity, .zenstruck-ajax-entity-required {
+    width: 300px;
+}

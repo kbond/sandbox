@@ -2,10 +2,12 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Sandbox{% endblock %}</title>
+        <title>{% block title %}{% endblock %} - Zenstruck Sandbox</title>
         {% block stylesheets %}
             <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet" />
+            <link href="http://zenstruck.com/css/style.css" rel="stylesheet" />
             <link href="{{ asset('vendor/ivaynberg/select2/select2.css') }}" rel="stylesheet" />
+            <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
 
             <style type="text/css">
                 .zenstruck-ajax-entity, .zenstruck-ajax-entity-required {
@@ -17,27 +19,55 @@
     </head>
     <body>
         <div class="container">
+            <div id="header">
+                <a id="logo" href="{{ path('homepage') }}" title="Home"><img src="http://zenstruck.com/images/zenstruck-logo.png" alt="Zenstruck logo" /></a>
+                <em id="sandbox">Sandbox</em>
+                <blockquote>Kevin Bond</blockquote>
+            </div>
+            <ul id="nav">
+                <li class="first">
+                    <a href="http://zenstruck.com/">Home</a>
+                </li>
+                <li>
+                    <a href="http://zenstruck.com/projects">Projects</a>
+                </li>
+                <li>
+                    <a href="http://zenstruck.com/portfolio">Portfolio</a>
+                </li>
+                <li class="current">
+                    <a href="{{ path('homepage') }}">Sandbox</a>
+                </li>
+                <li>
+                    <a href="http://zenstruck.com/about">About</a>
+                </li>
+                <li class="last">
+                    <a href="http://zenstruck.com/contact">Contact</a>
+                </li>
+            </ul>
             <h1>{{ block('title') }}</h1>
-            {% block body %}{% endblock %}
+            <div class="box">
+                <div class="box-inner">
+                    {% block body %}{% endblock %}
+                    <p class="center" style="margin-bottom: 0;"><a href="https://github.com/kbond/sandbox">View the source for this site on Github</a></p>
+                </div>
+            </div>
+            <div id="footer">
+                <p>
+                    &copy; Copyright {{ "now"|date('Y') }} Kevin Bond. Powered by
+                    <a href="http://symfony.com/">Symfony</a>
+                    and
+                    <a href="http://www.doctrine-project.org/">Doctrine</a>.
+                    Hosted with
+                    <a href="http://servergrove.com/">ServerGrove</a>.
+                </p>
+            </div>
         </div>
         {% block javascripts %}
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
             <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/js/bootstrap.min.js"></script>
             <script src="{{ asset('vendor/ivaynberg/select2/select2.js') }}"></script>
             <script src="{{ asset('bundles/zenstruckform/js/helper.js') }}"></script>
-
-            <script type="text/javascript">
-                var MyApp = {
-                    test: function(id, element) {
-                        console.log(id);
-                        console.log(element);
-                    }
-                };
-
-                $(function() {
-                    ZenstruckFormHelper.initialize();
-                });
-            </script>
+            <script src="{{ asset('js/script.js') }}"></script>
         {% endblock %}
     </body>
 </html>

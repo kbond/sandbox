@@ -17,7 +17,7 @@ class ArticleType extends AbstractType
             ->add('editor', 'zenstruck_tunnel_entity', array(
                     'class' => 'AppBundle:Author',
                     'required' => false,
-                    'callback' => 'MyApp.test'
+                    'callback' => 'MyApp.select2Callback'
                 ))
             ->add('author', 'zenstruck_ajax_entity', array(
                     'class' => 'AppBundle:Author',

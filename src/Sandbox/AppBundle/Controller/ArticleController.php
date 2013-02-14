@@ -11,8 +11,6 @@ use Sandbox\AppBundle\Entity\Article;
 use Sandbox\AppBundle\Form\ArticleType;
 
 /**
- * Article controller.
- *
  * @Route("/article")
  */
 class ArticleController extends Controller
