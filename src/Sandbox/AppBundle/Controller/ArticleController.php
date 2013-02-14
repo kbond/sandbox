@@ -31,6 +31,23 @@ class ArticleController extends Controller
     }
 
     /**
+     * @Route("/edit/random", name="article_edit_random")
+     */
+    public function editRandom()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->getRepository('AppBundle:Article')->findAll();
+
+        shuffle($entities);
+
+        if (isset($entities[0])) {
+            return $this->redirect($this->generateUrl('article_edit', array('id' => $entities[0]->getId())));
+        }
+
+        return $this->redirect($this->generateUrl('article_new'));
+    }
+
+    /**
      * @Route("/new", name="article_new")
      * @Template()
      */

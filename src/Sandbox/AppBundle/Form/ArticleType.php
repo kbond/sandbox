@@ -17,17 +17,22 @@ class ArticleType extends AbstractType
             ->add('editor', 'zenstruck_tunnel_entity', array(
                     'class' => 'AppBundle:Author',
                     'required' => false,
+                    'help' => 'Clear button works out of the box but Select button callback needs to be implemented by you',
                     'callback' => 'MyApp.select2Callback'
                 ))
             ->add('author', 'zenstruck_ajax_entity', array(
                     'class' => 'AppBundle:Author',
                     'property' => 'name',
+                    'placeholder' => 'Choose and Author',
+                    'help' => 'Try typing a letter such as "k"',
                     'use_controller' => true
                 ))
             ->add('tags', 'zenstruck_ajax_entity', array(
                     'class' => 'AppBundle:Tag',
                     'property' => 'name',
                     'use_controller' => true,
+                    'placeholder' => 'Choose Tags',
+                    'help' => 'Try typing a letter such as "o"',
                     'multiple' => true
                 ))
         ;

@@ -1,4 +1,10 @@
 
+form .help-block {
+    margin-top: 3px!important;
+    color: #666;
+    font-style: italic;
+}
+
 #sandbox {
     font-size: 3em;
     font-weight: bold;
