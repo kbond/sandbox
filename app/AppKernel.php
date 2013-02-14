@@ -21,7 +21,6 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
 
             new Zenstruck\Bundle\FormBundle\ZenstruckFormBundle(),
-            new Genemu\Bundle\FormBundle\GenemuFormBundle(),
 
             new Sandbox\AppBundle\AppBundle(),
         );

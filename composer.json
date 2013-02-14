@@ -27,7 +27,6 @@
         "kriswallsmith/assetic": "1.1.*@dev",
 
         "zenstruck/form-bundle": "dev-master",
-        "genemu/form-bundle": "dev-master",
 
         "nelmio/alice": "1.*"
     },

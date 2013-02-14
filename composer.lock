@@ -1,5 +1,5 @@
 {
-    "hash": "1cf18801be521a9442365840c32bcc55",
+    "hash": "e8243da35d9db3a1ebd07bf06f9d238d",
     "packages": [
         {
             "name": "doctrine/common",
@@ -315,72 +315,6 @@
                 "data",
                 "faker",
                 "fixtures"
-            ]
-        },
-        {
-            "name": "genemu/form-bundle",
-            "version": "dev-master",
-            "target-dir": "Genemu/Bundle/FormBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/genemu/GenemuFormBundle.git",
-                "reference": "a71b227d49878786df9feb2ef815b8c53e0ce073"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/genemu/GenemuFormBundle/zipball/a71b227d49878786df9feb2ef815b8c53e0ce073",
-                "reference": "a71b227d49878786df9feb2ef815b8c53e0ce073",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2",
-                "symfony/form": ">=2.1,<2.3-dev",
-                "symfony/framework-bundle": ">=2.1,<2.3-dev"
-            },
-            "require-dev": {
-                "doctrine/doctrine-bundle": "1.*",
-                "doctrine/mongodb-odm-bundle": "*",
-                "doctrine/orm": "2.*",
-                "propel/propel-bundle": "*",
-                "symfony/finder": "2.*"
-            },
-            "suggest": {
-                "propel/propel-bundle": "*",
-                "symfony/doctrine-bundle": "1.*",
-                "symfony/finder": "2.*",
-                "symfony/mongodb-odm-bundle": "2.*",
-                "symfony/twig-bridge": "2.*"
-            },
-            "time": "2013-02-11 19:51:19",
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Genemu\\Bundle\\FormBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Olivier Chauvel",
-                    "email": "olivier@generation-multiple.com"
-                },
-                {
-                    "name": "Community contributions",
-                    "homepage": "https://github.com/genemu/GenemuFormBundle/contributors"
-                }
-            ],
-            "description": "Extra Form",
-            "keywords": [
-                "extra form",
-                "form"
             ]
         },
         {
@@ -1423,13 +1357,13 @@
             "target-dir": "Zenstruck/Bundle/FormBundle",
             "source": {
                 "type": "git",
-                "url": "git@github.com:kbond/ZenstruckFormBundle.git",
-                "reference": "v1.0.1"
+                "url": "https://github.com/kbond/ZenstruckFormBundle.git",
+                "reference": "4a6381a8a1fc36fd5d7ceba06210c35cf0446e0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kbond/ZenstruckFormBundle/zipball/v1.0.1",
-                "reference": "v1.0.1",
+                "url": "https://api.github.com/repos/kbond/ZenstruckFormBundle/zipball/4a6381a8a1fc36fd5d7ceba06210c35cf0446e0d",
+                "reference": "4a6381a8a1fc36fd5d7ceba06210c35cf0446e0d",
                 "shasum": ""
             },
             "require": {
@@ -1440,7 +1374,7 @@
                 "doctrine/doctrine-bundle": "*",
                 "doctrine/orm": "*"
             },
-            "time": "2013-02-14 16:18:06",
+            "time": "2013-02-14 17:21:55",
             "type": "symfony-bundle",
             "autoload": {
                 "psr-0": {
@@ -1456,20 +1390,18 @@
                     "email": "kevinbond@gmail.com"
                 }
             ],
-            "description": "Provides Twitter Bootstrap form theme, useful FormType Extensions and javascript helpers",
+            "description": "Provides Twitter Bootstrap form theme, a help type extension, Ajax/Tunnel/Select2 entity form types and javascript helpers",
             "homepage": "http://zenstruck.com/project/ZenstruckFormBundle",
             "keywords": [
                 "form"
             ],
             "support": {
-                "source": "https://github.com/kbond/ZenstruckFormBundle/tree/v1.0.1",
+                "source": "https://github.com/kbond/ZenstruckFormBundle/tree/master",
                 "issues": "https://github.com/kbond/ZenstruckFormBundle/issues"
             }
         }
     ],
-    "packages-dev": [
-
-    ],
+    "packages-dev": null,
     "aliases": [
 
     ],
@@ -1477,7 +1409,6 @@
     "stability-flags": {
         "twig/extensions": 20,
         "kriswallsmith/assetic": 20,
-        "zenstruck/form-bundle": 20,
-        "genemu/form-bundle": 20
+        "zenstruck/form-bundle": 20
     }
 }
