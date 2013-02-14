@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="HammondMfg" default="deploy" basedir=".">
+    <property environment="env" />
+
+    <target name="deploy" depends="
+        remote.update,
+        remote.vendors,
+        remote.reset_db,
+        remote.populate_db,
+        remote.clear_cache"
+    />
+
+    <target name="remote.update">
+        <exec executable="ssh" failonerror="true">
+            <arg line="${env.ssh_user}@${env.ssh_host} 'cd ${env.server_path} &amp;&amp; git fetch origin &amp;&amp; git reset --hard origin/master'"/>
+        </exec>
+    </target>
+
+    <target name="remote.vendors">
+        <exec executable="ssh" failonerror="true">
+            <arg line="${env.ssh_user}@${env.ssh_host} 'cd ${env.server_path} &amp;&amp; composer install --optimize-autoloader'"/>
+        </exec>
+
+        <!-- web vendors -->
+        <exec executable="ssh" failonerror="true">
+            <arg line="${env.ssh_user}@${env.ssh_host} 'php ${env.server_path}/bin/webvendors install'"/>
+        </exec>
+    </target>
+
+    <target name="remote.reset_db">
+        <exec executable="ssh" failonerror="true">
+            <arg line="${env.ssh_user}@${env.ssh_host} 'php ${env.server_path}/app/console doctrine:database:drop --force'"/>
+        </exec>
+        <exec executable="ssh" failonerror="true">
+            <arg line="${env.ssh_user}@${env.ssh_host} 'php ${env.server_path}/app/console doctrine:database:create'"/>
+        </exec>
+        <exec executable="ssh" failonerror="true">
+            <arg line="${env.ssh_user}@${env.ssh_host} 'php ${env.server_path}/app/console doctrine:schema:create'"/>
+        </exec>
+    </target>
+
+    <target name="remote.populate_db">
+        <exec executable="ssh" failonerror="true">
+            <arg line="${env.ssh_user}@${env.ssh_host} 'php ${env.server_path}/app/console sandbox:fixtures:load'"/>
+        </exec>
+    </target>
+
+    <target name="remote.clear_cache">
+        <!-- remote cache-clear -->
+        <exec executable="ssh" failonerror="true">
+            <arg line="${env.ssh_user}@${env.ssh_host} 'php ${env.server_path}/app/console cache:clear --env=${env.environment} --no-debug'"/>
+        </exec>
+        <exec executable="ssh" failonerror="true">
+            <arg line="${env.ssh_user}@${env.ssh_host} 'php ${env.server_path}/app/console cache:warmup --env=${env.environment} --no-debug'"/>
+        </exec>
+    </target>
+</project>
