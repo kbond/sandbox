@@ -1,5 +1,5 @@
 {
-    "hash": "e8243da35d9db3a1ebd07bf06f9d238d",
+    "hash": "39229ec138012f0c4796fed62eeb0acd",
     "packages": [
         {
             "name": "doctrine/common",
@@ -942,6 +942,50 @@
             "time": "2013-01-04 17:09:08"
         },
         {
+            "name": "sensiolabs/security-checker",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sensiolabs/security-checker.git",
+                "reference": "9d07721f05c7e78f8f5039dd89b671b59bd32989"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/9d07721f05c7e78f8f5039dd89b671b59bd32989",
+                "reference": "9d07721f05c7e78f8f5039dd89b671b59bd32989",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/console": ">=2.0,<3.0"
+            },
+            "bin": [
+                "security-checker"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "SensioLabs\\Security": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien.potencier@gmail.com"
+                }
+            ],
+            "description": "A security checker for your composer.lock",
+            "time": "2013-02-20 20:57:54"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "v4.2.2",
             "source": {
@@ -1547,7 +1591,9 @@
             "time": "2013-02-20 17:12:51"
         }
     ],
-    "packages-dev": null,
+    "packages-dev": [
+
+    ],
     "aliases": [
 
     ],
@@ -1555,6 +1601,7 @@
     "stability-flags": {
         "twig/extensions": 20,
         "kriswallsmith/assetic": 20,
+        "sensiolabs/security-checker": 20,
         "zenstruck/form-bundle": 20
     }
 }
