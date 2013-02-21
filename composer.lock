@@ -1,5 +1,5 @@
 {
-    "hash": "39229ec138012f0c4796fed62eeb0acd",
+    "hash": "ad48a016d833d8f38f859431aaacfaa1",
     "packages": [
         {
             "name": "doctrine/common",
@@ -801,6 +801,54 @@
             "time": "2013-01-22 10:49:48"
         },
         {
+            "name": "oldsound/rabbitmq-bundle",
+            "version": "dev-master",
+            "target-dir": "OldSound/RabbitMqBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/videlalvaro/RabbitMqBundle.git",
+                "reference": "54eeeb015ea1244e143c4128683939ee4a88add6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/videlalvaro/RabbitMqBundle/zipball/54eeeb015ea1244e143c4128683939ee4a88add6",
+                "reference": "54eeeb015ea1244e143c4128683939ee4a88add6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "symfony/framework-bundle": ">=2.0",
+                "symfony/yaml": ">=2.0",
+                "videlalvaro/php-amqplib": "dev-master"
+            },
+            "require-dev": {
+                "symfony/console": ">=2.1.0,<2.3-dev"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "OldSound\\RabbitMqBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alvaro Videla"
+                }
+            ],
+            "description": "Integrates php-amqplib with Symfony2 and RabbitMq",
+            "keywords": [
+                "Symfony2",
+                "message",
+                "queue",
+                "rabbitmq"
+            ],
+            "time": "2013-02-13 19:59:04"
+        },
+        {
             "name": "sensio/distribution-bundle",
             "version": "v2.1.7",
             "target-dir": "Sensio/Bundle/DistributionBundle",
@@ -1396,6 +1444,47 @@
             "time": "2013-02-09 18:21:53"
         },
         {
+            "name": "videlalvaro/php-amqplib",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/videlalvaro/php-amqplib.git",
+                "reference": "v2.0.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/videlalvaro/php-amqplib/zipball/v2.0.2",
+                "reference": "v2.0.2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PhpAmqpLib": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1"
+            ],
+            "authors": [
+                {
+                    "name": "Alvaro Videla"
+                }
+            ],
+            "description": "This library is a pure PHP implementation of the AMQP protocol. It's been tested against RabbitMQ.",
+            "homepage": "https://github.com/videlalvaro/php-amqplib/",
+            "keywords": [
+                "message",
+                "queue",
+                "rabbitmq"
+            ],
+            "time": "2013-02-13 19:43:51"
+        },
+        {
             "name": "zendframework/zend-crypt",
             "version": "2.1.0",
             "target-dir": "Zend/Crypt",
@@ -1602,6 +1691,8 @@
         "twig/extensions": 20,
         "kriswallsmith/assetic": 20,
         "sensiolabs/security-checker": 20,
+        "videlalvaro/php-amqplib": 20,
+        "oldsound/rabbitmq-bundle": 20,
         "zenstruck/form-bundle": 20
     }
 }

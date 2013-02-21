@@ -9,6 +9,30 @@ zenstruck_form:
         ajax_entity_controller: true
         help: true
 
+old_sound_rabbit_mq:
+    connections:
+        default:
+            host:      "%rabbitmq_host%"
+            port:      "%rabbitmq_port%"
+            user:      "%rabbitmq_user%"
+            password:  "%rabbitmq_password%"
+            vhost:     "%rabbitmq_vhost%"
+    producers:
+        hello:
+            connection: default
+            exchange_options: { name: hello, type: direct }
+    consumers:
+        hello:
+            connection: default
+            exchange_options: { name: hello, type: direct }
+            queue_options:    { name: hello }
+            callback:         app.hello_consumer
+
+jms_di_extra:
+    locations:
+        bundles: [AppBundle]
+    doctrine_integration: false
+
 framework:
     #esi:             ~
     #translator:      { fallback: "%locale%" }
