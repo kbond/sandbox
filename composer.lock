@@ -1,5 +1,5 @@
 {
-    "hash": "e8243da35d9db3a1ebd07bf06f9d238d",
+    "hash": "39229ec138012f0c4796fed62eeb0acd",
     "packages": [
         {
             "name": "doctrine/common",
@@ -942,6 +942,50 @@
             "time": "2013-01-04 17:09:08"
         },
         {
+            "name": "sensiolabs/security-checker",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sensiolabs/security-checker.git",
+                "reference": "9d07721f05c7e78f8f5039dd89b671b59bd32989"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/9d07721f05c7e78f8f5039dd89b671b59bd32989",
+                "reference": "9d07721f05c7e78f8f5039dd89b671b59bd32989",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/console": ">=2.0,<3.0"
+            },
+            "bin": [
+                "security-checker"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "SensioLabs\\Security": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien.potencier@gmail.com"
+                }
+            ],
+            "description": "A security checker for your composer.lock",
+            "time": "2013-02-20 20:57:54"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "v4.2.2",
             "source": {
@@ -1353,17 +1397,17 @@
         },
         {
             "name": "zendframework/zend-crypt",
-            "version": "2.1.0",
+            "version": "2.1.3",
             "target-dir": "Zend/Crypt",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/Component_ZendCrypt.git",
-                "reference": "release-2.1.0"
+                "reference": "release-2.1.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/Component_ZendCrypt/zipball/release-2.1.0",
-                "reference": "release-2.1.0",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendCrypt/zipball/release-2.1.3",
+                "reference": "release-2.1.3",
                 "shasum": ""
             },
             "require": {
@@ -1373,12 +1417,18 @@
                 "zendframework/zend-stdlib": "self.version"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1-dev",
+                    "dev-develop": "2.2-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Zend\\Crypt\\": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1386,33 +1436,39 @@
                 "crypt",
                 "zf2"
             ],
-            "time": "2013-01-28 18:14:17"
+            "time": "2013-02-19 21:49:35"
         },
         {
             "name": "zendframework/zend-math",
-            "version": "2.1.0",
+            "version": "2.1.3",
             "target-dir": "Zend/Math",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/Component_ZendMath.git",
-                "reference": "release-2.1.1"
+                "reference": "release-2.1.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/Component_ZendMath/zipball/release-2.1.1",
-                "reference": "release-2.1.1",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendMath/zipball/release-2.1.3",
+                "reference": "release-2.1.3",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1-dev",
+                    "dev-develop": "2.2-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Zend\\Math\\": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1420,21 +1476,21 @@
                 "math",
                 "zf2"
             ],
-            "time": "2013-01-21 22:14:27"
+            "time": "2013-02-14 14:56:52"
         },
         {
             "name": "zendframework/zend-servicemanager",
-            "version": "2.1.0",
+            "version": "2.1.3",
             "target-dir": "Zend/ServiceManager",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/Component_ZendServiceManager.git",
-                "reference": "release-2.1.0"
+                "reference": "release-2.1.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/Component_ZendServiceManager/zipball/release-2.1.0",
-                "reference": "release-2.1.0",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendServiceManager/zipball/release-2.1.3",
+                "reference": "release-2.1.3",
                 "shasum": ""
             },
             "require": {
@@ -1444,12 +1500,18 @@
                 "zendframework/zend-di": "Zend\\Di component"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1-dev",
+                    "dev-develop": "2.2-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Zend\\ServiceManager\\": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1457,21 +1519,21 @@
                 "servicemanager",
                 "zf2"
             ],
-            "time": "2013-01-29 20:39:15"
+            "time": "2013-02-18 18:46:49"
         },
         {
             "name": "zendframework/zend-stdlib",
-            "version": "2.1.0",
+            "version": "2.1.3",
             "target-dir": "Zend/Stdlib",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/Component_ZendStdlib.git",
-                "reference": "release-2.1.0"
+                "reference": "release-2.1.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/Component_ZendStdlib/zipball/release-2.1.0",
-                "reference": "release-2.1.0",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendStdlib/zipball/release-2.1.3",
+                "reference": "release-2.1.3",
                 "shasum": ""
             },
             "require": {
@@ -1481,12 +1543,21 @@
                 "pecl-weakref": "Implementation of weak references for Stdlib\\CallbackHandler"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1-dev",
+                    "dev-develop": "2.2-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Zend\\Stdlib\\": ""
-                }
+                },
+                "files": [
+                    "Zend/Stdlib/compatibility/autoload.php"
+                ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1494,7 +1565,7 @@
                 "stdlib",
                 "zf2"
             ],
-            "time": "2013-01-23 20:04:23"
+            "time": "2013-02-21 15:56:33"
         },
         {
             "name": "zenstruck/form-bundle",
@@ -1547,7 +1618,9 @@
             "time": "2013-02-20 17:12:51"
         }
     ],
-    "packages-dev": null,
+    "packages-dev": [
+
+    ],
     "aliases": [
 
     ],
@@ -1555,6 +1628,7 @@
     "stability-flags": {
         "twig/extensions": 20,
         "kriswallsmith/assetic": 20,
+        "sensiolabs/security-checker": 20,
         "zenstruck/form-bundle": 20
     }
 }
