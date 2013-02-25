@@ -26,6 +26,7 @@
         "jms/di-extra-bundle": "1.1.*",
         "kriswallsmith/assetic": "1.1.*@dev",
         "sensiolabs/security-checker": "dev-master",
+        "knplabs/knp-menu": "~1.0",
 
         "zenstruck/form-bundle": "dev-master",
 

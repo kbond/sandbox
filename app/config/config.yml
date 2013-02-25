@@ -2,6 +2,48 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
 
+zenstruck_dashboard:
+    menu:
+        primary:
+            nested: false
+            items:
+                Sandbox Home:
+                    route: homepage
+                Zenstruck:
+                    uri: http://zenstruck.com
+        First:
+            items:
+                Google:
+                    uri: http://google.com
+        Second:
+            items:
+                Yahoo:
+                    uri: http://yahoo.com
+        Third:
+            items:
+                Secure:
+                    uri: http://facebook.com
+                    role: ROLE_ADMIN
+        secondary:
+            nested: false
+            group: secondary
+            items:
+                Microsoft:
+                    uri: http://www.microsoft.com
+        <user>:
+            group: secondary
+            icon: icon-user
+            items:
+                Unsecure:
+                    uri: /
+                Secure:
+                    uri: http://facebook.com
+                    role: ROLE_ADMIN
+                sep: ~
+                Logout:
+                    uri: /logout
+                    icon: icon-off
+
 zenstruck_form:
     form_types:
         tunnel_entity: true
