@@ -20,7 +20,7 @@ class DashboardController
     public function dashboardAction()
     {
         $content = $this->templating->render('ZenstruckDashboardBundle:Twitter:dashboard.html.twig', array(
-                'layout' => $this->dashboardManager->getLayout()
+                'manager' => $this->dashboardManager
             ));
 
         return new Response($content);
@@ -30,6 +30,23 @@ class DashboardController
     {
         $content = $this->templating->render('ZenstruckDashboardBundle:Twitter:_menu.html.twig', array(
                 'manager' => $this->dashboardManager
+            ));
+
+        return new Response($content);
+    }
+
+    public function menuWidgetAction($group = null, $section = null)
+    {
+        if ($group) {
+            $menu = $this->dashboardManager->getMenu($group);
+        } elseif ($section) {
+            $menu = $this->dashboardManager->getMenuForSection($section);
+        } else {
+            $menu = $this->dashboardManager->getMenu();
+        }
+
+        $content = $this->templating->render('ZenstruckDashboardBundle:Twitter:_menu_widget.html.twig', array(
+                'menu' => $menu
             ));
 
         return new Response($content);

@@ -33,12 +33,15 @@ class DashboardManager
         return $this->config['title'];
     }
 
-    /**
-     * @return \Knp\Menu\MenuItem
-     */
-    public function getFullMenu()
+    public function getWidgets($group = null)
     {
-        return $this->getMenu($this->config['menu']);
+        if (!$group) {
+            return $this->config['widgets'];
+        }
+
+        return array_filter($this->config['widgets'], function($item) use ($group) {
+                return $group === $item['group'];
+            });
     }
 
     /**
@@ -46,25 +49,28 @@ class DashboardManager
      *
      * @return \Knp\Menu\MenuItem
      */
-    public function getGroupedMenu($group)
+    public function getMenu($group = null)
     {
+        if (!$group) {
+            return $this->buildMenu($this->config['menu']);
+        }
+
         $menuConfig = array_filter($this->config['menu'], function($item) use ($group) {
                 return $group === $item['group'];
             });
 
-        return $this->getMenu($menuConfig);
+        return $this->buildMenu($menuConfig);
     }
 
-    /**
-     * @return \Knp\Menu\MenuItem
-     */
-    public function getUngroupedMenu()
+    public function getMenuForSection($section)
     {
-        $menuConfig = array_filter($this->config['menu'], function($item) {
-                return null === $item['group'];
-            });
+        $menu = $this->buildMenu($this->config['menu'])->getChild($section);
 
-        return $this->getMenu($menuConfig);
+        if ($menu) {
+            return $menu->getChildren();
+        }
+
+        return array();
     }
 
     /**
@@ -72,17 +78,20 @@ class DashboardManager
      *
      * @return \Knp\Menu\MenuItem
      */
-    protected function getMenu(array $menuConfig)
+    protected function buildMenu(array $menuConfig)
     {
         $menu = new MenuItem('root', new RouterAwareFactory($this->urlGenerator));
 
         foreach ($menuConfig as $sectionName => $section) {
+            if ($label = $section['label']) {
+                $sectionName = $label;
+            }
+
             $nested = true;
 
             if ($section['nested']) {
                 $subMenu = $menu->addChild($sectionName);
-
-                $this->setLabel($subMenu, $sectionName);
+                $subMenu->setLabel($this->parseText($sectionName));
 
                 if ($icon = $section['icon']) {
                     $subMenu->setExtra('icon', $icon);
@@ -93,13 +102,16 @@ class DashboardManager
             }
 
             foreach ($section['items'] as $itemName => $item) {
+                if ($label = $item['label']) {
+                    $itemName = $label;
+                }
+
                 // security check
                 if ($item['role'] && $this->securityContext->getToken() && !$this->securityContext->isGranted($item['role'])) {
                     continue;
                 } else {
                     $menuItem = $subMenu->addChild($itemName, $item);
-
-                    $this->setLabel($menuItem, $itemName);
+                    $menuItem->setLabel($this->parseText($itemName));
 
                     if (!$nested) {
                         $menuItem->setExtra('flat', true);
@@ -120,29 +132,31 @@ class DashboardManager
         return $menu;
     }
 
-    protected function setLabel(MenuItem $menu, $text)
+    protected function parseText($text)
     {
+        $context = $this;
+
         // check for <foo> or <foo:bar> syntax
-        if (preg_match('/<(\w+)(:(\w+))?>/', $text, $matches)) {
-            // create getter
-            $method = 'get'.ucfirst($matches[1]);
+        $text = preg_replace_callback('/<(\w+)(:(\w+))?>/', function($matches) use ($context) {
+                // create getter
+                $method = 'get'.ucfirst($matches[1]);
 
-            $ret = $this->$method();
+                $ret = $context->$method();
 
-            // check for <foo:bar> syntax
-            if (isset($matches[3])) {
-                $method = $matches[3];
+                // check for <foo:bar> syntax
+                if (isset($matches[3])) {
+                    $method = $matches[3];
 
-                // if <foo:bar> syntax is used, call bar method
-                if (is_object($ret) && method_exists($ret, $method)) {
-                    $ret = $ret->$method();
+                    // if <foo:bar> syntax is used, call bar method
+                    if (is_object($ret) && method_exists($ret, $method)) {
+                        $ret = $ret->$method();
+                    }
                 }
-            }
 
-            $text = (string) $ret;
-        }
+                return (string) $ret;
+            }, $text);
 
-        $menu->setLabel($text);
+        return $text;
     }
 
     protected function getUser()

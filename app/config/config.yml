@@ -3,23 +3,44 @@ imports:
     - { resource: security.yml }
 
 zenstruck_dashboard:
+    widgets:
+        menu:
+            title: Menu Group Widget
+            controller: zenstruck_dashboard.controller:menuWidgetAction
+            group: column1
+            params: { group: primary }
+
+        menu1:
+            title: Menu Section Widget
+            controller: zenstruck_dashboard.controller:menuWidgetAction
+            group: column2
+            params: { section: Menu 2 }
+
+        menu2:
+            title: Full Menu Widget
+            controller: zenstruck_dashboard.controller:menuWidgetAction
+            group: column3
+
     menu:
         primary:
             nested: false
             items:
                 Sandbox Home:
                     route: homepage
-                Zenstruck:
+                Zenstruck Home:
                     uri: http://zenstruck.com
-        First:
+        Menu 1:
             items:
                 Google:
+                    label: 'Google <span class="label label-important">New</span>'
                     uri: http://google.com
-        Second:
+        Menu 2:
             items:
                 Yahoo:
                     uri: http://yahoo.com
-        Third:
+                Bing:
+                    uri: http://bing.com
+        Menu 3:
             items:
                 Secure:
                     uri: http://facebook.com
@@ -28,19 +49,22 @@ zenstruck_dashboard:
             nested: false
             group: secondary
             items:
-                Microsoft:
+                link1:
+                    label: Non-nested Link
                     uri: http://www.microsoft.com
-        <user>:
+        user:
+            label: "User: <user> Actions"
             group: secondary
             icon: icon-user
             items:
-                Unsecure:
+                Unsecure Link:
                     uri: /
                 Secure:
                     uri: http://facebook.com
                     role: ROLE_ADMIN
                 sep: ~
                 Logout:
+                    label: Logout <user>
                     uri: /logout
                     icon: icon-off
 

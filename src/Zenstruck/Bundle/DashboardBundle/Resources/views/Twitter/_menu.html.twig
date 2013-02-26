@@ -11,10 +11,10 @@
 
             <div class="nav-collapse collapse">
                 <ul class="nav">
-                    {{ _self.bootstrap_menu(manager.ungroupedMenu) }}
+                    {{ _self.bootstrap_menu(manager.menu('primary')) }}
                 </ul>
 
-                {% set secondaryMenu = manager.groupedMenu('secondary') %}
+                {% set secondaryMenu = manager.menu('secondary') %}
                 {% if secondaryMenu|length %}
                     <ul class="nav pull-right">
                         {{ _self.bootstrap_menu(secondaryMenu) }}
@@ -36,7 +36,7 @@
                         {%- if section.extra('icon') %}
                             <i class="{{ section.extra('icon') }} icon-white"></i>
                         {% endif %}
-                        {{ section.label }}
+                        {{ section.label|raw }}
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
@@ -57,7 +57,7 @@
                 {% if item.extra('icon') %}
                     <i class="{{ item.extra('icon') }}"></i>
                 {% endif %}
-                {{ item.label }}
+                {{ item.label|raw }}
             </a>
         </li>
     {% else %}
