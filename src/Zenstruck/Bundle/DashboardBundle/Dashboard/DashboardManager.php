@@ -16,6 +16,9 @@ class DashboardManager
     protected $urlGenerator;
     protected $securityContext;
 
+    /** @var MenuItem */
+    protected $menu;
+
     public function __construct($config, UrlGeneratorInterface $urlGenerator, SecurityContextInterface $securityContext)
     {
         $this->config = $config;
@@ -51,20 +54,22 @@ class DashboardManager
      */
     public function getMenu($group = null)
     {
+        $menu = $this->buildMenu();
+
         if (!$group) {
-            return $this->buildMenu($this->config['menu']);
+            return $menu;
         }
 
-        $menuConfig = array_filter($this->config['menu'], function($item) use ($group) {
-                return $group === $item['group'];
+        $menu = array_filter($menu->getChildren(), function(MenuItem $item) use ($group) {
+                return $group === $item->getExtra('group');
             });
 
-        return $this->buildMenu($menuConfig);
+        return $menu;
     }
 
     public function getMenuForSection($section)
     {
-        $menu = $this->buildMenu($this->config['menu'])->getChild($section);
+        $menu = $this->buildMenu()->getChild($section);
 
         if ($menu) {
             return $menu->getChildren();
@@ -74,15 +79,17 @@ class DashboardManager
     }
 
     /**
-     * @param array $menuConfig
-     *
      * @return \Knp\Menu\MenuItem
      */
-    protected function buildMenu(array $menuConfig)
+    protected function buildMenu()
     {
+        if ($this->menu) {
+            return $this->menu;
+        }
+
         $menu = new MenuItem('root', new RouterAwareFactory($this->urlGenerator));
 
-        foreach ($menuConfig as $sectionName => $section) {
+        foreach ($this->config['menu'] as $sectionName => $section) {
             if ($label = $section['label']) {
                 $sectionName = $label;
             }
@@ -92,6 +99,7 @@ class DashboardManager
             if ($section['nested']) {
                 $subMenu = $menu->addChild($sectionName);
                 $subMenu->setLabel($this->parseText($sectionName));
+                $subMenu->setExtra('group', $section['group']);
 
                 if ($icon = $section['icon']) {
                     $subMenu->setExtra('icon', $icon);
@@ -111,6 +119,7 @@ class DashboardManager
                     continue;
                 } else {
                     $menuItem = $subMenu->addChild($itemName, $item);
+                    $menuItem->setExtra('group', $section['group']);
                     $menuItem->setLabel($this->parseText($itemName));
 
                     if (!$nested) {
@@ -129,7 +138,7 @@ class DashboardManager
             }
         }
 
-        return $menu;
+        return $this->menu = $menu;
     }
 
     protected function parseText($text)

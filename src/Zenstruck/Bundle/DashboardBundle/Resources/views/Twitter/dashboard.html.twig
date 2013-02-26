@@ -13,16 +13,16 @@
                 {{ _self.widget_column(manager.widgets) }}
             </div>
         {% else %}
-            <div class="{% block column1_class %}span3{% endblock %}">
+            <div class="{% block column1_class %}span4{% endblock %}">
                 {{ _self.widget_column(column1) }}
             </div>
             {% if column2|length %}
-                <div class="{% block column2_class %}span6{% endblock %}">
+                <div class="{% block column2_class %}span4{% endblock %}">
                     {{ _self.widget_column(column2) }}
                 </div>
             {% endif %}
             {% if column3|length %}
-                <div class="{% block column3_class %}span3{% endblock %}">
+                <div class="{% block column3_class %}span4{% endblock %}">
                     {{ _self.widget_column(column3) }}
                 </div>
             {% endif %}
