@@ -1,72 +1,12 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: dashboard.yml }
 
-zenstruck_dashboard:
-    widgets:
-        menu:
-            title: Menu Group Widget
-            controller: zenstruck_dashboard.controller:menuWidgetAction
-            group: column1
-            params: { group: primary }
-
-        menu1:
-            title: Menu Section Widget
-            controller: zenstruck_dashboard.controller:menuWidgetAction
-            group: column2
-            params: { section: Menu 2 }
-
-        menu2:
-            title: Full Menu Widget
-            controller: zenstruck_dashboard.controller:menuWidgetAction
-            group: column3
-
-    menu:
-        primary:
-            nested: false
-            items:
-                Sandbox Home:
-                    route: homepage
-                Zenstruck Home:
-                    uri: http://zenstruck.com
-        Menu 1:
-            items:
-                Google:
-                    label: 'Google <span class="label label-important">New</span>'
-                    uri: http://google.com
-        Menu 2:
-            items:
-                Yahoo:
-                    uri: http://yahoo.com
-                Bing:
-                    uri: http://bing.com
-        Menu 3:
-            items:
-                Secure:
-                    uri: http://facebook.com
-                    role: ROLE_ADMIN
-        secondary:
-            nested: false
-            group: secondary
-            items:
-                link1:
-                    label: Non-nested Link
-                    uri: http://www.microsoft.com
-        user:
-            label: "User: {{user}} Actions"
-            group: secondary
-            icon: icon-user
-            items:
-                Unsecure Link:
-                    uri: /
-                Secure:
-                    uri: http://facebook.com
-                    role: ROLE_ADMIN
-                sep: ~
-                Logout:
-                    label: Logout <user>
-                    uri: /logout
-                    icon: icon-off
+jms_di_extra:
+    locations:
+        bundles: [AppBundle]
+    doctrine_integration: false
 
 zenstruck_form:
     form_types:

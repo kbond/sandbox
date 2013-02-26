@@ -1,0 +1,87 @@
+zenstruck_dashboard:
+    user_service: true
+    template: AppBundle:Admin:dashboard.html.twig
+    widgets:
+        menu_group:
+            title: Menu Group Widget
+            controller: zenstruck_dashboard.controller:menuWidgetAction
+            group: column1
+            params: { group: primary }
+
+        dash_config:
+            title: This Dashboard's Config
+            controller: AppBundle:Admin:config
+            group: column2
+
+        links:
+            title: Links
+            group: column3
+            template: AppBundle:Admin:links.html.twig
+
+        menu_section:
+            title: Menu Section Widget
+            controller: zenstruck_dashboard.controller:menuWidgetAction
+            group: column1
+            params: { section: Menu 2 }
+
+        menu_full:
+            title: Full Menu Widget
+            controller: zenstruck_dashboard.controller:menuWidgetAction
+            group: column3
+
+        no_permission:
+            title: No Permission
+            controller: zenstruck_dashboard.controller:menuWidgetAction
+            group: column1
+            role: ROLE_ADMIN
+
+    menu:
+        single_level1:
+            nested: false
+            items:
+                Sandbox Home:
+                    route: homepage
+                Zenstruck Home:
+                    uri: http://zenstruck.com
+        Menu 1:
+            items:
+                Google:
+                    label: 'Google <span class="label label-success">New</span>'
+                    uri: http://google.com
+        Menu 2:
+            items:
+                messages:
+                    route: zenstruck_dashboard
+                    label: 'Messages <span class="badge badge-important">{{mailer:unreadMessages}}</span>'
+                sep: ~
+                Yahoo:
+                    uri: http://yahoo.com
+                Bing:
+                    uri: http://bing.com
+        Menu 3:
+            items:
+                Secure:
+                    uri: http://facebook.com
+                    role: ROLE_ADMIN
+        single_level2:
+            nested: false
+            group: secondary
+            items:
+                link1:
+                    label: Non-nested Link
+                    uri: http://www.microsoft.com
+        user:
+            label: "User: {{user}} Actions"
+            group: secondary
+            icon: icon-user
+            items:
+                Unsecure Link:
+                    uri: /
+                Secure:
+                    uri: http://facebook.com
+                    role: ROLE_ADMIN
+                sep: ~
+                Logout:
+                    label: Logout <user>
+                    uri: /logout
+                    icon: icon-off
