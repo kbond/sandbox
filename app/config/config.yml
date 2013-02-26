@@ -53,7 +53,7 @@ zenstruck_dashboard:
                     label: Non-nested Link
                     uri: http://www.microsoft.com
         user:
-            label: "User: <user> Actions"
+            label: "User: {{user}} Actions"
             group: secondary
             icon: icon-user
             items:

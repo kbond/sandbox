@@ -145,18 +145,18 @@ class DashboardManager
     {
         $context = $this;
 
-        // check for <foo> or <foo:bar> syntax
-        $text = preg_replace_callback('/<(\w+)(:(\w+))?>/', function($matches) use ($context) {
+        // check for {{foo}} or {{foo:bar}} syntax
+        $text = preg_replace_callback('/{{(\w+)(:(\w+))?}}/', function($matches) use ($context) {
                 // create getter
                 $method = 'get'.ucfirst($matches[1]);
 
                 $ret = $context->$method();
 
-                // check for <foo:bar> syntax
+                // check for {{foo:bar}} syntax
                 if (isset($matches[3])) {
                     $method = $matches[3];
 
-                    // if <foo:bar> syntax is used, call bar method
+                    // if {{foo:bar}} syntax is used, call bar method
                     if (is_object($ret) && method_exists($ret, $method)) {
                         $ret = $ret->$method();
                     }
