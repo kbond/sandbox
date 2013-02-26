@@ -1,6 +1,6 @@
 zenstruck_dashboard:
     user_service: true
-    template: AppBundle:Admin:dashboard.html.twig
+    template: AppBundle:Widget:dashboard.html.twig
     widgets:
         menu_group:
             title: Menu Group Widget
@@ -8,32 +8,47 @@ zenstruck_dashboard:
             group: column1
             params: { group: primary }
 
-        dash_config:
-            title: This Dashboard's Config
-            controller: AppBundle:Admin:config
-            group: column2
-
-        links:
-            title: Links
-            group: column3
-            template: AppBundle:Admin:links.html.twig
-
         menu_section:
             title: Menu Section Widget
             controller: zenstruck_dashboard.controller:menuWidgetAction
             group: column1
-            params: { section: Menu 2 }
+            params: { section: Dropdown }
 
         menu_full:
             title: Full Menu Widget
             controller: zenstruck_dashboard.controller:menuWidgetAction
-            group: column3
+            group: column1
 
         no_permission:
             title: No Permission
             controller: zenstruck_dashboard.controller:menuWidgetAction
             group: column1
             role: ROLE_ADMIN
+
+        dash_config:
+            title: This Dashboard's Config
+            controller: AppBundle:Widget:config
+            group: column2
+
+        links:
+            title: Links
+            group: column3
+            template: AppBundle:Widget:links.html.twig
+
+        borderless:
+            template: AppBundle:Widget:borderless.html.twig
+            group: column3
+
+        action:
+            title: Action Widget
+            route: widget_action
+            group: column3
+
+        ajax:
+            title: Ajax Action Widget
+            route: widget_ajax
+            group: column3
+            ajax: true
 
     menu:
         single_level1:
@@ -43,17 +58,15 @@ zenstruck_dashboard:
                     route: homepage
                 Zenstruck Home:
                     uri: http://zenstruck.com
-        Menu 1:
+        Dropdown:
             items:
-                Google:
-                    label: 'Google <span class="label label-success">New</span>'
-                    uri: http://google.com
-        Menu 2:
-            items:
+                ZenstruckFormBundle:
+                    label: 'ZenstruckFormBundle <span class="label label-success">New</span>'
+                    uri: http://zenstruck.com/projects/ZenstruckFormBundle
                 messages:
                     route: zenstruck_dashboard
                     label: 'Messages <span class="badge badge-important">{{mailer:unreadMessages}}</span>'
-                sep: ~
+                sep1: ~
                 Yahoo:
                     uri: http://yahoo.com
                 Bing:

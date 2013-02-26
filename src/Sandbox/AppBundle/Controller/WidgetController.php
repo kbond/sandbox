@@ -3,12 +3,13 @@
 namespace Sandbox\AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
  * @author Kevin Bond <kevinbond@gmail.com>
  */
-class AdminController extends Controller
+class WidgetController extends Controller
 {
     /**
      * @Template
@@ -18,5 +19,25 @@ class AdminController extends Controller
         $file = $this->container->getParameter('kernel.root_dir').'/config/dashboard.yml';
 
         return array('config' => file_get_contents($file));
+    }
+
+    /**
+     * @Route("/widget_action", name="widget_action")
+     * @Template
+     */
+    public function actionAction()
+    {
+        return array();
+    }
+
+    /**
+     * @Route("/widget_ajax", name="widget_ajax")
+     * @Template
+     */
+    public function ajaxAction()
+    {
+        sleep(1);
+
+        return array();
     }
 }
