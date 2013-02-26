@@ -1,5 +1,5 @@
 {
-    "hash": "5d86d4088b16861263b34cda2bfe1d70",
+    "hash": "05fd7e2f9a618163059c44c60973e05e",
     "packages": [
         {
             "name": "doctrine/common",
@@ -1011,12 +1011,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/security-checker.git",
-                "reference": "9d07721f05c7e78f8f5039dd89b671b59bd32989"
+                "reference": "6631863cce2f0bb8a0ca1b662c23cd45747edf49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/9d07721f05c7e78f8f5039dd89b671b59bd32989",
-                "reference": "9d07721f05c7e78f8f5039dd89b671b59bd32989",
+                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/6631863cce2f0bb8a0ca1b662c23cd45747edf49",
+                "reference": "6631863cce2f0bb8a0ca1b662c23cd45747edf49",
                 "shasum": ""
             },
             "require": {
@@ -1036,7 +1036,7 @@
                     "SensioLabs\\Security": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1047,7 +1047,7 @@
                 }
             ],
             "description": "A security checker for your composer.lock",
-            "time": "2013-02-20 20:57:54"
+            "time": "2013-02-25 14:17:19"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -1632,6 +1632,54 @@
             "time": "2013-02-21 15:56:33"
         },
         {
+            "name": "zenstruck/dashboard-bundle",
+            "version": "dev-master",
+            "target-dir": "Zenstruck/Bundle/DashboardBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kbond/ZenstruckDashboardBundle.git",
+                "reference": "3b682ad04d2441cb8a2b685cbee5c6f7af181c99"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kbond/ZenstruckDashboardBundle/zipball/3b682ad04d2441cb8a2b685cbee5c6f7af181c99",
+                "reference": "3b682ad04d2441cb8a2b685cbee5c6f7af181c99",
+                "shasum": ""
+            },
+            "require": {
+                "knplabs/knp-menu": "~1.1",
+                "symfony/symfony": "~2.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Zenstruck\\Bundle\\DashboardBundle": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Bond",
+                    "email": "kevinbond@gmail.com"
+                }
+            ],
+            "description": "Provides a configurable administration menu and dashboard.",
+            "homepage": "http://zenstruck.com/project/ZenstruckDashboardBundle",
+            "keywords": [
+                "admin",
+                "administration",
+                "backend",
+                "dashboard"
+            ],
+            "support": {
+                "source": "https://github.com/kbond/ZenstruckDashboardBundle/tree/master",
+                "issues": "https://github.com/kbond/ZenstruckDashboardBundle/issues"
+            },
+            "time": "2013-02-26 15:09:32"
+        },
+        {
             "name": "zenstruck/form-bundle",
             "version": "dev-master",
             "target-dir": "Zenstruck/Bundle/FormBundle",
@@ -1693,6 +1741,7 @@
         "twig/extensions": 20,
         "kriswallsmith/assetic": 20,
         "sensiolabs/security-checker": 20,
+        "zenstruck/dashboard-bundle": 20,
         "zenstruck/form-bundle": 20
     }
 }

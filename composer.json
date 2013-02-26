@@ -8,6 +8,10 @@
         {
             "type": "vcs",
             "url": "git@github.com:kbond/ZenstruckFormBundle.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@github.com:kbond/ZenstruckDashboardBundle.git"
         }
     ],
     "require": {
@@ -26,11 +30,10 @@
         "jms/di-extra-bundle": "1.1.*",
         "kriswallsmith/assetic": "1.1.*@dev",
         "sensiolabs/security-checker": "dev-master",
-        "knplabs/knp-menu": "~1.0",
+        "nelmio/alice": "1.*",
 
-        "zenstruck/form-bundle": "dev-master",
-
-        "nelmio/alice": "1.*"
+        "zenstruck/dashboard-bundle": "dev-master",
+        "zenstruck/form-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
