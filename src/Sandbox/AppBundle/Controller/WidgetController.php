@@ -22,10 +22,19 @@ class WidgetController extends Controller
     }
 
     /**
-     * @Route("/widget_action", name="widget_action")
+     * @Route("/widget_esi", name="widget_esi")
      * @Template
      */
-    public function actionAction()
+    public function esiAction()
+    {
+        return array();
+    }
+
+    /**
+     * @Route("/widget_hinclude", name="widget_hinclude")
+     * @Template
+     */
+    public function hincludeAction()
     {
         return array();
     }

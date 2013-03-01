@@ -1,5 +1,10 @@
 {% extends 'ZenstruckDashboardBundle:Twitter:dashboard.html.twig' %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script src="//mnot.github.com/hinclude/hinclude.js"></script>
+{% endblock %}
+
 {% block column1_class %}span3{% endblock %}
 {% block column2_class %}span6{% endblock %}
 {% block column3_class %}span3{% endblock %}

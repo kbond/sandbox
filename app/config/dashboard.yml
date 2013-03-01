@@ -4,51 +4,63 @@ zenstruck_dashboard:
     widgets:
         menu_group:
             title: Menu Group Widget
-            controller: zenstruck_dashboard.controller:menuWidgetAction
+            content: zenstruck_dashboard.controller:menuWidgetAction
             group: column1
             params: { group: primary }
 
         menu_section:
             title: Menu Section Widget
-            controller: zenstruck_dashboard.controller:menuWidgetAction
+            content: zenstruck_dashboard.controller:menuWidgetAction
             group: column1
             params: { section: Dropdown }
 
         menu_full:
             title: Full Menu Widget
-            controller: zenstruck_dashboard.controller:menuWidgetAction
+            content: zenstruck_dashboard.controller:menuWidgetAction
             group: column1
 
         no_permission:
             title: No Permission
-            controller: zenstruck_dashboard.controller:menuWidgetAction
+            content: zenstruck_dashboard.controller:menuWidgetAction
             group: column1
             role: ROLE_ADMIN
 
         dash_config:
             title: This Dashboard's Config
-            controller: AppBundle:Widget:config
+            content: AppBundle:Widget:config
             group: column2
 
         links:
             title: Links
+            content: AppBundle:Widget:links.html.twig
+            content_type: template
             group: column3
-            template: AppBundle:Widget:links.html.twig
 
         borderless:
-            template: AppBundle:Widget:borderless.html.twig
+            content: AppBundle:Widget:borderless.html.twig
+            content_type: template
             group: column3
 
-        action:
-            title: Action Widget
-            route: widget_action
+        esi:
+            title: ESI Widget
+            content: widget_esi
+            content_type: route
+            include_type: esi
+            group: column3
+
+        hinclude:
+            title: hinclude Widget
+            content: widget_hinclude
+            content_type: route
+            include_type: hinclude
             group: column3
 
         ajax:
-            title: Ajax Action Widget
-            route: widget_ajax
+            title: Ajax Widget
+            content: widget_ajax
+            content_type: route
+            include_type: ajax
             group: column3
-            ajax: true
 
     menu:
         single_level1:
