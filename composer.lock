@@ -1,5 +1,5 @@
 {
-    "hash": "05fd7e2f9a618163059c44c60973e05e",
+    "hash": "3c937275b1c71e051ec84a91ea24d74e",
     "packages": [
         {
             "name": "doctrine/common",
@@ -657,7 +657,7 @@
                     "Knp\\Menu\\": "src/"
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -667,7 +667,7 @@
                     "email": "stof@notk.org"
                 },
                 {
-                    "name": "KnpLabs",
+                    "name": "Knplabs",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -734,7 +734,7 @@
                     "src/functions.php"
                 ]
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -753,6 +753,54 @@
                 "minification"
             ],
             "time": "2013-02-24 17:22:20"
+        },
+        {
+            "name": "kriswallsmith/buzz",
+            "version": "v0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kriswallsmith/Buzz.git",
+                "reference": "v0.9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kriswallsmith/Buzz/zipball/v0.9",
+                "reference": "v0.9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "suggest": {
+                "ext-curl": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Buzz": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kris Wallsmith",
+                    "email": "kris.wallsmith@gmail.com",
+                    "homepage": "http://kriswallsmith.net/"
+                }
+            ],
+            "description": "Lightweight HTTP client",
+            "homepage": "https://github.com/kriswallsmith/Buzz",
+            "keywords": [
+                "curl",
+                "http client"
+            ],
+            "time": "2013-02-19 00:26:38"
         },
         {
             "name": "monolog/monolog",
@@ -863,6 +911,49 @@
                 "test"
             ],
             "time": "2013-01-22 10:49:48"
+        },
+        {
+            "name": "sensio/buzz-bundle",
+            "version": "v0.2",
+            "target-dir": "Sensio/Bundle/BuzzBundle",
+            "source": {
+                "type": "git",
+                "url": "git://github.com/sensio/SensioBuzzBundle",
+                "reference": "v0.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/sensio/SensioBuzzBundle/archive/v0.2.zip",
+                "reference": "v0.2",
+                "shasum": ""
+            },
+            "require": {
+                "kriswallsmith/buzz": ">= 0.6",
+                "php": ">=5.3.2"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Sensio\\Bundle\\BuzzBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marc Weistroff",
+                    "email": "marc.weistroff@sensio.com"
+                }
+            ],
+            "description": "Bundle around the Buzz HTTP client",
+            "homepage": "https://github.com/sensio/SensioBuzzBundle",
+            "keywords": [
+                "buzz",
+                "http client"
+            ],
+            "time": "2012-05-28 07:08:44"
         },
         {
             "name": "sensio/distribution-bundle",
@@ -1036,7 +1127,7 @@
                     "SensioLabs\\Security": ""
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1141,7 +1232,7 @@
                     "Symfony\\Bundle\\AsseticBundle": ""
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1492,7 +1583,7 @@
                     "Zend\\Crypt\\": ""
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1532,7 +1623,7 @@
                     "Zend\\Math\\": ""
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1575,7 +1666,7 @@
                     "Zend\\ServiceManager\\": ""
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1621,7 +1712,7 @@
                     "Zend/Stdlib/compatibility/autoload.php"
                 ]
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1630,6 +1721,58 @@
                 "zf2"
             ],
             "time": "2013-02-21 15:56:33"
+        },
+        {
+            "name": "zenstruck/cache-bundle",
+            "version": "dev-master",
+            "target-dir": "Zenstruck/Bundle/CacheBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kbond/ZenstruckCacheBundle.git",
+                "reference": "58d42109526006a5877a6401a0b4a31ef0d3f64e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kbond/ZenstruckCacheBundle/zipball/58d42109526006a5877a6401a0b4a31ef0d3f64e",
+                "reference": "58d42109526006a5877a6401a0b4a31ef0d3f64e",
+                "shasum": ""
+            },
+            "require": {
+                "sensio/buzz-bundle": "~0.2",
+                "symfony/css-selector": "2.*",
+                "symfony/dom-crawler": "2.*",
+                "symfony/framework-bundle": "2.*"
+            },
+            "suggest": {
+                "dpn/xml-sitemap-bundle": "Create a sitemap with Symfony"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Zenstruck\\Bundle\\CacheBundle": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Bond",
+                    "email": "kevinbond@gmail.com"
+                }
+            ],
+            "description": "Provides a httpcache warmup command for Symfony2",
+            "homepage": "http://zenstruck.com/project/ZenstruckCacheBundle",
+            "keywords": [
+                "cache",
+                "caching",
+                "httpcache"
+            ],
+            "support": {
+                "source": "https://github.com/kbond/ZenstruckCacheBundle/tree/master",
+                "issues": "https://github.com/kbond/ZenstruckCacheBundle/issues"
+            },
+            "time": "2013-03-01 21:55:42"
         },
         {
             "name": "zenstruck/dashboard-bundle",
@@ -1742,6 +1885,7 @@
         "kriswallsmith/assetic": 20,
         "sensiolabs/security-checker": 20,
         "zenstruck/dashboard-bundle": 20,
-        "zenstruck/form-bundle": 20
+        "zenstruck/form-bundle": 20,
+        "zenstruck/cache-bundle": 20
     }
 }
