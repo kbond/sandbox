@@ -8,3 +8,4 @@ app/config/parameters.yml
 build/
 vendor
 composer.phar
+.buildinfo

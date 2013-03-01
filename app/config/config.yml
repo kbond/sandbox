@@ -1,5 +1,6 @@
 imports:
     - { resource: parameters.yml }
+    - { resource: version.php }
     - { resource: security.yml }
     - { resource: dashboard.yml }
 
@@ -25,7 +26,9 @@ framework:
     form:            true
     csrf_protection: true
     validation:      { enable_annotations: true }
-    templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
+    templating:
+        engines: ['twig']
+        assets_version: %app.build%
     default_locale:  "%locale%"
     trust_proxy_headers: false # Deprecated in 2.0; will be removed in 2.3 (used trusted_proxies instead)
     trusted_proxies: ~
