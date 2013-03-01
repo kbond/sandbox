@@ -70,6 +70,18 @@ zenstruck_dashboard:
             include_type: ajax
             group: column3
 
+        esi2:
+            title: ESI Widget (Controller)
+            content: AppBundle:Widget:esi
+            include_type: esi
+            group: column3
+
+        hinclude2:
+            title: HInclude Widget (Controller)
+            content: AppBundle:Widget:hinclude
+            include_type: hinclude
+            group: column3
+
     menu:
         single_level1:
             nested: false

@@ -19,6 +19,7 @@ zenstruck_form:
 framework:
     esi:             ~
     #translator:      { fallback: "%locale%" }
+    fragments:       true
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
