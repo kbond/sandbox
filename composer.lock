@@ -1368,13 +1368,13 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/fabpot/Twig-extensions",
-                "reference": "5c2d515d4624bdd588226d688173cf0399a4d8cf"
+                "url": "https://github.com/fabpot/Twig-extensions.git",
+                "reference": "921799aaf05f88af749d72912d6b154dfeb9a03e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig-extensions/zipball/5c2d515d4624bdd588226d688173cf0399a4d8cf",
-                "reference": "5c2d515d4624bdd588226d688173cf0399a4d8cf",
+                "url": "https://api.github.com/repos/fabpot/Twig-extensions/zipball/921799aaf05f88af749d72912d6b154dfeb9a03e",
+                "reference": "921799aaf05f88af749d72912d6b154dfeb9a03e",
                 "shasum": ""
             },
             "require": {
@@ -1408,7 +1408,7 @@
                 "i18n",
                 "text"
             ],
-            "time": "2013-01-04 16:55:05"
+            "time": "2013-02-28 14:21:30"
         },
         {
             "name": "twig/twig",
@@ -1638,17 +1638,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kbond/ZenstruckDashboardBundle.git",
-                "reference": "3b682ad04d2441cb8a2b685cbee5c6f7af181c99"
+                "reference": "a77f717c284c832a85d5ad0b081fcba8882d0efc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kbond/ZenstruckDashboardBundle/zipball/3b682ad04d2441cb8a2b685cbee5c6f7af181c99",
-                "reference": "3b682ad04d2441cb8a2b685cbee5c6f7af181c99",
+                "url": "https://api.github.com/repos/kbond/ZenstruckDashboardBundle/zipball/a77f717c284c832a85d5ad0b081fcba8882d0efc",
+                "reference": "a77f717c284c832a85d5ad0b081fcba8882d0efc",
                 "shasum": ""
             },
             "require": {
                 "knplabs/knp-menu": "~1.1",
-                "symfony/symfony": "~2.0"
+                "symfony/symfony": "~2.1"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -1677,7 +1677,7 @@
                 "source": "https://github.com/kbond/ZenstruckDashboardBundle/tree/master",
                 "issues": "https://github.com/kbond/ZenstruckDashboardBundle/issues"
             },
-            "time": "2013-02-26 15:09:32"
+            "time": "2013-03-01 17:44:07"
         },
         {
             "name": "zenstruck/form-bundle",
