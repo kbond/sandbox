@@ -7,4 +7,5 @@ var MyApp = {
 
 $(function() {
     ZenstruckFormHelper.initialize();
+    ZenstruckDashboardHelper.initialize();
 });

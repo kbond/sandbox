@@ -2,57 +2,25 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}{% endblock %} - Zenstruck Sandbox</title>
-        {% block stylesheets %}
-            <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet" />
-            <link href="http://zenstruck.com/css/style.css" rel="stylesheet" />
-            <link href="{{ asset('vendor/ivaynberg/select2/select2.css') }}" rel="stylesheet" />
-            <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
-
-            <style type="text/css">
-                .zenstruck-ajax-entity, .zenstruck-ajax-entity-required {
-                    width: 300px;
-                }
-            </style>
-        {% endblock %}
+        <title>{% block meta_title %}{{ block('title') }}{% endblock %} - Zenstruck Sandbox</title>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% block stylesheets %}
+            <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet" />
+            <link href="{{ asset('vendor/ivaynberg/select2/select2.css') }}" rel="stylesheet" />
+            <link href="{{ asset('bundles/zenstruckdashboard/css/twitter.css') }}" rel="stylesheet" />
+            <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+        {% endblock %}
     </head>
     <body>
+        {% render "zenstruck_dashboard.controller:menuAction" %}
         <div class="container">
-            <div id="header">
-                <a id="logo" href="{{ path('homepage') }}" title="Home"><img src="http://zenstruck.com/images/zenstruck-logo.png" alt="Zenstruck logo" /></a>
-                <em id="sandbox">Sandbox</em>
-                <blockquote>Kevin Bond</blockquote>
-            </div>
-            <ul id="nav">
-                <li class="first">
-                    <a href="http://zenstruck.com/">Home</a>
-                </li>
-                <li>
-                    <a href="http://zenstruck.com/projects">Projects</a>
-                </li>
-                <li>
-                    <a href="http://zenstruck.com/portfolio">Portfolio</a>
-                </li>
-                <li class="current">
-                    <a href="{{ path('homepage') }}">Sandbox</a>
-                </li>
-                <li>
-                    <a href="http://zenstruck.com/about">About</a>
-                </li>
-                <li class="last">
-                    <a href="http://zenstruck.com/contact">Contact</a>
-                </li>
-            </ul>
             <h1>{{ block('title') }}</h1>
-            <div class="box">
-                <div class="box-inner">
-                    {% block body %}{% endblock %}
-                    <hr />
-                    <p class="center" style="margin-bottom: 7px;"><a href="https://github.com/kbond/sandbox">View the source for this site on Github</a></p>
-                </div>
-            </div>
-            <div id="footer">
+            {% block body %}{% endblock %}
+
+            <div id="footer" class="text-center">
+                <hr />
+                <p class="text-center" style="margin-bottom: 7px;"><a href="https://github.com/kbond/sandbox">View the source for this site on Github</a></p>
+                <hr />
                 <p>
                     &copy; Copyright {{ "now"|date('Y') }} Kevin Bond. Powered by
                     <a href="http://symfony.com/">Symfony</a>
@@ -65,9 +33,10 @@
         </div>
         {% block javascripts %}
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-            <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/js/bootstrap.min.js"></script>
+            <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
             <script src="{{ asset('vendor/ivaynberg/select2/select2.js') }}"></script>
             <script src="{{ asset('bundles/zenstruckform/js/helper.js') }}"></script>
+            <script src="{{ asset('bundles/zenstruckdashboard/js/helper.js') }}"></script>
             <script src="{{ asset('js/script.js') }}"></script>
         {% endblock %}
     </body>

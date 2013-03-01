@@ -1,6 +1,8 @@
 zenstruck_dashboard:
+    title: Zenstruck Sandbox
     user_service: true
-    template: AppBundle:Widget:dashboard.html.twig
+    layout: ::base.html.twig
+    dashboard_template: AppBundle:Widget:dashboard.html.twig
     widgets:
         menu_group:
             title: Menu Group Widget
@@ -25,19 +27,25 @@ zenstruck_dashboard:
             group: column1
             role: ROLE_ADMIN
 
+        demo:
+            title: Demos
+            content: AppBundle:Widget:demos.html.twig
+            content_type: template
+            group: column2
+
         dash_config:
             title: This Dashboard's Config
             content: AppBundle:Widget:config
             group: column2
 
-        links:
-            title: Links
-            content: AppBundle:Widget:links.html.twig
+        template:
+            title: Template Widget
+            content: AppBundle:Widget:template.html.twig
             content_type: template
             group: column3
 
-        borderless:
-            content: AppBundle:Widget:borderless.html.twig
+        titleless:
+            content: AppBundle:Widget:titleless.html.twig
             content_type: template
             group: column3
 
@@ -66,10 +74,10 @@ zenstruck_dashboard:
         single_level1:
             nested: false
             items:
-                Sandbox Home:
-                    route: homepage
                 Zenstruck Home:
                     uri: http://zenstruck.com
+                Article Admin:
+                    route: article
         Dropdown:
             items:
                 ZenstruckFormBundle:
@@ -93,8 +101,9 @@ zenstruck_dashboard:
             group: secondary
             items:
                 link1:
-                    label: Non-nested Link
-                    uri: http://www.microsoft.com
+                    label: Site Source
+                    uri: https://github.com/kbond/sandbox
+                    icon: icon-eye-open icon-white
         user:
             label: "User: {{user}} Actions"
             group: secondary

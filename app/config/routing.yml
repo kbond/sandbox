@@ -1,6 +1,6 @@
 zenstruck_dashboard:
     resource: "@ZenstruckDashboardBundle/Resources/config/routing.xml"
-    prefix:   /admin
+    prefix:   /
 
 app:
     resource: "@AppBundle/Controller/"
