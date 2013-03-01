@@ -16,7 +16,7 @@ zenstruck_form:
         help: true
 
 framework:
-    #esi:             ~
+    esi:             ~
     #translator:      { fallback: "%locale%" }
     secret:          "%secret%"
     router:

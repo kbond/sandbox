@@ -49,7 +49,7 @@ zenstruck_dashboard:
             group: column3
 
         hinclude:
-            title: hinclude Widget
+            title: HInclude Widget
             content: widget_hinclude
             content_type: route
             include_type: hinclude

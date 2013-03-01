@@ -5,6 +5,7 @@ namespace Sandbox\AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 
 /**
  * @author Kevin Bond <kevinbond@gmail.com>
@@ -23,6 +24,7 @@ class WidgetController extends Controller
 
     /**
      * @Route("/widget_esi", name="widget_esi")
+     * @Cache(smaxage="10")
      * @Template
      */
     public function esiAction()
