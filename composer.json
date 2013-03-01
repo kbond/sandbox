@@ -12,6 +12,10 @@
         {
             "type": "vcs",
             "url": "git@github.com:kbond/ZenstruckDashboardBundle.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@github.com:kbond/ZenstruckCacheBundle.git"
         }
     ],
     "require": {
@@ -33,7 +37,8 @@
         "nelmio/alice": "1.*",
 
         "zenstruck/dashboard-bundle": "dev-master",
-        "zenstruck/form-bundle": "dev-master"
+        "zenstruck/form-bundle": "dev-master",
+        "zenstruck/cache-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

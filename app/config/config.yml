@@ -16,6 +16,9 @@ zenstruck_form:
         ajax_entity_controller: true
         help: true
 
+zenstruck_cache:
+    sitemap_provider:     true
+
 framework:
     esi:             ~
     #translator:      { fallback: "%locale%" }
