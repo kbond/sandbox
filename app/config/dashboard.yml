@@ -103,7 +103,7 @@ zenstruck_dashboard:
                 link1:
                     label: Site Source
                     uri: https://github.com/kbond/sandbox
-                    icon: icon-eye-open icon-white
+                    icon: icon-eye-open
         user:
             label: "User: {{user}} Actions"
             group: secondary
