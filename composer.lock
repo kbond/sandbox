@@ -689,12 +689,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kriswallsmith/assetic.git",
-                "reference": "df03baa337ae1c87803a7b1a76a393f8a59813f3"
+                "reference": "v1.1.0-alpha4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/df03baa337ae1c87803a7b1a76a393f8a59813f3",
-                "reference": "df03baa337ae1c87803a7b1a76a393f8a59813f3",
+                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/v1.1.0-alpha4",
+                "reference": "v1.1.0-alpha4",
                 "shasum": ""
             },
             "require": {
@@ -1781,12 +1781,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kbond/ZenstruckDashboardBundle.git",
-                "reference": "34ec7709cc3395903b2daa6429a0740f43ecf46a"
+                "reference": "1414bf0b46cc099d10aa5c82c559412b8cf472ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kbond/ZenstruckDashboardBundle/zipball/34ec7709cc3395903b2daa6429a0740f43ecf46a",
-                "reference": "34ec7709cc3395903b2daa6429a0740f43ecf46a",
+                "url": "https://api.github.com/repos/kbond/ZenstruckDashboardBundle/zipball/1414bf0b46cc099d10aa5c82c559412b8cf472ef",
+                "reference": "1414bf0b46cc099d10aa5c82c559412b8cf472ef",
                 "shasum": ""
             },
             "require": {
@@ -1820,7 +1820,7 @@
                 "source": "https://github.com/kbond/ZenstruckDashboardBundle/tree/master",
                 "issues": "https://github.com/kbond/ZenstruckDashboardBundle/issues"
             },
-            "time": "2013-03-04 14:21:26"
+            "time": "2013-03-04 17:34:27"
         },
         {
             "name": "zenstruck/form-bundle",
@@ -1829,12 +1829,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kbond/ZenstruckFormBundle.git",
-                "reference": "07722cd98d2f04cae116f5d919d679c72d9b73ae"
+                "reference": "c2faf23b7db439cae903352b136b1e103c69c58c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kbond/ZenstruckFormBundle/zipball/07722cd98d2f04cae116f5d919d679c72d9b73ae",
-                "reference": "07722cd98d2f04cae116f5d919d679c72d9b73ae",
+                "url": "https://api.github.com/repos/kbond/ZenstruckFormBundle/zipball/c2faf23b7db439cae903352b136b1e103c69c58c",
+                "reference": "c2faf23b7db439cae903352b136b1e103c69c58c",
                 "shasum": ""
             },
             "require": {
@@ -1870,7 +1870,7 @@
                 "source": "https://github.com/kbond/ZenstruckFormBundle/tree/master",
                 "issues": "https://github.com/kbond/ZenstruckFormBundle/issues"
             },
-            "time": "2013-02-20 17:12:51"
+            "time": "2013-03-04 17:31:52"
         }
     ],
     "packages-dev": [
