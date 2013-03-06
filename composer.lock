@@ -689,12 +689,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kriswallsmith/assetic.git",
-                "reference": "v1.1.0-alpha4"
+                "reference": "fcee205a5a3a859c009d976ba3acfe67958e912c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/v1.1.0-alpha4",
-                "reference": "v1.1.0-alpha4",
+                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/fcee205a5a3a859c009d976ba3acfe67958e912c",
+                "reference": "fcee205a5a3a859c009d976ba3acfe67958e912c",
                 "shasum": ""
             },
             "require": {
@@ -752,7 +752,7 @@
                 "compression",
                 "minification"
             ],
-            "time": "2013-02-24 17:22:20"
+            "time": "2013-03-05 17:56:54"
         },
         {
             "name": "kriswallsmith/buzz",
@@ -1781,12 +1781,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kbond/ZenstruckDashboardBundle.git",
-                "reference": "1414bf0b46cc099d10aa5c82c559412b8cf472ef"
+                "reference": "2d0aa1420b6ce1a3d8cccc4659af87979cb2a473"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kbond/ZenstruckDashboardBundle/zipball/1414bf0b46cc099d10aa5c82c559412b8cf472ef",
-                "reference": "1414bf0b46cc099d10aa5c82c559412b8cf472ef",
+                "url": "https://api.github.com/repos/kbond/ZenstruckDashboardBundle/zipball/2d0aa1420b6ce1a3d8cccc4659af87979cb2a473",
+                "reference": "2d0aa1420b6ce1a3d8cccc4659af87979cb2a473",
                 "shasum": ""
             },
             "require": {
@@ -1820,7 +1820,7 @@
                 "source": "https://github.com/kbond/ZenstruckDashboardBundle/tree/master",
                 "issues": "https://github.com/kbond/ZenstruckDashboardBundle/issues"
             },
-            "time": "2013-03-04 17:34:27"
+            "time": "2013-03-06 16:34:18"
         },
         {
             "name": "zenstruck/form-bundle",
@@ -1887,5 +1887,11 @@
         "zenstruck/dashboard-bundle": 20,
         "zenstruck/form-bundle": 20,
         "zenstruck/cache-bundle": 20
-    }
+    },
+    "platform": {
+        "php": ">=5.3.3"
+    },
+    "platform-dev": [
+
+    ]
 }

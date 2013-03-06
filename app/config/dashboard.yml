@@ -3,7 +3,11 @@ zenstruck_dashboard:
     user_service: true
     layout: ::base.html.twig
     dashboard_template: AppBundle:Widget:dashboard.html.twig
-    theme_options: { inverse: true }
+    theme_options:
+        inverse: true
+        column1width: span3
+        column2width: span6
+        column3width: span3
     widgets:
         menu_group:
             title: Menu Group Widget
