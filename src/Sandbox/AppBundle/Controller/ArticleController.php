@@ -53,6 +53,7 @@ class ArticleController extends Controller
      */
     public function newAction(Request $request)
     {
+        $this->addBreadcrumb();
         $entity = new Article();
         $form   = $this->createForm(new ArticleType(), $entity);
 
@@ -80,6 +81,7 @@ class ArticleController extends Controller
      */
     public function editAction($id, Request $request)
     {
+        $this->addBreadcrumb();
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('AppBundle:Article')->find($id);
@@ -124,5 +126,10 @@ class ArticleController extends Controller
         $em->flush();
 
         return $this->redirect($this->generateUrl('article'));
+    }
+
+    protected function addBreadcrumb()
+    {
+        $this->get('zenstruck_dashboard.manager')->addBreadcrumb('Articles', $this->generateUrl('article'));
     }
 }

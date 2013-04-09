@@ -1,7 +1,0 @@
-;##################
-;# CSS/Javascript #
-;##################
-[select2]
-    git=git://github.com/ivaynberg/select2.git
-    target=ivaynberg/select2
-    version=3.3.0
