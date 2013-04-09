@@ -30,7 +30,7 @@
 
         <!-- web vendors -->
         <exec executable="ssh" failonerror="true">
-            <arg line="${env.ssh_user}@${env.ssh_host} 'php ${env.server_path}/bin/webvendors install'"/>
+            <arg line="${env.ssh_user}@${env.ssh_host} 'cd ${env.server_path} &amp;&amp; bower install --no-color'"/>
         </exec>
     </target>
 
