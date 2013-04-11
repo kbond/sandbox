@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sandbox\AppBundle\Entity\Article;
 use Sandbox\AppBundle\Form\ArticleType;
+use Zenstruck\Bundle\FormBundle\Form\GroupedFormView;
 
 /**
  * @Route("/article")
@@ -71,7 +72,7 @@ class ArticleController extends Controller
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView()
+            'grouped_form' => new GroupedFormView($form->createView())
         );
     }
 
@@ -105,7 +106,7 @@ class ArticleController extends Controller
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView()
+            'grouped_form'   => new GroupedFormView($form->createView())
         );
     }
 

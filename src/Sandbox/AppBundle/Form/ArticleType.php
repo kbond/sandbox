@@ -12,7 +12,9 @@ class ArticleType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('body')
+            ->add('body', null, array(
+                    'group' => 'Body'
+                ))
             ->add('date', 'date', array('format' => 'MMM-dd-yyyy'))
             ->add('editor', 'zenstruck_tunnel_entity', array(
                     'class' => 'AppBundle:Author',

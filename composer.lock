@@ -1829,12 +1829,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kbond/ZenstruckFormBundle.git",
-                "reference": "30ac1de5a285b0ca5fd6cf8509c244890c634f8d"
+                "reference": "7d940f8fbc8dea770d3569895cd1515455ca3046"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kbond/ZenstruckFormBundle/zipball/30ac1de5a285b0ca5fd6cf8509c244890c634f8d",
-                "reference": "30ac1de5a285b0ca5fd6cf8509c244890c634f8d",
+                "url": "https://api.github.com/repos/kbond/ZenstruckFormBundle/zipball/7d940f8fbc8dea770d3569895cd1515455ca3046",
+                "reference": "7d940f8fbc8dea770d3569895cd1515455ca3046",
                 "shasum": ""
             },
             "require": {
@@ -1870,7 +1870,7 @@
                 "source": "https://github.com/kbond/ZenstruckFormBundle/tree/master",
                 "issues": "https://github.com/kbond/ZenstruckFormBundle/issues"
             },
-            "time": "2013-03-19 16:34:07"
+            "time": "2013-04-11 15:19:48"
         }
     ],
     "packages-dev": [

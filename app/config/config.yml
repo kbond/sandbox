@@ -15,6 +15,7 @@ zenstruck_form:
         ajax_entity: true
         ajax_entity_controller: true
         help: true
+        group: true
 
 zenstruck_cache:
     sitemap_provider:     true

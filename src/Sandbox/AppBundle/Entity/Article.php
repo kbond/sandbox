@@ -26,6 +26,8 @@ class Article
     protected $title;
 
     /**
+     * @Assert\NotNull
+     *
      * @ORM\Column(name="body", type="text", nullable=true)
      */
     protected $body;
