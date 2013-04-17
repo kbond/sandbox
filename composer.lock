@@ -1,6 +1,52 @@
 {
-    "hash": "3c937275b1c71e051ec84a91ea24d74e",
+    "hash": "ce7474a62da903ac0bf45f44102213c8",
     "packages": [
+        {
+            "name": "cocur/slugify",
+            "version": "v0.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cocur/slugify.git",
+                "reference": "v0.2.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cocur/slugify/zipball/v0.2.2",
+                "reference": "v0.2.2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Cocur": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Florian Eckerstorfer",
+                    "email": "florian@theroadtojoy.at",
+                    "homepage": "http://florianeckerstorfer.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Ivo Bathke",
+                    "email": "ivo.bathke@gmail.com"
+                }
+            ],
+            "description": "Converts a string into a slug.",
+            "keywords": [
+                "slug",
+                "slugify"
+            ],
+            "time": "2013-03-08 07:15:42"
+        },
         {
             "name": "doctrine/common",
             "version": "2.3.0",
@@ -860,16 +906,16 @@
         },
         {
             "name": "nelmio/alice",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/nelmio/alice",
-                "reference": "1.3.0"
+                "url": "https://github.com/nelmio/alice.git",
+                "reference": "1.4.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/nelmio/alice/archive/1.3.0.zip",
-                "reference": "1.3.0",
+                "url": "https://api.github.com/repos/nelmio/alice/zipball/1.4.0",
+                "reference": "1.4.0",
                 "shasum": ""
             },
             "require": {
@@ -880,12 +926,12 @@
             "require-dev": {
                 "doctrine/common": ">=2.3,<3.0",
                 "phpunit/phpunit": "3.7.*",
-                "symfony/form": ">=2.1,<3.0"
+                "symfony/property-access": ">=2.2,<3.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.4.x-dev"
                 }
             },
             "autoload": {
@@ -910,7 +956,7 @@
                 "orm",
                 "test"
             ],
-            "time": "2013-01-22 10:49:48"
+            "time": "2013-04-15 14:47:44"
         },
         {
             "name": "sensio/buzz-bundle",
@@ -1829,18 +1875,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kbond/ZenstruckFormBundle.git",
-                "reference": "7d940f8fbc8dea770d3569895cd1515455ca3046"
+                "reference": "v1.2.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kbond/ZenstruckFormBundle/zipball/7d940f8fbc8dea770d3569895cd1515455ca3046",
-                "reference": "7d940f8fbc8dea770d3569895cd1515455ca3046",
+                "url": "https://api.github.com/repos/kbond/ZenstruckFormBundle/zipball/v1.2.0",
+                "reference": "v1.2.0",
                 "shasum": ""
             },
             "require": {
                 "ext-mcrypt": "*",
                 "symfony/symfony": "~2.1",
-                "zendframework/zend-crypt": "~2.0,!=2.1.1"
+                "zendframework/zend-crypt": "~2.0,!=2.1.1",
+                "zenstruck/slugify-bundle": "~1.0"
             },
             "require-dev": {
                 "doctrine/doctrine-bundle": "*",
@@ -1867,10 +1914,61 @@
                 "form"
             ],
             "support": {
-                "source": "https://github.com/kbond/ZenstruckFormBundle/tree/master",
+                "source": "https://github.com/kbond/ZenstruckFormBundle/tree/v1.2.0",
                 "issues": "https://github.com/kbond/ZenstruckFormBundle/issues"
             },
-            "time": "2013-04-11 15:19:48"
+            "time": "2013-04-17 14:24:54"
+        },
+        {
+            "name": "zenstruck/slugify-bundle",
+            "version": "dev-master",
+            "target-dir": "Zenstruck/SlugifyBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kbond/ZenstruckSlugifyBundle.git",
+                "reference": "31d90467ef1353a6ea30c5ba51eacfdf318563bc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kbond/ZenstruckSlugifyBundle/zipball/31d90467ef1353a6ea30c5ba51eacfdf318563bc",
+                "reference": "31d90467ef1353a6ea30c5ba51eacfdf318563bc",
+                "shasum": ""
+            },
+            "require": {
+                "cocur/slugify": "~0.2",
+                "symfony/symfony": "~2.1"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Zenstruck\\SlugifyBundle": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Bond",
+                    "email": "kevinbond@gmail.com"
+                }
+            ],
+            "description": "Provides a slugify service and twig filter for Symfony2.",
+            "homepage": "http://zenstruck.com/project/ZenstruckSlugifyBundle",
+            "keywords": [
+                "slug",
+                "slugify"
+            ],
+            "support": {
+                "source": "https://github.com/kbond/ZenstruckSlugifyBundle/tree/master",
+                "issues": "https://github.com/kbond/ZenstruckSlugifyBundle/issues"
+            },
+            "time": "2013-04-17 14:29:47"
         }
     ],
     "packages-dev": [
@@ -1886,7 +1984,8 @@
         "sensiolabs/security-checker": 20,
         "zenstruck/dashboard-bundle": 20,
         "zenstruck/form-bundle": 20,
-        "zenstruck/cache-bundle": 20
+        "zenstruck/cache-bundle": 20,
+        "zenstruck/slugify-bundle": 20
     },
     "platform": {
         "php": ">=5.3.3"

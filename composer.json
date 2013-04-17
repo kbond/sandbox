@@ -16,6 +16,10 @@
         {
             "type": "vcs",
             "url": "git@github.com:kbond/ZenstruckCacheBundle.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@github.com:kbond/ZenstruckSlugifyBundle.git"
         }
     ],
     "require": {
@@ -39,7 +43,8 @@
 
         "zenstruck/dashboard-bundle": "dev-master",
         "zenstruck/form-bundle": "dev-master",
-        "zenstruck/cache-bundle": "dev-master"
+        "zenstruck/cache-bundle": "dev-master",
+        "zenstruck/slugify-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
