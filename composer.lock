@@ -1879,12 +1879,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kbond/ZenstruckFormBundle.git",
-                "reference": "047eb767db958e34184ed4a54275af00c6c7e1a4"
+                "reference": "31466c18596ffa7f60867423302bec46e2579efa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kbond/ZenstruckFormBundle/zipball/047eb767db958e34184ed4a54275af00c6c7e1a4",
-                "reference": "047eb767db958e34184ed4a54275af00c6c7e1a4",
+                "url": "https://api.github.com/repos/kbond/ZenstruckFormBundle/zipball/31466c18596ffa7f60867423302bec46e2579efa",
+                "reference": "31466c18596ffa7f60867423302bec46e2579efa",
                 "shasum": ""
             },
             "require": {
@@ -1893,6 +1893,7 @@
             "require-dev": {
                 "doctrine/doctrine-bundle": "*",
                 "doctrine/orm": "*",
+                "zendframework/zend-crypt": "~2.0,!=2.1.1",
                 "zenstruck/slugify-bundle": "~1.0"
             },
             "suggest": {
@@ -1900,6 +1901,11 @@
                 "zenstruck/slugify-bundle": "Required for the grouped form feature"
             },
             "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Zenstruck\\Bundle\\FormBundle": ""
@@ -1923,7 +1929,7 @@
                 "source": "https://github.com/kbond/ZenstruckFormBundle/tree/master",
                 "issues": "https://github.com/kbond/ZenstruckFormBundle/issues"
             },
-            "time": "2013-04-24 13:40:20"
+            "time": "2013-04-24 15:38:52"
         },
         {
             "name": "zenstruck/slugify-bundle",

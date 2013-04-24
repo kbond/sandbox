@@ -4,7 +4,7 @@
 
 {% block body %}
     <form class="form-horizontal" method="post" novalidate="novalidate" {{ form_enctype(grouped_form.form) }}>
-        {% include 'ZenstruckFormBundle:Twitter:grouped_form.html.twig' with { 'form': grouped_form } %}
+        {% include 'AppBundle:Article:_grouped_form.html.twig' with { 'grouped_form': grouped_form } %}
 
         <div class="form-actions">
             <button class="btn btn-primary" type="submit">Edit</button>

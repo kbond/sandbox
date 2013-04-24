@@ -1,0 +1,17 @@
+{% extends 'ZenstruckFormBundle:Twitter:grouped_form.html.twig' %}
+
+{% block tabs_header %}
+    {{ parent() }}
+    <li><a href="#custom1" data-toggle="tab">Custom 1</a></li>
+    <li><a href="#custom2" data-toggle="tab">Custom 2</a></li>
+{% endblock %}
+
+{% block tabs_content %}
+    {{ parent() }}
+    <div class="tab-pane" id="custom1">
+        Custom content 1
+    </div>
+    <div class="tab-pane" id="custom2">
+        Custom content 2
+    </div>
+{% endblock %}
