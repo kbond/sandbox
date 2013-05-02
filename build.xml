@@ -25,7 +25,7 @@
 
     <target name="remote.vendors">
         <exec executable="ssh" failonerror="true">
-            <arg line="${env.ssh_user}@${env.ssh_host} 'cd ${env.server_path} &amp;&amp; composer install --optimize-autoloader'"/>
+            <arg line="${env.ssh_user}@${env.ssh_host} 'cd ${env.server_path} &amp;&amp; composer install --no-interaction --optimize-autoloader'"/>
         </exec>
 
         <!-- web vendors -->
