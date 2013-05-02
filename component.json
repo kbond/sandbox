@@ -1,5 +1,6 @@
 {
-    "dependencies": {
-        "select2": "~3.3.0"
-    }
+  "dependencies": {
+    "select2": "~3.3.0",
+    "hinclude": "git://github.com/mnot/hinclude.git#0.9.5"
+  }
 }
