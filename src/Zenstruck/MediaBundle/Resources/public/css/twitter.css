@@ -1,0 +1,23 @@
+.btn-toolbar .btn-text {
+    vertical-align: middle;
+    display: inline-block;
+    font-size: 14px;
+    border: 1px solid #cccccc;
+    border-bottom-color: #b3b3b3;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    margin: 0 5px 0 5px;
+    padding: 2px 10px;
+    line-height: 20px;
+}
+
+#zenstruck-media-table th,
+#zenstruck-media-table td {
+    vertical-align: middle;
+}
+
+#zenstruck-media-table th:not(:first-child),
+#zenstruck-media-table td:not(:first-child) {
+    border-left: none;
+}

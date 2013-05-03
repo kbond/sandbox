@@ -3,7 +3,7 @@
 USER=$(whoami)
 APACHE_USER=$(ps axho user,comm|grep -E "httpd|apache"|uniq|grep -v "root"|awk 'END {print $1}')
 
-sudo setfacl -R -m u:$APACHE_USER:rwx -m u:$USER:rwx app/cache app/logs
-sudo setfacl -dR -m u:$APACHE_USER:rwx -m u:$USER:rwx app/cache app/logs
+sudo setfacl -R -m u:$APACHE_USER:rwx -m u:$USER:rwx app/cache app/logs web/files
+sudo setfacl -dR -m u:$APACHE_USER:rwx -m u:$USER:rwx app/cache app/logs web/files
 
 echo "Folders have been properly chmod'ed for $USER and $APACHE_USER"

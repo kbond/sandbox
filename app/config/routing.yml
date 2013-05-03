@@ -10,6 +10,11 @@ app:
 zenstruck_form:
     resource: "@ZenstruckFormBundle/Resources/config/ajax_entity_routing.xml"
 
+zenstruck_media:
+    resource: "@ZenstruckMediaBundle/Controller/MediaController.php"
+    type:     annotation
+    prefix:   /media
+
 # Internal routing configuration to handle ESI
 # ****** WARNING ******
 # This route should be enabled with caution as it can open a security vulnerability

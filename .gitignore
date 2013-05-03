@@ -1,5 +1,6 @@
 web/bundles/
 web/*.php
+web/files
 app/bootstrap.php.cache
 app/cache/*
 app/logs/*
