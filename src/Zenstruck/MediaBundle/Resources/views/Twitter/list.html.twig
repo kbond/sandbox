@@ -11,20 +11,20 @@
     <div id="zenstruck-media">
         <div class="btn-toolbar">
             <div class="btn-group">
-                {% if path %}
-                    <a class="btn btn-small" href="{{ path('zenstruck_media_list', { 'path': paths[0:paths|length-1]|join('/') }) }}"><i class="icon-arrow-left"></i></a>
+                {% if manager.path %}
+                    <a class="btn btn-small" href="{{ path('zenstruck_media_list', { 'path': manager.ancestry[0:manager.ancestry|length-1]|join('/') }) }}"><i class="icon-arrow-left"></i></a>
                 {% else %}
                     <span class="btn btn-small disabled"><i class="icon-arrow-left"></i></span>
                 {% endif %}
             </div>
 
             <div class="btn-text">
-                {% if path %}
+                /
+                {% if manager.path %}
                     <a href="{{ path('zenstruck_media_list') }}"><em>root</em></a>
                 {% endif %}
-                /
                 {% set prev_path = [] %}
-                {% for dir in paths %}
+                {% for dir in manager.ancestry %}
                     {% set prev_path = prev_path|merge([dir]) %}
                     {% if not loop.last %}
                         <a href="{{ path('zenstruck_media_list', { 'path': prev_path|join('/') }) }}">{{ dir }}</a> /
@@ -41,14 +41,14 @@
         </div>
         <hr />
 
-        {% include 'ZenstruckMediaBundle:Twitter:_table.html.twig' with { 'dirs': dirs, 'files': files, 'path': path } %}
+        {% include 'ZenstruckMediaBundle:Twitter:_table.html.twig' with { 'manager': manager } %}
 
         <div id="zenstruck-media-mkdir" class="modal hide fade">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h3>Make Directory</h3>
             </div>
-            <form method="post" action="{{ path('zenstruck_media_mkdir', { 'path': path }) }}" class="form-horizontal">
+            <form method="post" action="{{ path('zenstruck_media_mkdir', { 'path': manager.path }) }}" class="form-horizontal">
                 <div class="modal-body">
                     <div class="control-group">
                         <label class="control-label" for="zenstruck-media-new-folder-name">Directory Name</label>
@@ -68,7 +68,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h3>Upload Files</h3>
             </div>
-            <form method="post" action="{{ path('zenstruck_media_upload', { 'path': path }) }}" class="form-horizontal" enctype="multipart/form-data">
+            <form method="post" action="{{ path('zenstruck_media_upload', { 'path': manager.path }) }}" class="form-horizontal" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="control-group">
                         <label class="control-label" for="zenstruck-media-upload-files">Select a File</label>

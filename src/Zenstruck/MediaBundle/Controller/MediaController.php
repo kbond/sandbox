@@ -10,6 +10,8 @@ use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Zenstruck\MediaBundle\Exception\DirectoryNotFoundException;
+use Zenstruck\MediaBundle\Exception\FileExistsException;
 
 /**
  * @author Kevin Bond <kevinbond@gmail.com>
@@ -21,36 +23,16 @@ class MediaController extends Controller
      */
     public function listAction(Request $request)
     {
-        $path = $this->getPath();
-        $workingDir = $this->getWorkingDirectory($path);
+        $manager = $this->getManager();
 
-        if (!is_dir($workingDir)) {
-            throw new NotFoundHttpException(sprintf('Directory "%s" not found.', $workingDir));
+        try {
+            $manager->configure($request->query->get('path'));
+        } catch (DirectoryNotFoundException $e) {
+            throw new NotFoundHttpException($e->getMessage());
         }
 
-        $dirs = Finder::create()
-            ->sortByName()
-            ->directories()
-            ->depth(0)
-            ->in($workingDir)
-        ;
-
-        $files = Finder::create()
-            ->sort(function(\SplFileInfo $a, \SplFileInfo $b) {
-                    return strcasecmp($a->getFilename(), $b->getFilename());
-                })
-            ->files()
-            ->depth(0)
-            ->in($workingDir)
-        ;
-
-        $paths = explode('/', $path);
-
         return $this->render('ZenstruckMediaBundle:Twitter:list.html.twig', array(
-                'dirs' => $dirs,
-                'files' => $files,
-                'path' => $path,
-                'paths' => $paths
+                'manager' => $manager
             ));
     }
 
@@ -60,21 +42,10 @@ class MediaController extends Controller
      */
     public function uploadAction(Request $request)
     {
-        $path = $this->getPath();
-        $workingDir = $this->getWorkingDirectory($path);
-        $file = $request->files->get('file');
+        $manager = $this->getManager();
+        $manager->uploadFile($request->query->get('path'), $request->files->get('file'));
 
-        if (!$file instanceof UploadedFile) {
-            return $this->redirectToPath($path, 'No file selected.', 'error');
-        }
-
-        if (file_exists($workingDir.$file->getClientOriginalName())) {
-            return $this->redirectToPath($path, sprintf('File "%s" already exists.', $file->getClientOriginalName()), 'error');
-        }
-
-        $file->move($workingDir, $file->getClientOriginalName());
-
-        return $this->redirectToPath($path, sprintf('File "%s" uploaded.', $file->getClientOriginalName()));
+        return $this->redirectToPath($manager->getPath());
     }
 
     /**
@@ -135,7 +106,7 @@ class MediaController extends Controller
     protected function redirectToPath($path, $flashMessage = null, $flashType = 'success')
     {
         if ($flashMessage) {
-            $this->get('session')->getFlashBag()->add($flashType, $flashMessage);
+            $this->getManager()->addAlert($flashMessage, $flashType);
         }
 
         return $this->redirect($this->generateUrl('zenstruck_media_list', array('path' => $path)));
@@ -149,5 +120,13 @@ class MediaController extends Controller
     protected function getWorkingDirectory($path)
     {
         return rtrim($this->container->getParameter('kernel.root_dir').'/../web/files/'.$path, '/').'/';
+    }
+
+    /**
+     * @return \Zenstruck\MediaBundle\Media\FilesystemManager
+     */
+    protected function getManager()
+    {
+        return $this->get('zenstruck_media.filesystem_manager');
     }
 }
