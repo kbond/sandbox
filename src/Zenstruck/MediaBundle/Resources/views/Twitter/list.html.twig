@@ -36,7 +36,7 @@
 
             <div class="btn-group">
                 <a class="btn btn-small" data-toggle="modal" href="#zenstruck-media-mkdir"><i class="icon-folder-open"></i> New</a>
-                <a class="btn btn-small"><i class="icon-upload"></i> Upload</a>
+                <a class="btn btn-small" data-toggle="modal" href="#zenstruck-media-upload"><i class="icon-upload"></i> Upload</a>
             </div>
         </div>
         <hr />
@@ -60,6 +60,26 @@
                 <div class="modal-footer">
                     <a href="#" class="btn" data-dismiss="modal">Close</a>
                     <input type="submit" class="btn btn-primary" value="Create" />
+                </div>
+            </form>
+        </div>
+        <div id="zenstruck-media-upload" class="modal hide fade">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3>Upload Files</h3>
+            </div>
+            <form method="post" action="{{ path('zenstruck_media_upload', { 'path': path }) }}" class="form-horizontal" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="control-group">
+                        <label class="control-label" for="zenstruck-media-upload-files">Select a File</label>
+                        <div class="controls">
+                            <input type="file" name="file" id="zenstruck-media-upload-files">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn" data-dismiss="modal">Close</a>
+                    <input type="submit" class="btn btn-primary" value="Upload" />
                 </div>
             </form>
         </div>

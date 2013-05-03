@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -54,6 +55,29 @@ class MediaController extends Controller
     }
 
     /**
+     * @Route("/upload", name="zenstruck_media_upload")
+     * @Method("POST")
+     */
+    public function uploadAction(Request $request)
+    {
+        $path = $this->getPath();
+        $workingDir = $this->getWorkingDirectory($path);
+        $file = $request->files->get('file');
+
+        if (!$file instanceof UploadedFile) {
+            return $this->redirectToPath($path, 'No file selected.', 'error');
+        }
+
+        if (file_exists($workingDir.$file->getClientOriginalName())) {
+            return $this->redirectToPath($path, sprintf('File "%s" already exists.', $file->getClientOriginalName()), 'error');
+        }
+
+        $file->move($workingDir, $file->getClientOriginalName());
+
+        return $this->redirectToPath($path, sprintf('File "%s" uploaded.', $file->getClientOriginalName()));
+    }
+
+    /**
      * @Route("/delete_file/{filename}", name="zenstruck_media_delete_file")
      * @Method("DELETE")
      */
@@ -61,7 +85,7 @@ class MediaController extends Controller
     {
         $path = $this->getPath();
         $workingDir = $this->getWorkingDirectory($path);
-        $file = $workingDir.'/'.$filename;
+        $file = $workingDir.$filename;
 
         if (!is_file($file)) {
             return $this->redirectToPath($path, sprintf('Could not delete "%s". Not a valid file.', $filename), 'error');
@@ -93,7 +117,7 @@ class MediaController extends Controller
         }
 
         $filesystem = new Filesystem();
-        $newDir = $workingDir.'/'.$dirName;
+        $newDir = $workingDir.$dirName;
 
         if ($filesystem->exists($newDir)) {
             return $this->redirectToPath($path, sprintf('Failed to create directory "%s".  It already exists.', $dirName), 'error');
@@ -124,6 +148,6 @@ class MediaController extends Controller
 
     protected function getWorkingDirectory($path)
     {
-        return $this->container->getParameter('kernel.root_dir').'/../web/files/'.$path;
+        return rtrim($this->container->getParameter('kernel.root_dir').'/../web/files/'.$path, '/').'/';
     }
 }
