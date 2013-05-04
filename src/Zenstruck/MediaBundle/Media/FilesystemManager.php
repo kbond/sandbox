@@ -57,30 +57,25 @@ class FilesystemManager
             return $this->files;
         }
 
-        return $this->files = Finder::create()
+        $files = Finder::create()
             ->sort(function(\SplFileInfo $a, \SplFileInfo $b) {
+                    if ($a->isDir() && $b->isFile()) {
+                        return -1;
+                    } elseif ($a->isFile() && $b->isDir()) {
+                        return 1;
+                    }
+
                     return strcasecmp($a->getFilename(), $b->getFilename());
                 })
-            ->files()
             ->depth(0)
             ->in($this->workingDir)
         ;
-    }
 
-    public function getDirectories()
-    {
-        $this->ensureConfigured();
-
-        if ($this->directories) {
-            return $this->directories;
+        foreach ($files as $file) {
+            $this->files[] = new File($file);
         }
 
-        return $this->directories = Finder::create()
-            ->sortByName()
-            ->directories()
-            ->depth(0)
-            ->in($this->workingDir)
-        ;
+        return $this->files;
     }
 
     public function getAncestry()

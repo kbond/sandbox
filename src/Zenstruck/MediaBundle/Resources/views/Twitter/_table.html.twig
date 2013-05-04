@@ -8,25 +8,31 @@
         </tr>
     </thead>
     <tbody>
-    {% for dir in manager.directories %}
-        <tr>
-            <td>
-                <a href="{{ path('zenstruck_media_list', { 'path': manager.path ~ '/' ~ dir.filename }) }}">
-                    <i class="icon-folder-open"></i> {{ dir.filename }}
-                </a>
-            </td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-    {% endfor %}
     {% for file in manager.files %}
         <tr>
-            <td><i class="icon-file"></i> {{ file.filename }}</td>
-            <td><em class="muted">{{ file.mTime|date }}</em></td>
-            <td><em class="muted">{{ file.size }}</em></td>
             <td>
-                <a class="btn btn-mini btn-danger method-delete" href="{{ path('zenstruck_media_delete_file', { 'filename': file.filename, 'path': manager.path }) }}"><i class="icon-trash icon-white"></i> Delete</a>
+                {% if file.isDir %}
+                    <a href="{{ path('zenstruck_media_list', { 'path': manager.path ~ '/' ~ file.getFilename }) }}">
+                        <i class="icon-folder-open"></i> {{ file.getFilename }}
+                    </a>
+                {% else %}
+                    <i class="icon-file"></i> {{ file.getFilename }}
+                {% endif %}
+            </td>
+            <td><em class="muted">{{ file.getMTime|date }}</em></td>
+            <td>
+                {% if file.isFile %}
+                    <em class="muted">{{ file.getHumanFileSize }}</em>
+                {% else %}
+                    &nbsp;
+                {% endif %}
+            </td>
+            <td>
+                {% if file.isFile %}
+                    <a class="btn btn-mini btn-danger method-delete" href="{{ path('zenstruck_media_delete_file', { 'filename': file.getFilename, 'path': manager.path }) }}"><i class="icon-trash icon-white"></i> Delete</a>
+                {% else %}
+                    &nbsp;
+                {% endif %}
             </td>
         </tr>
     {% endfor %}
