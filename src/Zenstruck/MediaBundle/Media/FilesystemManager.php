@@ -5,11 +5,9 @@ namespace Zenstruck\MediaBundle\Media;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\Routing\RouterInterface;
 use Zenstruck\MediaBundle\Exception\DirectoryNotFoundException;
 use Zenstruck\MediaBundle\Exception\Exception;
+use Zenstruck\MediaBundle\Media\Alert\AlertProviderInterface;
 
 /**
  * @author Kevin Bond <kevinbond@gmail.com>
@@ -18,20 +16,18 @@ class FilesystemManager
 {
     protected $rootDir;
     protected $filesystem;
-    protected $router;
-    protected $session;
+    protected $alert;
     protected $configured = false;
     protected $directories;
     protected $workingDir;
     protected $files;
     protected $path;
 
-    public function __construct($rootDir, RouterInterface $router, Session $session)
+    public function __construct($rootDir, AlertProviderInterface $alert)
     {
         $this->filesystem = new Filesystem();
         $this->rootDir = rtrim($rootDir, '\\/');
-        $this->router = $router;
-        $this->session = $session;
+        $this->alert = $alert;
     }
 
     public function configure($path)
@@ -167,9 +163,9 @@ class FilesystemManager
         $this->addAlert(sprintf('File "%s" uploaded.', $filename));
     }
 
-    public function addAlert($message, $type = 'success')
+    protected function addAlert($message, $type = 'success')
     {
-        $this->session->getFlashBag()->add($type, $message);
+        $this->alert->addAlert($message, $type);
     }
 
     protected function ensureConfigured()
