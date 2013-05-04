@@ -45,13 +45,25 @@ class MediaController extends Controller
     }
 
     /**
-     * @Route("/delete_file/{filename}", name="zenstruck_media_delete_file")
+     * @Route("/delete/{filename}", name="zenstruck_media_delete")
      * @Method("DELETE")
      */
-    public function deleteFileAction($filename, Request $request)
+    public function deleteAction($filename, Request $request)
     {
         $manager = $this->getManager();
         $manager->deleteFile($request->query->get('path'), $filename);
+
+        return $this->redirectToPath($manager->getPath());
+    }
+
+    /**
+     * @Route("/rename/{filename}", name="zenstruck_media_rename")
+     * @Method("POST")
+     */
+    public function renameAction($filename, Request $request)
+    {
+        $manager = $this->getManager();
+        $manager->renameFile($request->query->get('path'), $filename, $request->request->get('new_name'));
 
         return $this->redirectToPath($manager->getPath());
     }

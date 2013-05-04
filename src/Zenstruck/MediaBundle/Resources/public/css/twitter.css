@@ -1,3 +1,7 @@
+.modal form {
+    margin-bottom: 0;
+}
+
 .btn-toolbar .btn-text {
     vertical-align: middle;
     display: inline-block;

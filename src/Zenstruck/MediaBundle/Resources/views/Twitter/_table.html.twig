@@ -34,11 +34,8 @@
                 {% endif %}
             </td>
             <td>
-                {% if file.isFile %}
-                    <a class="btn btn-mini btn-danger method-delete" href="{{ path('zenstruck_media_delete_file', { 'filename': file.getFilename, 'path': manager.path }) }}"><i class="icon-trash icon-white"></i> Delete</a>
-                {% else %}
-                    &nbsp;
-                {% endif %}
+                <a class="btn btn-mini btn-danger method-delete" href="{{ path('zenstruck_media_delete', { 'filename': file.getFilename, 'path': manager.path }) }}"><i class="icon-trash icon-white"></i> Delete</a>
+                <a href="#" class="btn btn-mini zenstruck-media-rename" data-name="{{ file.getBasename('.'~file.getExtension) }}" data-url="{{ path('zenstruck_media_rename', { 'filename': file.getFilename, 'path': manager.path }) }}"><i class="icon-edit"></i> Rename</a>
             </td>
         </tr>
     {% else %}

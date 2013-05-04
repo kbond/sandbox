@@ -90,25 +90,55 @@ class FilesystemManager
         return join('/', array_slice($this->getAncestry(), 0, count($this->getAncestry()) - 1));
     }
 
+    public function renameFile($path, $oldName, $newName)
+    {
+        $this->configure($path);
+
+        $oldFile = $this->workingDir.$oldName;
+        $type = is_dir($oldFile) ? 'directory' : 'file';
+
+        if ('file' === $type) {
+            // don't let user change extension
+            $newName = pathinfo($newName, PATHINFO_FILENAME).'.'.pathinfo($oldName, PATHINFO_EXTENSION);
+        }
+
+        if ($newName === $oldName) {
+            $this->addAlert(sprintf('You didn\'t specify a new name for "%s".', $newName), 'error');
+            return;
+        }
+
+        $newFile = $this->workingDir.$newName;
+
+        if (file_exists($newFile)) {
+            $this->addAlert(sprintf('The %s "%s" already exists.', $type, $newName), 'error');
+            return;
+        }
+
+        try {
+            $this->filesystem->rename($oldFile, $newFile);
+        } catch (\Exception $e) {
+            $this->addAlert(sprintf('Error renaming %s "%s".  Check permissions.', $type, $oldName), 'error');
+            return;
+        }
+
+        $this->addAlert(sprintf('%s "%s" renamed to "%s".', ucfirst($type), $oldName, $newName));
+    }
+
     public function deleteFile($path, $filename)
     {
         $this->configure($path);
 
         $file = $this->workingDir.$filename;
-
-        if (!is_file($file)) {
-            $this->addAlert(sprintf('Could not delete "%s". Not a valid file.', $filename), 'error');
-            return;
-        }
+        $type = is_dir($file) ? 'directory' : 'file';
 
         try {
             $this->filesystem->remove($file);
         } catch (\Exception $e) {
-            $this->addAlert(sprintf('Error deleting file "%s".  Check permissions.', $filename), 'error');
+            $this->addAlert(sprintf('Error deleting %s "%s".  Check permissions.', $type, $filename), 'error');
             return;
         }
 
-        $this->addAlert(sprintf('File "%s" deleted.', $filename));
+        $this->addAlert(sprintf('%s "%s" deleted.', ucfirst($type), $filename));
     }
 
     public function mkDir($path, $dirName)
