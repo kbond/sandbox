@@ -15,6 +15,7 @@ use Zenstruck\MediaBundle\Media\Alert\AlertProviderInterface;
 class FilesystemManager
 {
     protected $rootDir;
+    protected $webPrefix;
     protected $filesystem;
     protected $alert;
     protected $configured = false;
@@ -23,17 +24,18 @@ class FilesystemManager
     protected $files;
     protected $path;
 
-    public function __construct($rootDir, AlertProviderInterface $alert)
+    public function __construct($rootDir, $webPrefix, AlertProviderInterface $alert)
     {
         $this->filesystem = new Filesystem();
+        $this->webPrefix = sprintf('/%s/', trim($webPrefix, '/'));
         $this->rootDir = rtrim($rootDir, '\\/');
         $this->alert = $alert;
     }
 
     public function configure($path)
     {
-        $this->path = $path;
-        $this->workingDir = $this->getWorkingDirectory($path);
+        $this->path = trim($path, '/');
+        $this->workingDir = $this->rootDir.'/'.$path;
 
         if (!is_dir($this->workingDir)) {
             throw new DirectoryNotFoundException(sprintf('Directory "%s" not found.', $this->workingDir));
@@ -72,7 +74,7 @@ class FilesystemManager
         ;
 
         foreach ($files as $file) {
-            $this->files[] = new File($file);
+            $this->files[] = new File($file, $this->webPrefix.$this->path);
         }
 
         return $this->files;
@@ -203,10 +205,5 @@ class FilesystemManager
         if (!$this->configured) {
             throw new Exception('Filesystem manager not configured with Filesystem::configure()');
         }
-    }
-
-    protected function getWorkingDirectory($path)
-    {
-        return $this->rootDir.'/'.trim($path, '/');
     }
 }

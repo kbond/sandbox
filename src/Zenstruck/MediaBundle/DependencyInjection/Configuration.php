@@ -21,6 +21,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('root_dir')->defaultValue('%kernel.root_dir%/../web/files')->end()
+                ->scalarNode('web_prefix')->defaultValue('/files')->end()
             ->end()
         ;
 

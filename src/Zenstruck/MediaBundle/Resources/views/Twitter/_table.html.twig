@@ -2,6 +2,7 @@
     <thead>
         <tr>
             <th>Filename</th>
+            <th>Path</th>
             <th>Modified</th>
             <th>Size</th>
             <th>Actions</th>
@@ -25,7 +26,19 @@
                     <i class="icon-custom-{{ file.getExtension }}"></i> {{ file.getFilename }}
                 {% endif %}
             </td>
-            <td><em class="muted">{{ file.getMTime|date }}</em></td>
+            <td>
+                {% if file.isFile %}
+                    <a href="{{ file.getWebPath }}" target="_blank"><small>{{ file.getWebPath }}</small></a>
+                {% else %}
+                    &nbsp;
+                {% endif %}
+            </td>
+            <td>
+                <em class="muted">{{ file.getMTime|date }}</em>
+                {% if file.isNew %}
+                    <span class="label label-success">new</span>
+                {% endif %}
+            </td>
             <td>
                 {% if file.isFile %}
                     <em class="muted">{{ file.getHumanFileSize }}</em>
@@ -33,9 +46,9 @@
                     &nbsp;
                 {% endif %}
             </td>
-            <td>
-                <a class="btn btn-mini btn-danger method-delete" href="{{ path('zenstruck_media_delete', { 'filename': file.getFilename, 'path': manager.path }) }}"><i class="icon-trash icon-white"></i> Delete</a>
-                <a href="#" class="btn btn-mini zenstruck-media-rename" data-name="{{ file.getBasename('.'~file.getExtension) }}" data-url="{{ path('zenstruck_media_rename', { 'filename': file.getFilename, 'path': manager.path }) }}"><i class="icon-edit"></i> Rename</a>
+            <td class="zenstruck-media-actions">
+                <a title="Delete" class="btn btn-mini btn-danger method-delete" href="{{ path('zenstruck_media_delete', { 'filename': file.getFilename, 'path': manager.path }) }}"><i class="icon-trash icon-white"></i></a>
+                <a title="Rename" href="#" class="btn btn-mini zenstruck-media-rename" data-name="{{ file.getBasename('.'~file.getExtension) }}" data-url="{{ path('zenstruck_media_rename', { 'filename': file.getFilename, 'path': manager.path }) }}"><i class="icon-edit"></i></a>
             </td>
         </tr>
     {% else %}

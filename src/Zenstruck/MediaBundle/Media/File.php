@@ -8,14 +8,17 @@ namespace Zenstruck\MediaBundle\Media;
 class File
 {
     protected $file;
+    protected $webPath;
 
     protected static $imageExtensions = array(
         'jpg', 'jpeg', 'gif', 'png'
     );
 
-    public function __construct(\SplFileInfo $file)
+    public function __construct(\SplFileInfo $file, $webPrefix)
     {
         $this->file = $file;
+        $this->webPath = rtrim($webPrefix, '/').'/'.$this->file->getFilename();
+
     }
 
     public function __call($method, $args)
@@ -30,6 +33,16 @@ class File
     public function isImage()
     {
         return in_array($this->file->getExtension(), static::$imageExtensions);
+    }
+
+    public function isNew()
+    {
+        return (time() - $this->file->getCTime()) < 3600;
+    }
+
+    public function getWebPath()
+    {
+        return $this->webPath;
     }
 
     /**

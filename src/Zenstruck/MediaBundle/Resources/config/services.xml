@@ -12,6 +12,7 @@
     <services>
         <service id="zenstruck_media.filesystem_manager" class="%zenstruck_media.filesystem_manager.class%">
             <argument>%zenstruck_dashboard.root_dir%</argument>
+            <argument>%zenstruck_dashboard.web_prefix%</argument>
             <argument type="service" id="zenstruck_media.alert_provider" />
         </service>
         <service id="zenstruck_media.alert_provider" class="%zenstruck_media.alert_provider.class%" public="false">

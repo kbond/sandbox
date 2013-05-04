@@ -21,6 +21,7 @@ class ZenstruckMediaExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $container->setParameter('zenstruck_dashboard.root_dir', $config['root_dir']);
+        $container->setParameter('zenstruck_dashboard.web_prefix', $config['web_prefix']);
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
