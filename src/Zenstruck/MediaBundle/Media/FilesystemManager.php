@@ -85,6 +85,11 @@ class FilesystemManager
         return explode('/', $this->path);
     }
 
+    public function getPreviousPath()
+    {
+        return join('/', array_slice($this->getAncestry(), 0, count($this->getAncestry()) - 1));
+    }
+
     public function deleteFile($path, $filename)
     {
         $this->configure($path);

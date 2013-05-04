@@ -8,15 +8,21 @@
         </tr>
     </thead>
     <tbody>
+    {% if manager.path %}
+        <tr>
+            <td colspan="100"><i class="icon-arrow-up"></i> <a href="{{ path('zenstruck_media_list', { 'path': manager.previousPath }) }}">...</a></td>
+        </tr>
+    {% endif %}
     {% for file in manager.files %}
         <tr>
             <td>
                 {% if file.isDir %}
+                    <i class="icon-folder-open"></i>
                     <a href="{{ path('zenstruck_media_list', { 'path': manager.path ~ '/' ~ file.getFilename }) }}">
-                        <i class="icon-folder-open"></i> {{ file.getFilename }}
+                        {{ file.getFilename }}
                     </a>
                 {% else %}
-                    <i class="icon-file"></i> {{ file.getFilename }}
+                    <i class="icon-custom-{{ file.getExtension }}"></i> {{ file.getFilename }}
                 {% endif %}
             </td>
             <td><em class="muted">{{ file.getMTime|date }}</em></td>
@@ -34,6 +40,10 @@
                     &nbsp;
                 {% endif %}
             </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="100"><em>No files</em></td>
         </tr>
     {% endfor %}
     </tbody>

@@ -21,3 +21,25 @@
 #zenstruck-media-table td:not(:first-child) {
     border-left: none;
 }
+
+/* Custom Icons */
+[class^="icon-custom-"], [class*=" icon-custom-"] {
+    background-position:-24px -24px;
+}
+.icon-custom-jpg,
+.icon-custom-jpeg,
+.icon-custom-gif,
+.icon-custom-png {
+    background-position:-456px -48px;
+}
+.icon-custom-pdf {
+    background: url(../images/pdf14.gif) 0 0 no-repeat;
+}
+.icon-custom-doc,
+.icon-custom-docx {
+    background: url(../images/doc14.gif) 0 0 no-repeat;
+}
+.icon-custom-xls,
+.icon-custom-xlsx {
+    background: url(../images/doc14.gif) 0 0 no-repeat;
+}

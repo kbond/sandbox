@@ -9,6 +9,10 @@ class File
 {
     protected $file;
 
+    protected static $imageExtensions = array(
+        'jpg', 'jpeg', 'gif', 'png'
+    );
+
     public function __construct(\SplFileInfo $file)
     {
         $this->file = $file;
@@ -21,6 +25,11 @@ class File
         }
 
         return call_user_func_array(array($this->file, $method), $args);
+    }
+
+    public function isImage()
+    {
+        return in_array($this->file->getExtension(), static::$imageExtensions);
     }
 
     /**
