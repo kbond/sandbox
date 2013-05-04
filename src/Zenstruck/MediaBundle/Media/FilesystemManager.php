@@ -94,6 +94,53 @@ class FilesystemManager
         return explode('/', $this->path);
     }
 
+    public function deleteFile($path, $filename)
+    {
+        $this->configure($path);
+
+        $file = $this->workingDir.$filename;
+
+        if (!is_file($file)) {
+            $this->addAlert(sprintf('Could not delete "%s". Not a valid file.', $filename), 'error');
+            return;
+        }
+
+        try {
+            $this->filesystem->remove($file);
+        } catch (\Exception $e) {
+            $this->addAlert(sprintf('Error deleting file "%s".  Check permissions.', $filename), 'error');
+            return;
+        }
+
+        $this->addAlert(sprintf('File "%s" deleted.', $filename));
+    }
+
+    public function mkDir($path, $dirName)
+    {
+        $this->configure($path);
+
+        if (!$dirName) {
+            $this->addAlert('You didn\'t enter a directory name.', 'error');
+            return;
+        }
+
+        $newDir = $this->workingDir.$dirName;
+
+        if ($this->filesystem->exists($newDir)) {
+            $this->addAlert(sprintf('Failed to create directory "%s".  It already exists.', $dirName), 'error');
+            return;
+        }
+
+        try {
+            $this->filesystem->mkdir($newDir);
+        } catch (\Exception $e) {
+            $this->addAlert(sprintf('Error creating directory "%s".  Check permissions.', $dirName), 'error');
+            return;
+        }
+
+        $this->addAlert(sprintf('Directory "%s" created.', $dirName));
+    }
+
     public function uploadFile($path, $file)
     {
         $this->configure($path);
@@ -114,7 +161,10 @@ class FilesystemManager
             $file->move($this->workingDir, $filename);
         } catch (\Exception $e) {
             $this->addAlert(sprintf('Error uploading file "%s".  Check permissions.', $filename));
+            return;
         }
+
+        $this->addAlert(sprintf('File "%s" uploaded.', $filename));
     }
 
     public function addAlert($message, $type = 'success')

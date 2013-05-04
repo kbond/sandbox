@@ -5,13 +5,9 @@ namespace Zenstruck\MediaBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Finder\Finder;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Zenstruck\MediaBundle\Exception\DirectoryNotFoundException;
-use Zenstruck\MediaBundle\Exception\FileExistsException;
 
 /**
  * @author Kevin Bond <kevinbond@gmail.com>
@@ -52,25 +48,12 @@ class MediaController extends Controller
      * @Route("/delete_file/{filename}", name="zenstruck_media_delete_file")
      * @Method("DELETE")
      */
-    public function deleteFileAction($filename)
+    public function deleteFileAction($filename, Request $request)
     {
-        $path = $this->getPath();
-        $workingDir = $this->getWorkingDirectory($path);
-        $file = $workingDir.$filename;
+        $manager = $this->getManager();
+        $manager->deleteFile($request->query->get('path'), $filename);
 
-        if (!is_file($file)) {
-            return $this->redirectToPath($path, sprintf('Could not delete "%s". Not a valid file.', $filename), 'error');
-        }
-
-        $filesystem = new Filesystem();
-
-        try {
-            $filesystem->remove($file);
-        } catch (\Exception $e) {
-            return $this->redirectToPath($path, sprintf('Error deleting file "%s".  Check permissions.', $filename), 'error');
-        }
-
-        return $this->redirectToPath($path, sprintf('File "%s" deleted.', $filename));
+        return $this->redirectToPath($manager->getPath());
     }
 
     /**
@@ -79,47 +62,15 @@ class MediaController extends Controller
      */
     public function createDirectoryAction(Request $request)
     {
-        $path = $this->getPath();
-        $workingDir = $this->getWorkingDirectory($path);
-        $dirName = $request->request->get('dir_name');
+        $manager = $this->getManager();
+        $manager->mkDir($request->query->get('path'), $request->request->get('dir_name'));
 
-        if (!$dirName) {
-            return $this->redirectToPath($path, 'You entered an empty directory name.', 'error');
-        }
-
-        $filesystem = new Filesystem();
-        $newDir = $workingDir.$dirName;
-
-        if ($filesystem->exists($newDir)) {
-            return $this->redirectToPath($path, sprintf('Failed to create directory "%s".  It already exists.', $dirName), 'error');
-        }
-
-        try {
-            $filesystem->mkdir($newDir);
-        } catch (\Exception $e) {
-            return $this->redirectToPath($path, sprintf('Error creating directory "%s".  Check permissions.', $dirName), 'error');
-        }
-
-        return $this->redirectToPath($path, sprintf('Directory "%s" created.', $dirName));
+        return $this->redirectToPath($manager->getPath());
     }
 
-    protected function redirectToPath($path, $flashMessage = null, $flashType = 'success')
+    protected function redirectToPath($path)
     {
-        if ($flashMessage) {
-            $this->getManager()->addAlert($flashMessage, $flashType);
-        }
-
         return $this->redirect($this->generateUrl('zenstruck_media_list', array('path' => $path)));
-    }
-
-    protected function getPath()
-    {
-        return trim($this->getRequest()->query->get('path'), '/');
-    }
-
-    protected function getWorkingDirectory($path)
-    {
-        return rtrim($this->container->getParameter('kernel.root_dir').'/../web/files/'.$path, '/').'/';
     }
 
     /**
