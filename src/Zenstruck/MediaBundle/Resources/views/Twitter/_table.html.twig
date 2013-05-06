@@ -47,8 +47,7 @@
                 {% endif %}
             </td>
             <td class="zenstruck-media-actions">
-                <a title="Delete" class="btn btn-mini btn-danger method-delete" href="{{ path('zenstruck_media_delete', manager.requestParams({ 'filename': file.getFilename })) }}"><i class="icon-trash icon-white"></i></a>
-                <a title="Rename" href="#" class="btn btn-mini zenstruck-media-rename" data-name="{{ file.getBasename('.'~file.getExtension) }}" data-url="{{ path('zenstruck_media_rename', manager.requestParams({ 'filename': file.getFilename })) }}"><i class="icon-edit"></i></a>
+                {% include 'ZenstruckMediaBundle:Twitter:_file_actions.html.twig' with { 'manager': manager, 'file': file } %}
             </td>
         </tr>
     {% else %}

@@ -50,7 +50,7 @@ class MediaController
         return $this->redirect($manager);
     }
 
-    public function deleteAction($filename, Request $request)
+    public function deleteFileAction($filename, Request $request)
     {
         $manager = $this->factory->getManager($request);
         $manager->deleteFile($filename);
@@ -58,10 +58,26 @@ class MediaController
         return $this->redirect($manager);
     }
 
-    public function renameAction($filename, Request $request)
+    public function deleteDirAction($filename, Request $request)
+    {
+        $manager = $this->factory->getManager($request);
+        $manager->deleteDir($filename);
+
+        return $this->redirect($manager);
+    }
+
+    public function renameFileAction($filename, Request $request)
     {
         $manager = $this->factory->getManager($request);
         $manager->renameFile($filename, $request->request->get('new_name'));
+
+        return $this->redirect($manager);
+    }
+
+    public function renameDirAction($filename, Request $request)
+    {
+        $manager = $this->factory->getManager($request);
+        $manager->renameDir($filename, $request->request->get('new_name'));
 
         return $this->redirect($manager);
     }

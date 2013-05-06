@@ -69,26 +69,30 @@ class FilesystemManager
 
     public function renameFile($oldName, $newName)
     {
-        try {
-            $this->filesystem->renameFile($oldName, $newName);
-        } catch (Exception $e) {
-            $this->alertProvider->addAlert($e->getMessage(), static::ALERT_ERROR);
-            return;
-        }
+        $this->rename($oldName, $newName);
 
-        $this->alertProvider->addAlert(sprintf('%s renamed to "%s".', $oldName, $newName), static::ALERT_ERROR);
+        $this->alertProvider->addAlert(sprintf('File "%s" renamed to "%s".', $oldName, $newName), static::ALERT_SUCCESS);
+    }
+
+    public function renameDir($oldName, $newName)
+    {
+        $this->rename($oldName, $newName);
+
+        $this->alertProvider->addAlert(sprintf('File "%s" renamed to "%s".', $oldName, $newName), static::ALERT_SUCCESS);
     }
 
     public function deleteFile($filename)
     {
-        try {
-            $this->filesystem->deleteFile($filename);
-        } catch (Exception $e) {
-            $this->alertProvider->addAlert($e->getMessage(), static::ALERT_ERROR);
-            return;
-        }
+        $this->delete($filename);
 
-        $this->alertProvider->addAlert(sprintf('"%s" deleted.', $filename), static::ALERT_SUCCESS);
+        $this->alertProvider->addAlert(sprintf('File "%s" deleted.', $filename), static::ALERT_SUCCESS);
+    }
+
+    public function deleteDir($filename)
+    {
+        $this->delete($filename);
+
+        $this->alertProvider->addAlert(sprintf('Directory "%s" deleted.', $filename), static::ALERT_SUCCESS);
     }
 
     public function mkDir($dirName)
@@ -113,5 +117,25 @@ class FilesystemManager
         }
 
         $this->alertProvider->addAlert(sprintf('File "%s" uploaded.', $filename), static::ALERT_SUCCESS);
+    }
+
+    protected function delete($filename)
+    {
+        try {
+            $this->filesystem->deleteFile($filename);
+        } catch (Exception $e) {
+            $this->alertProvider->addAlert($e->getMessage(), static::ALERT_ERROR);
+            return;
+        }
+    }
+
+    protected function rename($oldName, $newName)
+    {
+        try {
+            $this->filesystem->renameFile($oldName, $newName);
+        } catch (Exception $e) {
+            $this->alertProvider->addAlert($e->getMessage(), static::ALERT_ERROR);
+            return;
+        }
     }
 }
