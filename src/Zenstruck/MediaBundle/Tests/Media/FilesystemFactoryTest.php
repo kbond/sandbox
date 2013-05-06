@@ -10,12 +10,22 @@ use Zenstruck\MediaBundle\Media\FilesystemManager;
 /**
  * @author Kevin Bond <kevinbond@gmail.com>
  */
-class FilesystemFactoryTest extends \PHPUnit_Framework_TestCase
+class FilesystemFactoryTest extends BaseFilesystemTest
 {
+    public function testAddManagerBadConfig()
+    {
+        $this->setExpectedException('Symfony\Component\OptionsResolver\Exception\MissingOptionsException');
+        $factory = new FilesystemFactory(new NullAlertProvider());
+        $factory->addManager('default', array());
+    }
+
     public function testGetManager()
     {
-        $factory = new FilesystemFactory();
-        $factory->addManager('default', new FilesystemManager('default', '/tmp', '/files', new NullAlertProvider()));
+        $factory = new FilesystemFactory(new NullAlertProvider());
+        $factory->addManager('default', array(
+                'root_dir' => '/tmp',
+                'web_prefix' => '/files'
+            ));
 
         $this->assertCount(1, $factory->getManagerNames());
         $this->assertEquals(array('default'), $factory->getManagerNames());
@@ -32,7 +42,10 @@ class FilesystemFactoryTest extends \PHPUnit_Framework_TestCase
         $request = new Request(array('filesystem' => 'foo'));
         $this->assertEquals('default', $factory->getManager()->getName($request));
 
-        $factory->addManager('second', new FilesystemManager('second', '/tmp', '/files', new NullAlertProvider()));
+        $factory->addManager('second', array(
+            'root_dir' => '/tmp',
+            'web_prefix' => '/files'
+        ));
 
         $this->assertCount(2, $factory->getManagerNames());
         $this->assertEquals('default', $factory->getManager()->getName());

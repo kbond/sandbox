@@ -12,7 +12,9 @@
     </parameters>
 
     <services>
-        <service id="zenstruck_media.filesystem_factory" class="%zenstruck_media.filesystem_factory.class%" />
+        <service id="zenstruck_media.filesystem_factory" class="%zenstruck_media.filesystem_factory.class%">
+            <argument type="service" id="zenstruck_media.alert_provider" />
+        </service>
         <service id="zenstruck_media.alert_provider" class="%zenstruck_media.alert_provider.class%" public="false">
             <argument type="service" id="session" />
         </service>

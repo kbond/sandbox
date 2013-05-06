@@ -2,8 +2,6 @@
 
 namespace Zenstruck\MediaBundle\Media;
 
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Zenstruck\MediaBundle\Exception\DirectoryNotFoundException;
 use Zenstruck\MediaBundle\Exception\Exception;
 use Zenstruck\MediaBundle\Media\Alert\AlertProviderInterface;
 
@@ -23,19 +21,11 @@ class FilesystemManager
     /** @var Filesystem */
     protected $filesystem;
 
-    public function __construct($name, $rootDir, $webPrefix, AlertProviderInterface $alertProvider)
+    public function __construct($name, Filesystem $filesystem, AlertProviderInterface $alertProvider)
     {
         $this->name = $name;
-        $this->rootDir = $rootDir;
-        $this->webPrefix = $webPrefix;
+        $this->filesystem = $filesystem;
         $this->alertProvider = $alertProvider;
-    }
-
-    public function prepare($path)
-    {
-        $this->filesystem = new Filesystem($path, $this->rootDir, $this->webPrefix);
-
-        return $this;
     }
 
     public function getName()

@@ -3,18 +3,28 @@
 namespace Zenstruck\MediaBundle\Media;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Zenstruck\MediaBundle\Media\Alert\AlertProviderInterface;
 
 /**
  * @author Kevin Bond <kevinbond@gmail.com>
  */
 class FilesystemFactory
 {
-    /** @var FilesystemManager[] */
+    protected $alertProvider;
     protected $managers = array();
 
-    public function addManager($name, FilesystemManager $manager)
+    public function __construct(AlertProviderInterface $alertProvider)
     {
-        $this->managers[$name] = $manager;
+        $this->alertProvider = $alertProvider;
+    }
+
+    public function addManager($name, array $config)
+    {
+        $resolver = new OptionsResolver();
+        $resolver->setRequired(array('root_dir', 'web_prefix'));
+
+        $this->managers[$name] = $resolver->resolve($config);
     }
 
     /**
@@ -35,13 +45,18 @@ class FilesystemFactory
             $name = $name->query->get('filesystem');
         }
 
-        if (!array_key_exists($name, $managers)) {
+        if (array_key_exists($name, $managers)) {
+            $config = $this->managers[$name];
+        } else {
             // return 1st by default
-            $manager = array_shift($managers);
-            return $manager->prepare($path);
+            $config = array_shift($managers);
+            $names = array_keys($this->managers);
+            $name = array_shift($names);
         }
 
-        return $managers[$name]->prepare($path);
+        $filesystem = new Filesystem($path, $config['root_dir'], $config['web_prefix']);
+
+        return new FilesystemManager($name, $filesystem, $this->alertProvider);
     }
 
     public function getManagerNames()
