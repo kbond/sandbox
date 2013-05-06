@@ -27,6 +27,8 @@ class Configuration implements ConfigurationInterface
                         ->children()
                             ->scalarNode('root_dir')->defaultValue('%kernel.root_dir%/../web/files')->isRequired()->end()
                             ->scalarNode('web_prefix')->defaultValue('/files')->isRequired()->end()
+                            ->scalarNode('filesystem_class')->defaultValue('Zenstruck\MediaBundle\Media\Filesystem')->isRequired()->end()
+                            ->scalarNode('filesystem_manager_class')->defaultValue('Zenstruck\MediaBundle\Media\FilesystemManager')->isRequired()->end()
                         ->end()
                     ->end()
                 ->end()

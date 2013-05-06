@@ -11,6 +11,9 @@ use Zenstruck\MediaBundle\Media\Alert\AlertProviderInterface;
  */
 class FilesystemFactory
 {
+    const FILESYSTEM_MANAGER_CLASS  = 'Zenstruck\MediaBundle\Media\FilesystemManager';
+    const FILESYSTEM_CLASS          = 'Zenstruck\MediaBundle\Media\Filesystem';
+
     protected $alertProvider;
     protected $managers = array();
 
@@ -22,7 +25,12 @@ class FilesystemFactory
     public function addManager($name, array $config)
     {
         $resolver = new OptionsResolver();
-        $resolver->setRequired(array('root_dir', 'web_prefix'));
+        $resolver->setRequired(array('root_dir', 'web_prefix', 'filesystem_manager_class', 'filesystem_class'));
+        $resolver->setDefaults(array(
+                'filesystem_manager_class' => static::FILESYSTEM_MANAGER_CLASS,
+                'filesystem_class'=> static::FILESYSTEM_CLASS
+            )
+        );
 
         $this->managers[$name] = $resolver->resolve($config);
     }
@@ -54,9 +62,9 @@ class FilesystemFactory
             $name = array_shift($names);
         }
 
-        $filesystem = new Filesystem($path, $config['root_dir'], $config['web_prefix']);
+        $filesystem = new $config['filesystem_class']($path, $config['root_dir'], $config['web_prefix']);
 
-        return new FilesystemManager($name, $filesystem, $this->alertProvider);
+        return new $config['filesystem_manager_class']($name, $filesystem, $this->alertProvider);
     }
 
     public function getManagerNames()
