@@ -30,10 +30,8 @@ class MediaController
 
     public function listAction(Request $request)
     {
-        $manager = $this->factory->getManager($request);
-
         try {
-            $manager->configure($request->query->get('path'));
+            $manager = $this->factory->getManager($request);
         } catch (DirectoryNotFoundException $e) {
             throw new NotFoundHttpException($e->getMessage());
         }
@@ -47,7 +45,7 @@ class MediaController
     public function uploadAction(Request $request)
     {
         $manager = $this->factory->getManager($request);
-        $manager->uploadFile($request->query->get('path'), $request->files->get('file'));
+        $manager->uploadFile($request->files->get('file'));
 
         return $this->redirect($manager);
     }
@@ -55,7 +53,7 @@ class MediaController
     public function deleteAction($filename, Request $request)
     {
         $manager = $this->factory->getManager($request);
-        $manager->deleteFile($request->query->get('path'), $filename);
+        $manager->deleteFile($filename);
 
         return $this->redirect($manager);
     }
@@ -63,7 +61,7 @@ class MediaController
     public function renameAction($filename, Request $request)
     {
         $manager = $this->factory->getManager($request);
-        $manager->renameFile($request->query->get('path'), $filename, $request->request->get('new_name'));
+        $manager->renameFile($filename, $request->request->get('new_name'));
 
         return $this->redirect($manager);
     }
@@ -71,7 +69,7 @@ class MediaController
     public function createDirectoryAction(Request $request)
     {
         $manager = $this->factory->getManager($request);
-        $manager->mkDir($request->query->get('path'), $request->request->get('dir_name'));
+        $manager->mkDir($request->request->get('dir_name'));
 
         return $this->redirect($manager);
     }

@@ -2,9 +2,7 @@
 
 namespace Zenstruck\MediaBundle\Media;
 
-use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Finder\Finder;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Zenstruck\MediaBundle\Exception\DirectoryNotFoundException;
 use Zenstruck\MediaBundle\Exception\Exception;
 use Zenstruck\MediaBundle\Media\Alert\AlertProviderInterface;
@@ -14,36 +12,30 @@ use Zenstruck\MediaBundle\Media\Alert\AlertProviderInterface;
  */
 class FilesystemManager
 {
+    const ALERT_ERROR   = 'error';
+    const ALERT_SUCCESS = 'success';
+
     protected $name;
     protected $rootDir;
     protected $webPrefix;
-    protected $filesystem;
-    protected $alert;
-    protected $configured = false;
-    protected $directories;
-    protected $workingDir;
-    protected $files;
-    protected $path;
+    protected $alertProvider;
 
-    public function __construct($name, $rootDir, $webPrefix, AlertProviderInterface $alert)
+    /** @var Filesystem */
+    protected $filesystem;
+
+    public function __construct($name, $rootDir, $webPrefix, AlertProviderInterface $alertProvider)
     {
         $this->name = $name;
-        $this->filesystem = new Filesystem();
-        $this->webPrefix = trim($webPrefix) === '/' ? '/' : sprintf('/%s/', trim($webPrefix, '/'));
-        $this->rootDir = rtrim($rootDir, '\\/');
-        $this->alert = $alert;
+        $this->rootDir = $rootDir;
+        $this->webPrefix = $webPrefix;
+        $this->alertProvider = $alertProvider;
     }
 
-    public function configure($path = null)
+    public function prepare($path)
     {
-        $this->path = trim($path, '/');
-        $this->workingDir = rtrim($this->rootDir.'/'.$this->path, '/').'/';
+        $this->filesystem = new Filesystem($path, $this->rootDir, $this->webPrefix);
 
-        if (!is_dir($this->workingDir)) {
-            throw new DirectoryNotFoundException(sprintf('Directory "%s" not found.', $this->workingDir));
-        }
-
-        $this->configured = true;
+        return $this;
     }
 
     public function getName()
@@ -51,69 +43,30 @@ class FilesystemManager
         return $this->name;
     }
 
-    public function getRequestParams($path = null, $filename = null)
+    public function getFiles()
     {
-        $params = array(
-            'path' => null !== $path ? $path : $this->path,
-            'filesystem' => $this->name
-        );
-
-        if ($filename) {
-            $params['filename'] = $filename;
-        }
-
-        return $params;
+        return $this->filesystem->getFiles();
     }
 
     public function getPath()
     {
-        $this->ensureConfigured();
-
-        return $this->path;
+        return $this->filesystem->getPath();
     }
 
-    public function getWorkingDir()
+    public function getRequestParams(array $params = array())
     {
-        $this->ensureConfigured();
+        $defaults = array(
+            'path' => $this->getPath(),
+            'filesystem' => $this->name
+        );
 
-        return $this->workingDir;
-    }
-
-    public function getFiles()
-    {
-        $this->ensureConfigured();
-
-        if ($this->files) {
-            return $this->files;
-        }
-
-        $files = Finder::create()
-            ->sort(function(\SplFileInfo $a, \SplFileInfo $b) {
-                    if ($a->isDir() && $b->isFile()) {
-                        return -1;
-                    } elseif ($a->isFile() && $b->isDir()) {
-                        return 1;
-                    }
-
-                    return strcasecmp($a->getFilename(), $b->getFilename());
-                })
-            ->depth(0)
-            ->in($this->workingDir)
-        ;
-
-        foreach ($files as $file) {
-            $this->files[] = new File($file, $this->webPrefix.$this->path);
-        }
-
-        return $this->files;
+        return array_merge($defaults, $params);
     }
 
     public function getAncestry()
     {
-        $this->ensureConfigured();
-
-        if ($this->path) {
-            return explode('/', $this->path);
+        if ($this->getPath()) {
+            return explode('/', $this->getPath());
         }
 
         return array();
@@ -124,118 +77,51 @@ class FilesystemManager
         return join('/', array_slice($this->getAncestry(), 0, count($this->getAncestry()) - 1));
     }
 
-    public function renameFile($path, $oldName, $newName)
+    public function renameFile($oldName, $newName)
     {
-        $this->configure($path);
-
-        $oldFile = $this->workingDir.$oldName;
-        $type = is_dir($oldFile) ? 'directory' : 'file';
-
-        if ('file' === $type) {
-            // don't let user change extension
-            $newName = pathinfo($newName, PATHINFO_FILENAME).'.'.pathinfo($oldName, PATHINFO_EXTENSION);
-        }
-
-        if ($newName === $oldName) {
-            $this->addAlert(sprintf('You didn\'t specify a new name for "%s".', $newName), 'error');
-            return;
-        }
-
-        $newFile = $this->workingDir.$newName;
-
-        if (file_exists($newFile)) {
-            $this->addAlert(sprintf('The %s "%s" already exists.', $type, $newName), 'error');
-            return;
-        }
-
         try {
-            $this->filesystem->rename($oldFile, $newFile);
-        } catch (\Exception $e) {
-            $this->addAlert(sprintf('Error renaming %s "%s".  Check permissions.', $type, $oldName), 'error');
+            $this->filesystem->renameFile($oldName, $newName);
+        } catch (Exception $e) {
+            $this->alertProvider->addAlert($e->getMessage(), static::ALERT_ERROR);
             return;
         }
 
-        $this->addAlert(sprintf('%s "%s" renamed to "%s".', ucfirst($type), $oldName, $newName));
+        $this->alertProvider->addAlert(sprintf('%s renamed to "%s".', $oldName, $newName), static::ALERT_ERROR);
     }
 
-    public function deleteFile($path, $filename)
+    public function deleteFile($filename)
     {
-        $this->configure($path);
-
-        $file = $this->workingDir.$filename;
-        $type = is_dir($file) ? 'directory' : 'file';
-
         try {
-            $this->filesystem->remove($file);
-        } catch (\Exception $e) {
-            $this->addAlert(sprintf('Error deleting %s "%s".  Check permissions.', $type, $filename), 'error');
+            $this->filesystem->deleteFile($filename);
+        } catch (Exception $e) {
+            $this->alertProvider->addAlert($e->getMessage(), static::ALERT_ERROR);
             return;
         }
 
-        $this->addAlert(sprintf('%s "%s" deleted.', ucfirst($type), $filename));
+        $this->alertProvider->addAlert(sprintf('"%s" deleted.', $filename), static::ALERT_SUCCESS);
     }
 
-    public function mkDir($path, $dirName)
+    public function mkDir($dirName)
     {
-        $this->configure($path);
-
-        if (!$dirName) {
-            $this->addAlert('You didn\'t enter a directory name.', 'error');
-            return;
-        }
-
-        $newDir = $this->workingDir.$dirName;
-
-        if ($this->filesystem->exists($newDir)) {
-            $this->addAlert(sprintf('Failed to create directory "%s".  It already exists.', $dirName), 'error');
-            return;
-        }
-
         try {
-            $this->filesystem->mkdir($newDir);
-        } catch (\Exception $e) {
-            $this->addAlert(sprintf('Error creating directory "%s".  Check permissions.', $dirName), 'error');
+            $this->filesystem->mkDir($dirName);
+        } catch (Exception $e) {
+            $this->alertProvider->addAlert($e->getMessage(), static::ALERT_ERROR);
             return;
         }
 
-        $this->addAlert(sprintf('Directory "%s" created.', $dirName));
+        $this->alertProvider->addAlert(sprintf('Directory "%s" created.', $dirName), static::ALERT_SUCCESS);
     }
 
-    public function uploadFile($path, $file)
+    public function uploadFile($file)
     {
-        $this->configure($path);
-
-        if (!$file instanceof UploadedFile) {
-            $this->addAlert('No file selected.', 'error');
-            return;
-        }
-
-        if (file_exists($this->workingDir.$file->getClientOriginalName())) {
-            $this->addAlert(sprintf('File "%s" already exists.', $file->getClientOriginalName()), 'error');
-            return;
-        }
-
-        $filename = $file->getClientOriginalName();
-
         try {
-            $file->move($this->workingDir, $filename);
-        } catch (\Exception $e) {
-            $this->addAlert(sprintf('Error uploading file "%s".  Check permissions.', $filename));
+            $filename = $this->filesystem->uploadFile($file);
+        } catch (Exception $e) {
+            $this->alertProvider->addAlert($e->getMessage(), static::ALERT_ERROR);
             return;
         }
 
-        $this->addAlert(sprintf('File "%s" uploaded.', $filename));
-    }
-
-    protected function addAlert($message, $type = 'success')
-    {
-        $this->alert->addAlert($message, $type);
-    }
-
-    protected function ensureConfigured()
-    {
-        if (!$this->configured) {
-            throw new Exception('Filesystem manager not configured with Filesystem::configure()');
-        }
+        $this->alertProvider->addAlert(sprintf('File "%s" uploaded.', $filename), static::ALERT_SUCCESS);
     }
 }

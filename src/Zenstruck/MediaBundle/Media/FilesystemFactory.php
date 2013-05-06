@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class FilesystemFactory
 {
+    /** @var FilesystemManager[] */
     protected $managers = array();
 
     public function addManager($name, FilesystemManager $manager)
@@ -18,23 +19,29 @@ class FilesystemFactory
 
     /**
      * @param Request|string|null $name
+     * @param string $path
      *
      * @return FilesystemManager
      */
-    public function getManager($name = null)
+    public function getManager($name = null, $path = null)
     {
         $managers = $this->managers;
 
         if ($name instanceof Request) {
+            if (!$path) {
+                $path = $name->query->get('path');
+            }
+
             $name = $name->query->get('filesystem');
         }
 
         if (!array_key_exists($name, $managers)) {
             // return 1st by default
-            return array_shift($managers);
+            $manager = array_shift($managers);
+            return $manager->prepare($path);
         }
 
-        return $managers[$name];
+        return $managers[$name]->prepare($path);
     }
 
     public function getManagerNames()
