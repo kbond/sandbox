@@ -11,8 +11,7 @@ zenstruck_form:
     resource: "@ZenstruckFormBundle/Resources/config/ajax_entity_routing.xml"
 
 zenstruck_media:
-    resource: "@ZenstruckMediaBundle/Controller/MediaController.php"
-    type:     annotation
+    resource: "@ZenstruckMediaBundle/Resources/config/routing.xml"
     prefix:   /media
 
 # Internal routing configuration to handle ESI
