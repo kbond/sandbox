@@ -21,7 +21,7 @@
             <div class="btn-text">
                 /
                 {% if manager.path %}
-                    <a href="{{ path('zenstruck_media_list') }}"><em>root</em></a>
+                    <a href="{{ path('zenstruck_media_list') }}"><em>root</em></a> /
                 {% endif %}
                 {% set prev_path = [] %}
                 {% for dir in manager.ancestry %}

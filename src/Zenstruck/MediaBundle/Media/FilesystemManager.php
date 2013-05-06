@@ -27,15 +27,15 @@ class FilesystemManager
     public function __construct($rootDir, $webPrefix, AlertProviderInterface $alert)
     {
         $this->filesystem = new Filesystem();
-        $this->webPrefix = sprintf('/%s/', trim($webPrefix, '/'));
+        $this->webPrefix = trim($webPrefix) === '/' ? '/' : sprintf('/%s/', trim($webPrefix, '/'));
         $this->rootDir = rtrim($rootDir, '\\/');
         $this->alert = $alert;
     }
 
-    public function configure($path)
+    public function configure($path = null)
     {
         $this->path = trim($path, '/');
-        $this->workingDir = $this->rootDir.'/'.$path;
+        $this->workingDir = rtrim($this->rootDir.'/'.$this->path, '/').'/';
 
         if (!is_dir($this->workingDir)) {
             throw new DirectoryNotFoundException(sprintf('Directory "%s" not found.', $this->workingDir));
@@ -49,6 +49,13 @@ class FilesystemManager
         $this->ensureConfigured();
 
         return $this->path;
+    }
+
+    public function getWorkingDir()
+    {
+        $this->ensureConfigured();
+
+        return $this->workingDir;
     }
 
     public function getFiles()
@@ -84,7 +91,11 @@ class FilesystemManager
     {
         $this->ensureConfigured();
 
-        return explode('/', $this->path);
+        if ($this->path) {
+            return explode('/', $this->path);
+        }
+
+        return array();
     }
 
     public function getPreviousPath()
