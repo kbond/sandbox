@@ -8,7 +8,9 @@ $(function() {
         var url = $(this).data('url');
 
         // set up form
-        $('#zenstruck-media-rename-new-name').val(name);
+        $('#zenstruck-media-rename-new-name').val(name).focus(function() {
+            this.select();
+        });
         $('form', '#zenstruck-media-rename').attr('action', url);
 
         // launch dialog
