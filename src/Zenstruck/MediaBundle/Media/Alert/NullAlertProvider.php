@@ -7,7 +7,7 @@ namespace Zenstruck\MediaBundle\Media\Alert;
  */
 class NullAlertProvider implements AlertProviderInterface
 {
-    public function addAlert($message, $type)
+    public function add($message, $type)
     {
     }
 }

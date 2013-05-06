@@ -7,5 +7,5 @@ namespace Zenstruck\MediaBundle\Media\Alert;
  */
 interface AlertProviderInterface
 {
-    public function addAlert($message, $type);
+    public function add($message, $type);
 }

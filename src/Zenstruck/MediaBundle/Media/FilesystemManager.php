@@ -4,6 +4,7 @@ namespace Zenstruck\MediaBundle\Media;
 
 use Zenstruck\MediaBundle\Exception\Exception;
 use Zenstruck\MediaBundle\Media\Alert\AlertProviderInterface;
+use Zenstruck\MediaBundle\Media\Permission\PermissionProviderInterface;
 
 /**
  * @author Kevin Bond <kevinbond@gmail.com>
@@ -16,21 +17,28 @@ class FilesystemManager
     protected $name;
     protected $rootDir;
     protected $webPrefix;
-    protected $alertProvider;
+    protected $alerts;
+    protected $permissions;
 
     /** @var Filesystem */
     protected $filesystem;
 
-    public function __construct($name, Filesystem $filesystem, AlertProviderInterface $alertProvider)
+    public function __construct($name, Filesystem $filesystem, AlertProviderInterface $alerts, PermissionProviderInterface $permissions)
     {
         $this->name = $name;
         $this->filesystem = $filesystem;
-        $this->alertProvider = $alertProvider;
+        $this->alerts = $alerts;
+        $this->permissions = $permissions;
     }
 
     public function getName()
     {
         return $this->name;
+    }
+
+    public function getPermissions()
+    {
+        return $this->permissions;
     }
 
     public function getFiles()
@@ -69,54 +77,84 @@ class FilesystemManager
 
     public function renameFile($oldName, $newName)
     {
+        if (!$this->permissions->canRenameFile()) {
+            $this->alerts->add('You do not have the required permission to rename files.', static::ALERT_ERROR);
+            return;
+        }
+
         $this->rename($oldName, $newName);
 
-        $this->alertProvider->addAlert(sprintf('File "%s" renamed to "%s".', $oldName, $newName), static::ALERT_SUCCESS);
+        $this->alerts->add(sprintf('File "%s" renamed to "%s".', $oldName, $newName), static::ALERT_SUCCESS);
     }
 
     public function renameDir($oldName, $newName)
     {
+        if (!$this->permissions->canRenameDir()) {
+            $this->alerts->add('You do not have the required permission to rename directories.', static::ALERT_ERROR);
+            return;
+        }
+
         $this->rename($oldName, $newName);
 
-        $this->alertProvider->addAlert(sprintf('File "%s" renamed to "%s".', $oldName, $newName), static::ALERT_SUCCESS);
+        $this->alerts->add(sprintf('Directory "%s" renamed to "%s".', $oldName, $newName), static::ALERT_SUCCESS);
     }
 
     public function deleteFile($filename)
     {
+        if (!$this->permissions->canDeleteFile()) {
+            $this->alerts->add('You do not have the required permission to delete files.', static::ALERT_ERROR);
+            return;
+        }
+
         $this->delete($filename);
 
-        $this->alertProvider->addAlert(sprintf('File "%s" deleted.', $filename), static::ALERT_SUCCESS);
+        $this->alerts->add(sprintf('File "%s" deleted.', $filename), static::ALERT_SUCCESS);
     }
 
     public function deleteDir($filename)
     {
+        if (!$this->permissions->canDeleteDir()) {
+            $this->alerts->add('You do not have the required permission to delete directories.', static::ALERT_ERROR);
+            return;
+        }
+
         $this->delete($filename);
 
-        $this->alertProvider->addAlert(sprintf('Directory "%s" deleted.', $filename), static::ALERT_SUCCESS);
+        $this->alerts->add(sprintf('Directory "%s" deleted.', $filename), static::ALERT_SUCCESS);
     }
 
     public function mkDir($dirName)
     {
-        try {
-            $this->filesystem->mkDir($dirName);
-        } catch (Exception $e) {
-            $this->alertProvider->addAlert($e->getMessage(), static::ALERT_ERROR);
+        if (!$this->permissions->canMkDir()) {
+            $this->alerts->add('You do not have the required permission to create directories.', static::ALERT_ERROR);
             return;
         }
 
-        $this->alertProvider->addAlert(sprintf('Directory "%s" created.', $dirName), static::ALERT_SUCCESS);
+        try {
+            $this->filesystem->mkDir($dirName);
+        } catch (Exception $e) {
+            $this->alerts->add($e->getMessage(), static::ALERT_ERROR);
+            return;
+        }
+
+        $this->alerts->add(sprintf('Directory "%s" created.', $dirName), static::ALERT_SUCCESS);
     }
 
     public function uploadFile($file)
     {
-        try {
-            $filename = $this->filesystem->uploadFile($file);
-        } catch (Exception $e) {
-            $this->alertProvider->addAlert($e->getMessage(), static::ALERT_ERROR);
+        if (!$this->permissions->canUploadFile()) {
+            $this->alerts->add('You do not have the required permission to upload files.', static::ALERT_ERROR);
             return;
         }
 
-        $this->alertProvider->addAlert(sprintf('File "%s" uploaded.', $filename), static::ALERT_SUCCESS);
+        try {
+            $filename = $this->filesystem->uploadFile($file);
+        } catch (Exception $e) {
+            $this->alerts->add($e->getMessage(), static::ALERT_ERROR);
+            return;
+        }
+
+        $this->alerts->add(sprintf('File "%s" uploaded.', $filename), static::ALERT_SUCCESS);
     }
 
     protected function delete($filename)
@@ -124,7 +162,7 @@ class FilesystemManager
         try {
             $this->filesystem->deleteFile($filename);
         } catch (Exception $e) {
-            $this->alertProvider->addAlert($e->getMessage(), static::ALERT_ERROR);
+            $this->alerts->add($e->getMessage(), static::ALERT_ERROR);
             return;
         }
     }
@@ -134,7 +172,7 @@ class FilesystemManager
         try {
             $this->filesystem->renameFile($oldName, $newName);
         } catch (Exception $e) {
-            $this->alertProvider->addAlert($e->getMessage(), static::ALERT_ERROR);
+            $this->alerts->add($e->getMessage(), static::ALERT_ERROR);
             return;
         }
     }

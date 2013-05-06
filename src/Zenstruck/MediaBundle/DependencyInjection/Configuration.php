@@ -20,6 +20,7 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
+                ->booleanNode('role_permissions')->defaultFalse()->end()
                 ->arrayNode('filesystems')
                     ->isRequired()
                     ->useAttributeAsKey('name')

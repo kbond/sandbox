@@ -5,6 +5,8 @@ namespace Zenstruck\MediaBundle\Media;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Zenstruck\MediaBundle\Media\Alert\AlertProviderInterface;
+use Zenstruck\MediaBundle\Media\Permission\PermissionProviderInterface;
+use Zenstruck\MediaBundle\Media\Permission\TruePermissionProvider;
 
 /**
  * @author Kevin Bond <kevinbond@gmail.com>
@@ -14,12 +16,19 @@ class FilesystemFactory
     const FILESYSTEM_MANAGER_CLASS  = 'Zenstruck\MediaBundle\Media\FilesystemManager';
     const FILESYSTEM_CLASS          = 'Zenstruck\MediaBundle\Media\Filesystem';
 
-    protected $alertProvider;
+    protected $alerts;
+    protected $permissions;
     protected $managers = array();
 
-    public function __construct(AlertProviderInterface $alertProvider)
+    public function __construct(AlertProviderInterface $alerts)
     {
-        $this->alertProvider = $alertProvider;
+        $this->alerts = $alerts;
+        $this->permissions = new TruePermissionProvider();
+    }
+
+    public function setPermissionProvider(PermissionProviderInterface $provider)
+    {
+        $this->permissions = $provider;
     }
 
     public function addManager($name, array $config)
@@ -64,7 +73,7 @@ class FilesystemFactory
 
         $filesystem = new $config['filesystem_class']($path, $config['root_dir'], $config['web_prefix']);
 
-        return new $config['filesystem_manager_class']($name, $filesystem, $this->alertProvider);
+        return new $config['filesystem_manager_class']($name, $filesystem, $this->alerts, $this->permissions);
     }
 
     public function getManagerNames()

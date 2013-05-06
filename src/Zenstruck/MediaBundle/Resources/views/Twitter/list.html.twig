@@ -34,11 +34,6 @@
                 {% endfor %}
             </div>
 
-            <div class="btn-group">
-                <a class="btn btn-small" data-toggle="modal" href="#zenstruck-media-mkdir"><i class="icon-folder-open"></i> New</a>
-                <a class="btn btn-small" data-toggle="modal" href="#zenstruck-media-upload"><i class="icon-upload"></i> Upload</a>
-            </div>
-
             {% if filesystems|length > 1 %}
                 <div class="btn-group">
                     <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#">
@@ -54,6 +49,15 @@
                     </ul>
                 </div>
             {% endif %}
+
+            <div class="btn-group">
+                {% if manager.permissions.canMkDir %}
+                    <a class="btn btn-small" data-toggle="modal" href="#zenstruck-media-mkdir"><i class="icon-folder-open"></i> New</a>
+                {% endif %}
+                {% if manager.permissions.canUploadFile %}
+                    <a class="btn btn-small" data-toggle="modal" href="#zenstruck-media-upload"><i class="icon-upload"></i> Upload</a>
+                {% endif %}
+            </div>
         </div>
         <hr />
 

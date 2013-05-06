@@ -23,10 +23,15 @@ class ZenstruckMediaExtension extends Extension
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
 
+        $factoryDefinition = $container->getDefinition('zenstruck_media.filesystem_factory');
+
+        if ($config['role_permissions']) {
+            $loader->load('role_permissions.xml');
+            $factoryDefinition->addMethodCall('setPermissionProvider', array($container->getDefinition('zenstruck_media.permission_provider')));
+        }
+
         foreach ($config['filesystems'] as $name => $filesystemConfig) {
-            $container->getDefinition('zenstruck_media.filesystem_factory')
-                ->addMethodCall('addManager', array($name, $filesystemConfig))
-            ;
+            $factoryDefinition->addMethodCall('addManager', array($name, $filesystemConfig));
         }
     }
 }

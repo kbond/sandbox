@@ -16,7 +16,7 @@ class SessionAlertProvider implements AlertProviderInterface
         $this->session = $session;
     }
 
-    public function addAlert($message, $type)
+    public function add($message, $type)
     {
         $this->session->getFlashBag()->add($type, $message);
     }
