@@ -11,7 +11,7 @@
     <tbody>
     {% if manager.path %}
         <tr>
-            <td colspan="100"><i class="icon-arrow-up"></i> <a href="{{ path('zenstruck_media_list', { 'path': manager.previousPath }) }}">...</a></td>
+            <td colspan="100"><i class="icon-arrow-up"></i> <a href="{{ path('zenstruck_media_list', manager.requestParams(manager.previousPath)) }}">...</a></td>
         </tr>
     {% endif %}
     {% for file in manager.files %}
@@ -19,7 +19,7 @@
             <td>
                 {% if file.isDir %}
                     <i class="icon-folder-open"></i>
-                    <a href="{{ path('zenstruck_media_list', { 'path': manager.path ~ '/' ~ file.getFilename }) }}">
+                    <a href="{{ path('zenstruck_media_list', manager.requestParams(manager.path ~ '/' ~ file.getFilename)) }}">
                         {{ file.getFilename }}
                     </a>
                 {% else %}
@@ -47,8 +47,8 @@
                 {% endif %}
             </td>
             <td class="zenstruck-media-actions">
-                <a title="Delete" class="btn btn-mini btn-danger method-delete" href="{{ path('zenstruck_media_delete', { 'filename': file.getFilename, 'path': manager.path }) }}"><i class="icon-trash icon-white"></i></a>
-                <a title="Rename" href="#" class="btn btn-mini zenstruck-media-rename" data-name="{{ file.getBasename('.'~file.getExtension) }}" data-url="{{ path('zenstruck_media_rename', { 'filename': file.getFilename, 'path': manager.path }) }}"><i class="icon-edit"></i></a>
+                <a title="Delete" class="btn btn-mini btn-danger method-delete" href="{{ path('zenstruck_media_delete', manager.requestParams(null, file.getFilename)) }}"><i class="icon-trash icon-white"></i></a>
+                <a title="Rename" href="#" class="btn btn-mini zenstruck-media-rename" data-name="{{ file.getBasename('.'~file.getExtension) }}" data-url="{{ path('zenstruck_media_rename', manager.requestParams(null, file.getFilename)) }}"><i class="icon-edit"></i></a>
             </td>
         </tr>
     {% else %}

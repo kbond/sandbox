@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Zenstruck\MediaBundle\Exception\DirectoryNotFoundException;
+use Zenstruck\MediaBundle\Media\FilesystemManager;
 
 /**
  * @author Kevin Bond <kevinbond@gmail.com>
@@ -19,7 +20,8 @@ class MediaController extends Controller
      */
     public function listAction(Request $request)
     {
-        $manager = $this->getManager();
+        $factory = $this->get('zenstruck_media.filesystem_factory');
+        $manager = $factory->getManager($request);
 
         try {
             $manager->configure($request->query->get('path'));
@@ -28,7 +30,8 @@ class MediaController extends Controller
         }
 
         return $this->render('ZenstruckMediaBundle:Twitter:list.html.twig', array(
-                'manager' => $manager
+                'manager' => $manager,
+                'filesystems' => $factory->getManagerNames()
             ));
     }
 
@@ -38,10 +41,10 @@ class MediaController extends Controller
      */
     public function uploadAction(Request $request)
     {
-        $manager = $this->getManager();
+        $manager = $this->getManager($request);
         $manager->uploadFile($request->query->get('path'), $request->files->get('file'));
 
-        return $this->redirectToPath($manager->getPath());
+        return $this->redirectToPath($manager);
     }
 
     /**
@@ -50,10 +53,10 @@ class MediaController extends Controller
      */
     public function deleteAction($filename, Request $request)
     {
-        $manager = $this->getManager();
+        $manager = $this->getManager($request);
         $manager->deleteFile($request->query->get('path'), $filename);
 
-        return $this->redirectToPath($manager->getPath());
+        return $this->redirectToPath($manager);
     }
 
     /**
@@ -62,10 +65,10 @@ class MediaController extends Controller
      */
     public function renameAction($filename, Request $request)
     {
-        $manager = $this->getManager();
+        $manager = $this->getManager($request);
         $manager->renameFile($request->query->get('path'), $filename, $request->request->get('new_name'));
 
-        return $this->redirectToPath($manager->getPath());
+        return $this->redirectToPath($manager);
     }
 
     /**
@@ -74,22 +77,22 @@ class MediaController extends Controller
      */
     public function createDirectoryAction(Request $request)
     {
-        $manager = $this->getManager();
+        $manager = $this->getManager($request);
         $manager->mkDir($request->query->get('path'), $request->request->get('dir_name'));
 
-        return $this->redirectToPath($manager->getPath());
+        return $this->redirectToPath($manager);
     }
 
-    protected function redirectToPath($path)
+    protected function redirectToPath(FilesystemManager $manager)
     {
-        return $this->redirect($this->generateUrl('zenstruck_media_list', array('path' => $path)));
+        return $this->redirect($this->generateUrl('zenstruck_media_list', $manager->getRequestParams()));
     }
 
     /**
      * @return \Zenstruck\MediaBundle\Media\FilesystemManager
      */
-    protected function getManager()
+    protected function getManager(Request $request)
     {
-        return $this->get('zenstruck_media.filesystem_manager');
+        return $this->get('zenstruck_media.filesystem_factory')->getManager($request);
     }
 }

@@ -26,7 +26,7 @@ class FilesystemManagerTest extends \PHPUnit_Framework_TestCase
 
     public function testWorkingDirWithoutSlash()
     {
-        $filesystem = new FilesystemManager(sys_get_temp_dir().'/Fixures', '/files', new NullAlertProvider());
+        $filesystem = new FilesystemManager('Default', sys_get_temp_dir().'/Fixures', '/files', new NullAlertProvider());
         $filesystem->configure('copy/A');
         $this->assertEquals($this->getTempFixtureDir().'copy/A/', $filesystem->getWorkingDir());
     }
@@ -197,7 +197,7 @@ class FilesystemManagerTest extends \PHPUnit_Framework_TestCase
 
     protected function createFilesystemManager($webPrefix = '/files')
     {
-        return new FilesystemManager($this->getTempFixtureDir(), $webPrefix, new NullAlertProvider());
+        return new FilesystemManager('default', $this->getTempFixtureDir(), $webPrefix, new NullAlertProvider());
     }
 
     protected function getTempFixtureDir()

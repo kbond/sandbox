@@ -9,6 +9,15 @@ jms_di_extra:
         bundles: [AppBundle]
     doctrine_integration: false
 
+zenstruck_media:
+    filesystems:
+        Files:
+            root_dir: %kernel.root_dir%/../web/files/files
+            web_prefix: /files/files
+        Images:
+            root_dir: %kernel.root_dir%/../web/files/images
+            web_prefix: /files/images
+
 zenstruck_form:
     form_types:
         tunnel_entity: true

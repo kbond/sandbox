@@ -14,6 +14,7 @@ use Zenstruck\MediaBundle\Media\Alert\AlertProviderInterface;
  */
 class FilesystemManager
 {
+    protected $name;
     protected $rootDir;
     protected $webPrefix;
     protected $filesystem;
@@ -24,8 +25,9 @@ class FilesystemManager
     protected $files;
     protected $path;
 
-    public function __construct($rootDir, $webPrefix, AlertProviderInterface $alert)
+    public function __construct($name, $rootDir, $webPrefix, AlertProviderInterface $alert)
     {
+        $this->name = $name;
         $this->filesystem = new Filesystem();
         $this->webPrefix = trim($webPrefix) === '/' ? '/' : sprintf('/%s/', trim($webPrefix, '/'));
         $this->rootDir = rtrim($rootDir, '\\/');
@@ -42,6 +44,25 @@ class FilesystemManager
         }
 
         $this->configured = true;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getRequestParams($path = null, $filename = null)
+    {
+        $params = array(
+            'path' => null !== $path ? $path : $this->path,
+            'filesystem' => $this->name
+        );
+
+        if ($filename) {
+            $params['filename'] = $filename;
+        }
+
+        return $params;
     }
 
     public function getPath()
