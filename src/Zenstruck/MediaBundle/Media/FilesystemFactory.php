@@ -5,6 +5,7 @@ namespace Zenstruck\MediaBundle\Media;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Zenstruck\MediaBundle\Media\Alert\AlertProviderInterface;
+use Zenstruck\MediaBundle\Media\Alert\NullAlertProvider;
 use Zenstruck\MediaBundle\Media\Permission\PermissionProviderInterface;
 use Zenstruck\MediaBundle\Media\Permission\TruePermissionProvider;
 
@@ -20,15 +21,18 @@ class FilesystemFactory
     protected $permissions;
     protected $managers = array();
 
-    public function __construct(AlertProviderInterface $alerts)
+    public function __construct(AlertProviderInterface $alerts = null, PermissionProviderInterface $permissions = null)
     {
-        $this->alerts = $alerts;
-        $this->permissions = new TruePermissionProvider();
-    }
+        if (!$alerts) {
+            $alerts = new NullAlertProvider();
+        }
 
-    public function setPermissionProvider(PermissionProviderInterface $provider)
-    {
-        $this->permissions = $provider;
+        if (!$permissions) {
+            $permissions = new TruePermissionProvider();
+        }
+
+        $this->alerts = $alerts;
+        $this->permissions = $permissions;
     }
 
     public function addManager($name, array $config)

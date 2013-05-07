@@ -27,7 +27,7 @@ class ZenstruckMediaExtension extends Extension
 
         if ($config['role_permissions']) {
             $loader->load('role_permissions.xml');
-            $factoryDefinition->addMethodCall('setPermissionProvider', array($container->getDefinition('zenstruck_media.permission_provider')));
+            $factoryDefinition->addArgument($container->getDefinition('zenstruck_media.permission_provider'));
         }
 
         foreach ($config['filesystems'] as $name => $filesystemConfig) {
