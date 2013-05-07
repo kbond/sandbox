@@ -1,4 +1,4 @@
-<ul class="thumbnails">
+<ul id="zenstruck-media-thumb" class="thumbnails">
     {% if manager.path %}
         <li class="span2">
             {{ _self.thumbnail(path('zenstruck_media_list', manager.requestParams({ 'path': manager.previousPath })), '...', asset('bundles/zenstruckmedia/images/icons/up.png')) }}
@@ -17,6 +17,10 @@
                     {% set image = asset('bundles/zenstruckmedia/images/icons/file.png') %}
                 {% endif %}
             {% endif %}
+
+            <div class="zenstruck-media-actions hide">
+                {% include 'ZenstruckMediaBundle:Twitter:_file_actions.html.twig' with { 'manager': manager, 'file': file } %}
+            </div>
 
             {{ _self.thumbnail(src, file.getFilename, image) }}
         </li>

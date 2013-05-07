@@ -1,4 +1,3 @@
-
 {% if file.isDir and manager.permissions.canDeleteDir %}
     <a title="Delete" class="btn btn-mini btn-danger method-delete" href="{{ path('zenstruck_media_delete_dir', manager.requestParams({ 'filename': file.getFilename })) }}"><i class="icon-trash icon-white"></i></a>
 {% elseif manager.permissions.canDeleteFile %}

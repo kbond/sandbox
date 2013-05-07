@@ -4,6 +4,11 @@ $(function() {
         container: 'body'
     });
 
+    // thumbnail actions hover
+    $('li', '#zenstruck-media-thumb').hover(function() {
+        $('.zenstruck-media-actions', $(this)).toggleClass('hide');
+    });
+
     // rename click
     $('.zenstruck-media-rename').click(function(e) {
         e.preventDefault();
