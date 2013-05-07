@@ -26,6 +26,28 @@
     border-left: none;
 }
 
+#zenstruck-media .zenstruck-media-thumbnail-container {
+    margin-bottom: 4px;
+    border-bottom: 1px solid #eee;
+    display: table;
+    height: 130px;
+    width: 100%;
+}
+
+#zenstruck-media .zenstruck-media-thumbnail-container span {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#zenstruck-media .zenstruck-media-thumbnail-caption {
+    text-align: center;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 /* Custom Icons */
 [class^="icon-custom-"], [class*=" icon-custom-"] {
     background-position:-24px -24px;
@@ -46,4 +68,17 @@
 .icon-custom-xls,
 .icon-custom-xlsx {
     background: url(../images/doc14.gif) 0 0 no-repeat;
+}
+
+/* Responsive */
+@media (min-width: 1200px) {
+    #zenstruck-media .zenstruck-media-thumbnail-container {
+        height: 160px;
+    }
+}
+
+@media (max-width: 979px) and (min-width: 768px) {
+    #zenstruck-media .zenstruck-media-thumbnail-container {
+        height: 94px;
+    }
 }

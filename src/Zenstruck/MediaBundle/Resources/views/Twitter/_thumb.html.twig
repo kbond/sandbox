@@ -13,9 +13,13 @@
                 {% endif %}
             {% endif %}
 
-            <a href="{{ src }}" class="thumbnail">
-                <img src="{{ image }}" />
-                <span>{{ file.getFilename }}</span>
+            <a href="{{ src }}" title="{{ file.getFilename }}" class="thumbnail">
+                <span class="zenstruck-media-thumbnail-container">
+                    <span>
+                        <img src="{{ image }}" />
+                    </span>
+                </span>
+                <span class="zenstruck-media-thumbnail-caption">{{ file.getFilename }}</span>
             </a>
         </li>
     {% endfor %}

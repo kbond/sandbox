@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "select2": "~3.3.0",
-    "hinclude": "git://github.com/mnot/hinclude.git#0.9.5"
+    "jquery": "~1.9",
+    "hinclude": "git://github.com/mnot/hinclude.git#0.9.5",
+    "bootstrap": "2.3.1"
   }
 }
