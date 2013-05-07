@@ -19,7 +19,6 @@ class Filesystem
 
     protected $filesystem;
     protected $workingDir;
-    protected $files;
 
     public function __construct($path, $rootDir, $webPrefix)
     {
@@ -46,15 +45,16 @@ class Filesystem
         return $this->workingDir;
     }
 
+    public function isWritable()
+    {
+        return is_writable($this->workingDir);
+    }
+
     /**
      * @return File[]
      */
     public function getFiles()
     {
-        if ($this->files) {
-            return $this->files;
-        }
-
         $files = Finder::create()
             ->sort(function(\SplFileInfo $a, \SplFileInfo $b) {
                     if ($a->isDir() && $b->isFile()) {
@@ -69,11 +69,13 @@ class Filesystem
             ->in($this->workingDir)
         ;
 
-        foreach ($files as $file) {
-            $this->files[] = new File($file, $this->webPrefix.$this->path);
-        }
+        $webPrefix = $this->webPrefix.$this->path;
 
-        return $this->files;
+        return array_map(function($file) use ($webPrefix) {
+                return new File($file, $webPrefix);
+            },
+            iterator_to_array($files->getIterator(), false)
+        );
     }
 
     /**

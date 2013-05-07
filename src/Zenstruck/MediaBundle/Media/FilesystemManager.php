@@ -25,6 +25,7 @@ class FilesystemManager
 
     /** @var Filesystem */
     protected $filesystem;
+    protected $files;
 
     public function __construct($name, $view, Filesystem $filesystem, AlertProviderInterface $alerts, PermissionProviderInterface $permissions)
     {
@@ -38,6 +39,11 @@ class FilesystemManager
         }
 
         $this->view = $view;
+        $this->files = $this->filesystem->getFiles();
+
+        if (!$filesystem->isWritable()) {
+            $this->alerts->add('This directory is not writable.  Check permissions.', static::ALERT_ERROR);
+        }
     }
 
     public static function getAvailableViews()
@@ -67,7 +73,7 @@ class FilesystemManager
 
     public function getFiles()
     {
-        return $this->filesystem->getFiles();
+        return $this->files;
     }
 
     public function getPath()
@@ -107,7 +113,12 @@ class FilesystemManager
             return;
         }
 
-        $this->rename($oldName, $newName);
+        try {
+            $this->filesystem->renameFile($oldName, $newName);
+        } catch (Exception $e) {
+            $this->alerts->add($e->getMessage(), static::ALERT_ERROR);
+            return;
+        }
 
         $this->alerts->add(sprintf('File "%s" renamed to "%s".', $oldName, $newName), static::ALERT_SUCCESS);
     }
@@ -119,7 +130,12 @@ class FilesystemManager
             return;
         }
 
-        $this->rename($oldName, $newName);
+        try {
+            $this->filesystem->renameFile($oldName, $newName);
+        } catch (Exception $e) {
+            $this->alerts->add($e->getMessage(), static::ALERT_ERROR);
+            return;
+        }
 
         $this->alerts->add(sprintf('Directory "%s" renamed to "%s".', $oldName, $newName), static::ALERT_SUCCESS);
     }
@@ -131,7 +147,12 @@ class FilesystemManager
             return;
         }
 
-        $this->delete($filename);
+        try {
+            $this->filesystem->deleteFile($filename);
+        } catch (Exception $e) {
+            $this->alerts->add($e->getMessage(), static::ALERT_ERROR);
+            return;
+        }
 
         $this->alerts->add(sprintf('File "%s" deleted.', $filename), static::ALERT_SUCCESS);
     }
@@ -143,7 +164,12 @@ class FilesystemManager
             return;
         }
 
-        $this->delete($filename);
+        try {
+            $this->filesystem->deleteFile($filename);
+        } catch (Exception $e) {
+            $this->alerts->add($e->getMessage(), static::ALERT_ERROR);
+            return;
+        }
 
         $this->alerts->add(sprintf('Directory "%s" deleted.', $filename), static::ALERT_SUCCESS);
     }
@@ -180,25 +206,5 @@ class FilesystemManager
         }
 
         $this->alerts->add(sprintf('File "%s" uploaded.', $filename), static::ALERT_SUCCESS);
-    }
-
-    protected function delete($filename)
-    {
-        try {
-            $this->filesystem->deleteFile($filename);
-        } catch (Exception $e) {
-            $this->alerts->add($e->getMessage(), static::ALERT_ERROR);
-            return;
-        }
-    }
-
-    protected function rename($oldName, $newName)
-    {
-        try {
-            $this->filesystem->renameFile($oldName, $newName);
-        } catch (Exception $e) {
-            $this->alerts->add($e->getMessage(), static::ALERT_ERROR);
-            return;
-        }
     }
 }
