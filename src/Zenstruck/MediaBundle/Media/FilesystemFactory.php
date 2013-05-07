@@ -49,22 +49,16 @@ class FilesystemFactory
     }
 
     /**
-     * @param Request|string|null $name
-     * @param string $path
+     * @param Request $request
      *
      * @return FilesystemManager
      */
-    public function getManager($name = null, $path = null)
+    public function getManager(Request $request)
     {
         $managers = $this->managers;
-
-        if ($name instanceof Request) {
-            if (!$path) {
-                $path = $name->query->get('path');
-            }
-
-            $name = $name->query->get('filesystem');
-        }
+        $path = $request->query->get('path');
+        $name = $request->query->get('filesystem');
+        $view = $request->query->get('view');
 
         if (array_key_exists($name, $managers)) {
             $config = $this->managers[$name];
@@ -77,7 +71,7 @@ class FilesystemFactory
 
         $filesystem = new $config['filesystem_class']($path, $config['root_dir'], $config['web_prefix']);
 
-        return new $config['filesystem_manager_class']($name, $filesystem, $this->alerts, $this->permissions);
+        return new $config['filesystem_manager_class']($name, $view, $filesystem, $this->alerts, $this->permissions);
     }
 
     public function getManagerNames()

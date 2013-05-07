@@ -26,21 +26,21 @@ class FilesystemFactoryTest extends BaseFilesystemTest
                 'root_dir' => '/tmp',
                 'web_prefix' => '/files'
             ));
+        $request = new Request();
 
         $this->assertCount(1, $factory->getManagerNames());
         $this->assertEquals(array('default'), $factory->getManagerNames());
-        $this->assertEquals('default', $factory->getManager()->getName());
-        $this->assertEquals('default', $factory->getManager()->getName('default'));
-        $this->assertEquals('default', $factory->getManager()->getName('foo'));
+        $this->assertEquals('default', $factory->getManager($request)->getName());
+        $this->assertEquals('default', $factory->getManager($request)->getName('default'));
+        $this->assertEquals('default', $factory->getManager($request)->getName('foo'));
 
-        $request = new Request();
-        $this->assertEquals('default', $factory->getManager()->getName($request));
+        $this->assertEquals('default', $factory->getManager($request)->getName());
 
         $request = new Request(array('filesystem' => 'default'));
-        $this->assertEquals('default', $factory->getManager()->getName($request));
+        $this->assertEquals('default', $factory->getManager($request)->getName());
 
         $request = new Request(array('filesystem' => 'foo'));
-        $this->assertEquals('default', $factory->getManager()->getName($request));
+        $this->assertEquals('default', $factory->getManager($request)->getName());
 
         $factory->addManager('second', array(
             'root_dir' => '/tmp',
@@ -48,17 +48,16 @@ class FilesystemFactoryTest extends BaseFilesystemTest
         ));
 
         $this->assertCount(2, $factory->getManagerNames());
-        $this->assertEquals('default', $factory->getManager()->getName());
-        $this->assertEquals('default', $factory->getManager()->getName('foo'));
-        $this->assertEquals('second', $factory->getManager('second')->getName());
+        $this->assertEquals('default', $factory->getManager($request)->getName());
+        $this->assertEquals('default', $factory->getManager($request)->getName('foo'));
+
+        $request = new Request(array('filesystem' => 'second'));
+        $this->assertEquals('second', $factory->getManager($request)->getName());
 
         $request = new Request();
         $this->assertEquals('default', $factory->getManager($request)->getName());
 
         $request = new Request(array('filesystem' => 'default'));
         $this->assertEquals('default', $factory->getManager($request)->getName());
-
-        $request = new Request(array('filesystem' => 'second'));
-        $this->assertEquals('second', $factory->getManager($request)->getName());
     }
 }

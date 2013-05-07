@@ -14,26 +14,50 @@ class FilesystemManager
     const ALERT_ERROR   = 'error';
     const ALERT_SUCCESS = 'success';
 
+    const VIEW_DETAIL   = 'detail';
+    const VIEW_THUMB    = 'thumb';
+
     protected $name;
-    protected $rootDir;
-    protected $webPrefix;
+    protected $view;
+
     protected $alerts;
     protected $permissions;
 
     /** @var Filesystem */
     protected $filesystem;
 
-    public function __construct($name, Filesystem $filesystem, AlertProviderInterface $alerts, PermissionProviderInterface $permissions)
+    public function __construct($name, $view, Filesystem $filesystem, AlertProviderInterface $alerts, PermissionProviderInterface $permissions)
     {
         $this->name = $name;
         $this->filesystem = $filesystem;
         $this->alerts = $alerts;
         $this->permissions = $permissions;
+
+        if (!in_array($view, static::getAvailableViews())) {
+            $view = static::getDefaultView();
+        }
+
+        $this->view = $view;
+    }
+
+    public static function getAvailableViews()
+    {
+        return array(static::VIEW_THUMB, static::VIEW_DETAIL);
+    }
+
+    public static function getDefaultView()
+    {
+        return static::VIEW_DETAIL;
     }
 
     public function getName()
     {
         return $this->name;
+    }
+
+    public function getView()
+    {
+        return $this->view;
     }
 
     public function getPermissions()
@@ -55,7 +79,8 @@ class FilesystemManager
     {
         $defaults = array(
             'path' => $this->getPath(),
-            'filesystem' => $this->name
+            'filesystem' => $this->name,
+            'view' => $this->view
         );
 
         return array_merge($defaults, $params);

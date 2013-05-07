@@ -58,10 +58,15 @@
                     <a class="btn btn-small" data-toggle="modal" href="#zenstruck-media-upload"><i class="icon-upload"></i> Upload</a>
                 {% endif %}
             </div>
+
+            <div class="btn-group">
+                <a href="{{ path('zenstruck_media_list', manager.requestParams({ 'view': 'detail' })) }}" title="Detail view" class="btn btn-small{{ manager.view == 'detail' ? ' active' : null }}"><i class="icon-list"></i></a>
+                <a href="{{ path('zenstruck_media_list', manager.requestParams({ 'view': 'thumb' })) }}" title="Thumbnail view" class="btn btn-small{{ manager.view == 'thumb' ? ' active' : null }}"><i class="icon-th"></i></a>
+            </div>
         </div>
         <hr />
 
-        {% include 'ZenstruckMediaBundle:Twitter:_table.html.twig' with { 'manager': manager } %}
+        {% include 'ZenstruckMediaBundle:Twitter:_' ~ manager.view ~ '.html.twig' with { 'manager': manager } %}
 
         <div id="zenstruck-media-mkdir" class="modal hide fade">
             <div class="modal-header">

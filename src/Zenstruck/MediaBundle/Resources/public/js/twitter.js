@@ -1,6 +1,8 @@
 $(function() {
     // add tooltips
-    $('a', '.zenstruck-media-actions').tooltip();
+    $('a[title]', '#zenstruck-media').tooltip({
+        container: 'body'
+    });
 
     $('.zenstruck-media-rename').click(function(e) {
         e.preventDefault();
