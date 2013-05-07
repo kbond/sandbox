@@ -1,1 +1,22 @@
-foo
+<ul class="thumbnails">
+    {% for file in manager.files %}
+        <li class="span2">
+            {% if file.isDir %}
+                {% set image = asset('bundles/zenstruckmedia/images/icons/folder.png') %}
+                {% set src = path('zenstruck_media_list', manager.requestParams({ 'path': manager.path ~ '/' ~ file.getFilename })) %}
+            {% else %}
+                {% set src = '' %}
+                {% if file.isImage %}
+                    {% set image = file.webPath %}
+                {% else %}
+                    {% set image = asset('bundles/zenstruckmedia/images/icons/file.png') %}
+                {% endif %}
+            {% endif %}
+
+            <a href="{{ src }}" class="thumbnail">
+                <img src="{{ image }}" />
+                <span>{{ file.getFilename }}</span>
+            </a>
+        </li>
+    {% endfor %}
+</ul>

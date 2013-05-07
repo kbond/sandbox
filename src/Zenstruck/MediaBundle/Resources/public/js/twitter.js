@@ -4,6 +4,7 @@ $(function() {
         container: 'body'
     });
 
+    // rename click
     $('.zenstruck-media-rename').click(function(e) {
         e.preventDefault();
         var name = $(this).data('name');
