@@ -16,7 +16,8 @@ class ArticleType extends AbstractType
                     'group' => 'Body'
                 ))
             ->add('media', 'zenstruck_media', array(
-                    'required' => false
+                    'required' => false,
+                    'filesystem' => 'Images'
                 ))
             ->add('date', 'date', array('format' => 'MMM-dd-yyyy'))
             ->add('editor', 'zenstruck_tunnel_entity', array(
