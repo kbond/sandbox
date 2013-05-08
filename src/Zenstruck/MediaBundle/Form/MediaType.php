@@ -42,7 +42,6 @@ class MediaType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-                'disabled' => true,
                 'media_url' => null,
                 'filesystem' => null
             ));

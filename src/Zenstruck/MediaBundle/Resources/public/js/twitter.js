@@ -1,4 +1,47 @@
-var ZenstuckMedia = {
+window.ZenstuckMedia = {
+    currentMediaInputFile: null,
+
+    initMediaWidget: function() {
+        // iframe file select
+        $('.zenstruck-media-file-select', '#zenstruck-media[data-layout="iframe"]').on('click', function(e) {
+            e.preventDefault();
+            parent.ZenstuckMedia.currentMediaInputFile = $(this).data('file');
+            parent.jQuery.fancybox.close();
+        });
+
+        if (!$.fancybox) {
+            return;
+        }
+
+        // clear selection
+        $('.zenstruck-media-clear', '.zenstruck-media-widget').click(function(e) {
+            e.preventDefault();
+            $(this).siblings('.zenstruck-media-input').val('');
+        });
+
+        // init fancybox
+        $('.zenstruck-media-select', '.zenstruck-media-widget').fancybox({
+            type:    'iframe',
+            width:   '70%',
+            height:  '70%',
+            autoSize: false,
+            beforeShow: function() {
+                // reset
+                ZenstuckMedia.currentMediaInputFile = null;
+            },
+            beforeClose: function() {
+                var file = ZenstuckMedia.currentMediaInputFile;
+
+                if (file) {
+                    this.element.siblings('.zenstruck-media-input').val(file);
+                }
+
+                // reset
+                ZenstuckMedia.currentMediaInputFile = null;
+            }
+        });
+    },
+
     initialize: function() {
         // add toolbar tooltips
         $('a[title]', '#zenstruck-media .btn-toolbar').tooltip({
@@ -48,19 +91,7 @@ var ZenstuckMedia = {
             ;
         });
 
-        // media widget - clear selection
-        $('.zenstruck-media-clear', '.zenstruck-media-widget').click(function(e) {
-            e.preventDefault();
-            $(this).siblings('.zenstruck-media-input').val('');
-        });
-
-        // media widget - browse
-        $('.zenstruck-media-select', '.zenstruck-media-widget').fancybox({
-            type:    'iframe',
-            width:   '70%',
-            height:  '70%',
-            autoSize: false
-        });
+        this.initMediaWidget();
     }
 };
 

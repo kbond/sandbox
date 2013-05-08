@@ -23,7 +23,7 @@
                         {{ file.getFilename }}
                     </a>
                 {% else %}
-                    <i class="icon-custom-{{ file.getExtension }}"></i> {{ file.getFilename }}
+                    <i class="icon-custom-{{ file.getExtension }}"></i> <a href="#" data-file="{{ file.webPath }}" class="zenstruck-media-file-select">{{ file.getFilename }}</a>
                 {% endif %}
             </td>
             <td>
