@@ -60,8 +60,6 @@ class FilesystemFactory
         $managers = $this->managers;
         $path = $request->query->get('path');
         $name = $request->query->get('filesystem');
-        $view = $request->query->get('view');
-        $layout = $request->query->get('layout');
 
         if (array_key_exists($name, $managers)) {
             $config = $this->managers[$name];
@@ -74,7 +72,7 @@ class FilesystemFactory
 
         $filesystem = new $config['filesystem_class']($path, $config['root_dir'], $config['web_prefix']);
 
-        return new $config['filesystem_manager_class']($name, $view, $layout, $filesystem, $this->alerts, $this->permissions);
+        return new $config['filesystem_manager_class']($name, $request->query->all(), $filesystem, $this->alerts, $this->permissions);
     }
 
     public function getManagerNames()

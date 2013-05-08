@@ -14,15 +14,8 @@ class FilesystemManager
     const ALERT_ERROR   = 'error';
     const ALERT_SUCCESS = 'success';
 
-    const VIEW_DETAIL   = 'detail';
-    const VIEW_THUMB    = 'thumb';
-
-    const LAYOUT_IFRAME = 'iframe';
-    const LAYOUT_DEFAULT= null;
-
     protected $name;
-    protected $view;
-    protected $layout;
+    protected $parameters;
 
     protected $alerts;
     protected $permissions;
@@ -31,25 +24,13 @@ class FilesystemManager
     protected $filesystem;
     protected $files;
 
-    public function __construct($name, $view, $layout, Filesystem $filesystem, AlertProviderInterface $alerts, PermissionProviderInterface $permissions)
+    public function __construct($name, array $parameters, Filesystem $filesystem, AlertProviderInterface $alerts, PermissionProviderInterface $permissions)
     {
         $this->name = $name;
         $this->filesystem = $filesystem;
         $this->alerts = $alerts;
         $this->permissions = $permissions;
-
-        if (!in_array($view, static::getAvailableViews())) {
-            $view = static::getDefaultView();
-        }
-
-        $this->view = $view;
-
-        if (!in_array($layout, static::getAvailableLayouts())) {
-            $layout = static::getDefaultLayout();
-        }
-
-        $this->layout = $layout;
-
+        $this->parameters = $parameters;
         $this->files = $this->filesystem->getFiles();
 
         if (!$filesystem->isWritable()) {
@@ -57,39 +38,9 @@ class FilesystemManager
         }
     }
 
-    public static function getAvailableViews()
-    {
-        return array(static::VIEW_THUMB, static::VIEW_DETAIL);
-    }
-
-    public static function getDefaultView()
-    {
-        return static::VIEW_THUMB;
-    }
-
-    public static function getAvailableLayouts()
-    {
-        return array(static::LAYOUT_IFRAME, static::LAYOUT_DEFAULT);
-    }
-
-    public static function getDefaultLayout()
-    {
-        return static::LAYOUT_DEFAULT;
-    }
-
     public function getName()
     {
         return $this->name;
-    }
-
-    public function getView()
-    {
-        return $this->view;
-    }
-
-    public function getLayout()
-    {
-        return $this->layout;
     }
 
     public function getPermissions()
@@ -107,14 +58,25 @@ class FilesystemManager
         return $this->filesystem->getPath();
     }
 
+    public function getParameter($key, $default = null, array $validOptions = array())
+    {
+        // use default if not set
+        $value = array_key_exists($key, $this->parameters) ? $this->parameters[$key] : $default;
+
+        // if not a valid value, use default
+        if (count($validOptions) && !in_array($value, $validOptions)) {
+            $value = $default;
+        }
+
+        return $value;
+    }
+
     public function getRequestParams(array $params = array())
     {
-        $defaults = array(
+        $defaults = array_merge($this->parameters, array(
             'path' => $this->getPath(),
             'filesystem' => $this->name,
-            'view' => $this->view,
-            'layout' => $this->layout
-        );
+        ));
 
         return array_merge($defaults, $params);
     }

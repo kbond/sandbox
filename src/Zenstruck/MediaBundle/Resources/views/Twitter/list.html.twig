@@ -1,9 +1,13 @@
-{% extends manager.layout ? 'ZenstruckMediaBundle:Twitter:' ~ manager.layout ~ '_layout.html.twig' : default_layout %}
+{% set layout = manager.parameter('layout', null, [null, 'iframe']) %}
+{% set view = manager.parameter('view', 'thumb', ['thumb', 'detail']) %}
+{% set ckeditor = manager.parameter('CKEditorFuncNum') %}
+
+{% extends layout ? 'ZenstruckMediaBundle:Twitter:default_layout.html.twig' : default_layout %}
 
 {% block title %}Media Manager{% endblock %}
 
 {% block body %}
-    <div id="zenstruck-media" data-layout="{{ manager.layout }}">
+    <div id="zenstruck-media" data-layout="{{ layout }}" data-ckeditor="{{ ckeditor }}">
         <div class="btn-toolbar">
             <div class="btn-group">
                 {% if manager.path %}
@@ -29,7 +33,7 @@
                 {% endfor %}
             </div>
 
-            {% if filesystems|length > 1 %}
+            {% if filesystems|length > 1 and not manager.parameter('lock') %}
                 <div class="btn-group">
                     <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#">
                         Filesystem: {{ manager.name }}
@@ -55,13 +59,13 @@
             </div>
 
             <div class="btn-group">
-                <a href="{{ path('zenstruck_media_list', manager.requestParams({ 'view': 'thumb' })) }}" title="Thumbnail view" class="btn btn-small{{ manager.view == 'thumb' ? ' active' : null }}"><i class="icon-th"></i></a>
-                <a href="{{ path('zenstruck_media_list', manager.requestParams({ 'view': 'detail' })) }}" title="Detail view" class="btn btn-small{{ manager.view == 'detail' ? ' active' : null }}"><i class="icon-list"></i></a>
+                <a href="{{ path('zenstruck_media_list', manager.requestParams({ 'view': 'thumb' })) }}" title="Thumbnail view" class="btn btn-small{{ view == 'thumb' ? ' active' : null }}"><i class="icon-th"></i></a>
+                <a href="{{ path('zenstruck_media_list', manager.requestParams({ 'view': 'detail' })) }}" title="Detail view" class="btn btn-small{{ view == 'detail' ? ' active' : null }}"><i class="icon-list"></i></a>
             </div>
         </div>
         <hr />
 
-        {% include 'ZenstruckMediaBundle:Twitter:_' ~ manager.view ~ '.html.twig' with { 'manager': manager } %}
+        {% include 'ZenstruckMediaBundle:Twitter:_' ~ view ~ '.html.twig' with { 'manager': manager } %}
 
         <div id="zenstruck-media-mkdir" class="modal hide fade">
             <div class="modal-header">

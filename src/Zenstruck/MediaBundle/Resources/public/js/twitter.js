@@ -1,6 +1,22 @@
 window.ZenstuckMedia = {
     currentMediaInputFile: null,
 
+    initCKEditorIntegration: function() {
+        // iframe file select
+        $('.zenstruck-media-file-select', '#zenstruck-media:not([data-ckeditor=""])').on('click', function(e) {
+            e.preventDefault();
+
+            if (!window.opener.CKEDITOR) {
+                return;
+            }
+
+            var id = $('#zenstruck-media').data('ckeditor');
+
+            window.opener.CKEDITOR.tools.callFunction(id, $(this).data('file'));
+            window.close();
+        });
+    },
+
     initMediaWidget: function() {
         // iframe file select
         $('.zenstruck-media-file-select', '#zenstruck-media[data-layout="iframe"]').on('click', function(e) {
@@ -92,6 +108,7 @@ window.ZenstuckMedia = {
         });
 
         this.initMediaWidget();
+        this.initCKEditorIntegration();
     }
 };
 
