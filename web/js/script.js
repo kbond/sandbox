@@ -10,6 +10,9 @@ $(function() {
     ZenstruckDashboardHelper.initialize();
 
     $('.wysiwyg').each(function() {
-        CKEDITOR.replace($(this).attr('name'));
+        CKEDITOR.replace($(this).attr('name'), {
+            filebrowserBrowseUrl: '/media',
+            filebrowserImageBrowseUrl: '/media?filesystem=Images'
+        });
     });
 });
