@@ -1,4 +1,4 @@
-{% set layout = manager.parameter('layout', null, [null, 'iframe']) %}
+{% set layout = manager.parameter('layout', null, [null, 'iframe', 'window']) %}
 {% set view = manager.parameter('view', 'thumb', ['thumb', 'detail']) %}
 {% set ckeditor = manager.parameter('CKEditorFuncNum') %}
 
@@ -59,8 +59,8 @@
             </div>
 
             <div class="btn-group">
-                <a href="{{ path('zenstruck_media_list', manager.requestParams({ 'view': 'thumb' })) }}" title="Thumbnail view" class="btn btn-small{{ view == 'thumb' ? ' active' : null }}"><i class="icon-th"></i></a>
-                <a href="{{ path('zenstruck_media_list', manager.requestParams({ 'view': 'detail' })) }}" title="Detail view" class="btn btn-small{{ view == 'detail' ? ' active' : null }}"><i class="icon-list"></i></a>
+                <a href="{{ path('zenstruck_media_list', manager.requestParams({ 'view': 'thumb' })) }}" data-placement="bottom" title="Thumbnail view" class="btn btn-small{{ view == 'thumb' ? ' active' : null }}"><i class="icon-th"></i></a>
+                <a href="{{ path('zenstruck_media_list', manager.requestParams({ 'view': 'detail' })) }}" data-placement="bottom" title="Detail view" class="btn btn-small{{ view == 'detail' ? ' active' : null }}"><i class="icon-list"></i></a>
             </div>
         </div>
         <hr />

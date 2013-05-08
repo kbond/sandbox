@@ -1,36 +1,14 @@
 window.ZenstuckMedia = {
+    element: null,
     currentMediaInputFile: null,
 
-    initCKEditorIntegration: function() {
-        // iframe file select
-        $('.zenstruck-media-file-select', '#zenstruck-media:not([data-ckeditor=""])').on('click', function(e) {
-            e.preventDefault();
-
-            if (!window.opener.CKEDITOR) {
-                return;
-            }
-
-            var id = $('#zenstruck-media').data('ckeditor');
-
-            window.opener.CKEDITOR.tools.callFunction(id, $(this).data('file'));
-            window.close();
-        });
-    },
-
     initMediaWidget: function() {
-        // iframe file select
-        $('.zenstruck-media-file-select', '#zenstruck-media[data-layout="iframe"]').on('click', function(e) {
-            e.preventDefault();
-            parent.ZenstuckMedia.currentMediaInputFile = $(this).data('file');
-            parent.jQuery.fancybox.close();
-        });
-
         if (!$.fancybox) {
             return;
         }
 
         // clear selection
-        $('.zenstruck-media-clear', '.zenstruck-media-widget').click(function(e) {
+        $('.zenstruck-media-clear', '.zenstruck-media-widget').on('click', function(e) {
             e.preventDefault();
             $(this).siblings('.zenstruck-media-input').val('');
         });
@@ -59,14 +37,12 @@ window.ZenstuckMedia = {
     },
 
     initialize: function() {
-        // add toolbar tooltips
-        $('a[title]', '#zenstruck-media .btn-toolbar').tooltip({
-            container: 'body',
-            placement: 'iframe' == $('#zenstruck-media').data('layout') ? 'bottom' : 'top'
-        });
+        this.element = $('#zenstruck-media');
 
-        // add action tooltips
-        $('a[title]', '#zenstruck-media .zenstruck-media-actions').tooltip();
+        // tooltips
+        $('a[title]', this.element).tooltip({
+            container: 'body'
+        });
 
         // thumbnail actions hover
         $('li', '#zenstruck-media-thumb').hover(function() {
@@ -74,7 +50,7 @@ window.ZenstuckMedia = {
         });
 
         // rename click
-        $('.zenstruck-media-rename').click(function(e) {
+        $('.zenstruck-media-rename', this.element).on('click', function(e) {
             e.preventDefault();
             var name = $(this).data('name');
             var url = $(this).data('url');
@@ -90,7 +66,7 @@ window.ZenstuckMedia = {
         });
 
         // delete action
-        $('.delete', '.zenstruck-media-actions').on('click', function(e) {
+        $('.zenstruck-media-actions .delete', this.element).on('click', function(e) {
             e.preventDefault();
 
             if (!confirm("Are you sure you want to delete?")) {
@@ -107,8 +83,30 @@ window.ZenstuckMedia = {
             ;
         });
 
+        // file selection
+        $('.zenstruck-media-file-select', this.element).on('click', function(e) {
+            e.preventDefault();
+
+            // iframe file select
+            if ('iframe' === ZenstuckMedia.element.data('layout').toLowerCase()) {
+                parent.ZenstuckMedia.currentMediaInputFile = $(this).data('file');
+                parent.jQuery.fancybox.close();
+                return;
+            }
+
+            // ckeditor
+            var ckeditor = ZenstuckMedia.element.data('ckeditor');
+            if (ckeditor) {
+                if (!window.opener.CKEDITOR) {
+                    return;
+                }
+
+                window.opener.CKEDITOR.tools.callFunction(ckeditor, $(this).data('file'));
+                window.close();
+            }
+        });
+
         this.initMediaWidget();
-        this.initCKEditorIntegration();
     }
 };
 

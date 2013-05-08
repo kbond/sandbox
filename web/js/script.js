@@ -12,7 +12,7 @@ $(function() {
     $('.wysiwyg').each(function() {
         CKEDITOR.replace($(this).attr('name'), {
             filebrowserBrowseUrl: '/media',
-            filebrowserImageBrowseUrl: '/media?filesystem=Images&lock=true'
+            filebrowserImageBrowseUrl: '/media?layout=window&filesystem=Images&lock=true'
         });
     });
 });
