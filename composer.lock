@@ -1060,17 +1060,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v2.1.9",
+            "version": "v2.1.10",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensio/SensioDistributionBundle.git",
-                "reference": "v2.1.9"
+                "reference": "v2.1.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensio/SensioDistributionBundle/zipball/v2.1.9",
-                "reference": "v2.1.9",
+                "url": "https://api.github.com/repos/sensio/SensioDistributionBundle/zipball/v2.1.10",
+                "reference": "v2.1.10",
                 "shasum": ""
             },
             "require": {
@@ -1102,21 +1102,21 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2013-02-04 19:54:42"
+            "time": "2013-04-09 09:20:26"
         },
         {
             "name": "sensio/framework-extra-bundle",
-            "version": "v2.1.9",
+            "version": "v2.1.10",
             "target-dir": "Sensio/Bundle/FrameworkExtraBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensio/SensioFrameworkExtraBundle.git",
-                "reference": "v2.1.9"
+                "reference": "v2.1.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensio/SensioFrameworkExtraBundle/zipball/v2.1.9",
-                "reference": "v2.1.9",
+                "url": "https://api.github.com/repos/sensio/SensioFrameworkExtraBundle/zipball/v2.1.10",
+                "reference": "v2.1.10",
                 "shasum": ""
             },
             "require": {
@@ -1149,21 +1149,21 @@
                 "annotations",
                 "controllers"
             ],
-            "time": "2013-02-22 17:57:31"
+            "time": "2013-04-05 06:59:04"
         },
         {
             "name": "sensio/generator-bundle",
-            "version": "v2.1.9",
+            "version": "v2.1.10",
             "target-dir": "Sensio/Bundle/GeneratorBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensio/SensioGeneratorBundle.git",
-                "reference": "v2.1.9"
+                "reference": "v2.1.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensio/SensioGeneratorBundle/zipball/v2.1.9",
-                "reference": "v2.1.9",
+                "url": "https://api.github.com/repos/sensio/SensioGeneratorBundle/zipball/v2.1.10",
+                "reference": "v2.1.10",
                 "shasum": ""
             },
             "require": {
@@ -1197,7 +1197,7 @@
                 }
             ],
             "description": "This bundle generates code for you",
-            "time": "2013-01-04 17:09:08"
+            "time": "2013-04-01 18:11:18"
         },
         {
             "name": "sensiolabs/security-checker",
@@ -1416,17 +1416,17 @@
         },
         {
             "name": "symfony/swiftmailer-bundle",
-            "version": "v2.1.9",
+            "version": "v2.1.10",
             "target-dir": "Symfony/Bundle/SwiftmailerBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/SwiftmailerBundle.git",
-                "reference": "v2.1.9"
+                "reference": "v2.1.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/SwiftmailerBundle/zipball/v2.1.9",
-                "reference": "v2.1.9",
+                "url": "https://api.github.com/repos/symfony/SwiftmailerBundle/zipball/v2.1.10",
+                "reference": "v2.1.10",
                 "shasum": ""
             },
             "require": {
@@ -1471,16 +1471,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.1.9",
+            "version": "v2.1.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "v2.1.9"
+                "reference": "v2.1.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/v2.1.9",
-                "reference": "v2.1.9",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/v2.1.10",
+                "reference": "v2.1.10",
                 "shasum": ""
             },
             "require": {
@@ -1555,7 +1555,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2013-03-26 10:44:36"
+            "time": "2013-05-06 11:01:51"
         },
         {
             "name": "twig/extensions",
@@ -1832,12 +1832,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kbond/ZenstruckCacheBundle.git",
-                "reference": "65b7f07faf89a2262bc05c415bea75fff32a2de2"
+                "reference": "e8507a6f51926d77669523106bf6fcb44d77e35b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kbond/ZenstruckCacheBundle/zipball/65b7f07faf89a2262bc05c415bea75fff32a2de2",
-                "reference": "65b7f07faf89a2262bc05c415bea75fff32a2de2",
+                "url": "https://api.github.com/repos/kbond/ZenstruckCacheBundle/zipball/e8507a6f51926d77669523106bf6fcb44d77e35b",
+                "reference": "e8507a6f51926d77669523106bf6fcb44d77e35b",
                 "shasum": ""
             },
             "require": {
@@ -1875,7 +1875,7 @@
                 "source": "https://github.com/kbond/ZenstruckCacheBundle/tree/master",
                 "issues": "https://github.com/kbond/ZenstruckCacheBundle/issues"
             },
-            "time": "2013-04-27 17:00:44"
+            "time": "2013-05-04 11:51:07"
         },
         {
             "name": "zenstruck/dashboard-bundle",
