@@ -30,9 +30,9 @@ abstract class BaseFilesystemTest extends \PHPUnit_Framework_TestCase
         return new Filesystem($path, $this->getTempFixtureDir().$rootDir, $webPrefix);
     }
 
-    protected function createFilesystemManager($name = 'default', $path = null, $rootDir = null, $webPrefix = '/files')
+    protected function createFilesystemManager($name = 'default', $params = array(), $path = null, $rootDir = null, $webPrefix = '/files')
     {
-        return new FilesystemManager($name, null, $this->createFilesystem($path, $rootDir, $webPrefix), new NullAlertProvider(), new TruePermissionProvider());
+        return new FilesystemManager($name, $params, $this->createFilesystem($path, $rootDir, $webPrefix), new NullAlertProvider(), new TruePermissionProvider());
     }
 
     protected function getTempFixtureDir()

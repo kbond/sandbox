@@ -22,6 +22,11 @@ class Filesystem
 
     public function __construct($path, $rootDir, $webPrefix)
     {
+        // check for .. - user is trying to access invalid directories
+        if (preg_match('#\.\.#', $path)) {
+            throw new DirectoryNotFoundException(sprintf('Invalid directory.'));
+        }
+
         $this->path = trim($path, '/');
 
         $this->webPrefix = trim($webPrefix) === '/' ? '/' : sprintf('/%s/', trim($webPrefix, '/'));

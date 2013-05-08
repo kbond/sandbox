@@ -29,8 +29,35 @@ class FilesystemTest extends BaseFilesystemTest
 
     public function testDirectoryNotFoundException()
     {
-        $this->setExpectedException('Zenstruck\MediaBundle\Exception\DirectoryNotFoundException');
+        $this->setExpectedException(
+            'Zenstruck\MediaBundle\Exception\DirectoryNotFoundException',
+            sprintf('Directory "%s" not found.', $this->getTempFixtureDir().'foo/')
+        );
         $this->createFilesystem('foo');
+    }
+
+    public function testIsWritable()
+    {
+        $filesystem = $this->createFilesystem();
+
+        $this->assertTrue($filesystem->isWritable());
+
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+            $this->markTestSkipped('Skip on windows.');
+        }
+
+        $filesystem = new Filesystem(null, '/', '/');
+
+        $this->assertFalse($filesystem->isWritable());
+    }
+
+    public function testInvalidDirectory()
+    {
+        $this->setExpectedException(
+            'Zenstruck\MediaBundle\Exception\DirectoryNotFoundException',
+            'Invalid directory.'
+        );
+        $this->createFilesystem('../..');
     }
 
     public function testGetFiles()

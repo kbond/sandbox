@@ -34,7 +34,7 @@ class FilesystemManager
         $this->files = $this->filesystem->getFiles();
 
         if (!$filesystem->isWritable()) {
-            $this->alerts->add('This directory is not writable.  Check permissions.', static::ALERT_ERROR);
+            $this->alerts->add('This directory is not writable. Check permissions.', static::ALERT_ERROR);
         }
     }
 
