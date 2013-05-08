@@ -33,6 +33,11 @@ class Article
     protected $body;
 
     /**
+     * @ORM\Column(name="media", type="string", length=255, nullable=true)
+     */
+    protected $media;
+
+    /**
      * @Assert\NotNull
      *
      * @ORM\ManyToOne(targetEntity="Author", inversedBy="articles")
@@ -144,5 +149,15 @@ class Article
     public function getEditor()
     {
         return $this->editor;
+    }
+
+    public function setMedia($media)
+    {
+        $this->media = $media;
+    }
+
+    public function getMedia()
+    {
+        return $this->media;
     }
 }

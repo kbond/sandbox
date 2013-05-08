@@ -3,6 +3,7 @@
 namespace Sandbox\AppBundle\Command;
 
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Tools\SchemaTool;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -28,9 +29,13 @@ class FixturesLoadCommand extends ContainerAwareCommand
         $loader = new \Nelmio\Alice\Loader\Yaml();
         $persister = new \Nelmio\Alice\ORM\Doctrine($em);
 
-        $em->createQuery('DELETE AppBundle:Article')->execute();
-        $em->createQuery('DELETE AppBundle:Tag')->execute();
-        $em->createQuery('DELETE AppBundle:Author')->execute();
+        $metadata = $em->getMetadataFactory()->getAllMetadata();
+
+        if (!empty($metadata)) {
+            $tool = new SchemaTool($em);
+            $tool->dropSchema($metadata);
+            $tool->createSchema($metadata);
+        }
 
         $file = $this->getContainer()->getParameter('kernel.root_dir').'/config/fixtures.yml';
         $objects = $loader->load($file);

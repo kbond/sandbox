@@ -15,6 +15,9 @@ class ArticleType extends AbstractType
             ->add('body', null, array(
                     'group' => 'Body'
                 ))
+            ->add('media', 'zenstruck_media', array(
+                    'required' => false
+                ))
             ->add('date', 'date', array('format' => 'MMM-dd-yyyy'))
             ->add('editor', 'zenstruck_tunnel_entity', array(
                     'class' => 'AppBundle:Author',

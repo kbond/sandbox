@@ -10,6 +10,7 @@ jms_di_extra:
     doctrine_integration: false
 
 zenstruck_media:
+    media_form_type: true
     filesystems:
         Files:
             root_dir: %kernel.root_dir%/../web/files/files
@@ -54,6 +55,7 @@ twig:
     form:
         resources:
             - 'ZenstruckFormBundle:Twitter:form_bootstrap_layout.html.twig'
+            - 'ZenstruckMediaBundle:Twitter:form_media_type.html.twig'
 
 # Assetic Configuration
 assetic:

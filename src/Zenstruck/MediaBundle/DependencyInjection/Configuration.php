@@ -20,6 +20,7 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
+                ->booleanNode('media_form_type')->defaultFalse()->end()
                 ->booleanNode('role_permissions')->defaultFalse()->end()
                 ->arrayNode('filesystems')
                     ->isRequired()

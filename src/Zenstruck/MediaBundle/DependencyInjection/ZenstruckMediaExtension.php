@@ -25,6 +25,10 @@ class ZenstruckMediaExtension extends Extension
 
         $factoryDefinition = $container->getDefinition('zenstruck_media.filesystem_factory');
 
+        if ($config['media_form_type']) {
+            $loader->load('media_type.xml');
+        }
+
         if ($config['role_permissions']) {
             $loader->load('role_permissions.xml');
             $factoryDefinition->addArgument($container->getDefinition('zenstruck_media.permission_provider'));

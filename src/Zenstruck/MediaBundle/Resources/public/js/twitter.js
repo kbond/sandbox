@@ -24,4 +24,10 @@ $(function() {
         // launch dialog
         $('#zenstruck-media-rename').modal();
     });
+
+    // media widget - clear selection
+    $('.zenstruck-media-clear', '.zenstruck-media-widget').click(function(e) {
+        e.preventDefault();
+        $(this).siblings('.zenstruck-media-input').val('');
+    });
 });
