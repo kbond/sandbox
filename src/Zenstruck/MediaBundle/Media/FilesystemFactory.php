@@ -19,9 +19,10 @@ class FilesystemFactory
 
     protected $alerts;
     protected $permissions;
+    protected $defaultLayout;
     protected $managers = array();
 
-    public function __construct(AlertProviderInterface $alerts = null, PermissionProviderInterface $permissions = null)
+    public function __construct($defaultLayout, AlertProviderInterface $alerts = null, PermissionProviderInterface $permissions = null)
     {
         if (!$alerts) {
             $alerts = new NullAlertProvider();
@@ -31,6 +32,7 @@ class FilesystemFactory
             $permissions = new TruePermissionProvider();
         }
 
+        $this->defaultLayout = $defaultLayout;
         $this->alerts = $alerts;
         $this->permissions = $permissions;
     }
@@ -59,6 +61,7 @@ class FilesystemFactory
         $path = $request->query->get('path');
         $name = $request->query->get('filesystem');
         $view = $request->query->get('view');
+        $layout = $request->query->get('layout');
 
         if (array_key_exists($name, $managers)) {
             $config = $this->managers[$name];
@@ -71,11 +74,16 @@ class FilesystemFactory
 
         $filesystem = new $config['filesystem_class']($path, $config['root_dir'], $config['web_prefix']);
 
-        return new $config['filesystem_manager_class']($name, $view, $filesystem, $this->alerts, $this->permissions);
+        return new $config['filesystem_manager_class']($name, $view, $layout, $filesystem, $this->alerts, $this->permissions);
     }
 
     public function getManagerNames()
     {
         return array_keys($this->managers);
+    }
+
+    public function getDefaultLayout()
+    {
+        return $this->defaultLayout;
     }
 }

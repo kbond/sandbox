@@ -38,7 +38,8 @@ class MediaController
 
         return new Response($this->templating->render('ZenstruckMediaBundle:Twitter:list.html.twig', array(
                 'manager' => $manager,
-                'filesystems' => $this->factory->getManagerNames()
+                'filesystems' => $this->factory->getManagerNames(),
+                'default_layout' => $this->factory->getDefaultLayout()
             )));
     }
 

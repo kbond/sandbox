@@ -10,6 +10,7 @@ jms_di_extra:
     doctrine_integration: false
 
 zenstruck_media:
+    default_layout: ::base.html.twig
     media_form_type: true
     filesystems:
         Files:

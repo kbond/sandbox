@@ -23,6 +23,8 @@ class ZenstruckMediaExtension extends Extension
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
 
+        $container->setParameter('zenstruck_media.default_layout', $config['default_layout']);
+
         $factoryDefinition = $container->getDefinition('zenstruck_media.filesystem_factory');
 
         if ($config['media_form_type']) {

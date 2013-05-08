@@ -17,8 +17,12 @@ class FilesystemManager
     const VIEW_DETAIL   = 'detail';
     const VIEW_THUMB    = 'thumb';
 
+    const LAYOUT_IFRAME = 'iframe';
+    const LAYOUT_DEFAULT= null;
+
     protected $name;
     protected $view;
+    protected $layout;
 
     protected $alerts;
     protected $permissions;
@@ -27,7 +31,7 @@ class FilesystemManager
     protected $filesystem;
     protected $files;
 
-    public function __construct($name, $view, Filesystem $filesystem, AlertProviderInterface $alerts, PermissionProviderInterface $permissions)
+    public function __construct($name, $view, $layout, Filesystem $filesystem, AlertProviderInterface $alerts, PermissionProviderInterface $permissions)
     {
         $this->name = $name;
         $this->filesystem = $filesystem;
@@ -39,6 +43,13 @@ class FilesystemManager
         }
 
         $this->view = $view;
+
+        if (!in_array($layout, static::getAvailableLayouts())) {
+            $layout = static::getDefaultLayout();
+        }
+
+        $this->layout = $layout;
+
         $this->files = $this->filesystem->getFiles();
 
         if (!$filesystem->isWritable()) {
@@ -53,7 +64,17 @@ class FilesystemManager
 
     public static function getDefaultView()
     {
-        return static::VIEW_DETAIL;
+        return static::VIEW_THUMB;
+    }
+
+    public static function getAvailableLayouts()
+    {
+        return array(static::LAYOUT_IFRAME, static::LAYOUT_DEFAULT);
+    }
+
+    public static function getDefaultLayout()
+    {
+        return static::LAYOUT_DEFAULT;
     }
 
     public function getName()
@@ -64,6 +85,11 @@ class FilesystemManager
     public function getView()
     {
         return $this->view;
+    }
+
+    public function getLayout()
+    {
+        return $this->layout;
     }
 
     public function getPermissions()
@@ -86,7 +112,8 @@ class FilesystemManager
         $defaults = array(
             'path' => $this->getPath(),
             'filesystem' => $this->name,
-            'view' => $this->view
+            'view' => $this->view,
+            'layout' => $this->layout
         );
 
         return array_merge($defaults, $params);
