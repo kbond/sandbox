@@ -8,4 +8,8 @@ var MyApp = {
 $(function() {
     ZenstruckFormHelper.initialize();
     ZenstruckDashboardHelper.initialize();
+
+    $('.wysiwyg').each(function() {
+        CKEDITOR.replace($(this).attr('name'));
+    });
 });

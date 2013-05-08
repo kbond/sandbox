@@ -13,13 +13,16 @@ class ArticleType extends AbstractType
         $builder
             ->add('title')
             ->add('body', null, array(
-                    'group' => 'Body'
+                    'attr' => array('class' => 'wysiwyg')
                 ))
             ->add('media', 'zenstruck_media', array(
                     'required' => false,
                     'filesystem' => 'Images'
                 ))
-            ->add('date', 'date', array('format' => 'MMM-dd-yyyy'))
+            ->add('date', 'date', array(
+                    'format' => 'MMM-dd-yyyy',
+                    'group' => 'Date',
+                ))
             ->add('editor', 'zenstruck_tunnel_entity', array(
                     'class' => 'AppBundle:Author',
                     'required' => false,

@@ -48,10 +48,15 @@
             </div>
         </div>
         {% block javascripts %}
+            <script type="text/javascript">
+                var CKEDITOR_BASEPATH = '/ext/ckeditor/';
+            </script>
+
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
             <script src="{{ asset('vendor/bootstrap/docs/assets/js/bootstrap.js') }}"></script>
             <script src="{{ asset('vendor/hinclude/hinclude.js') }}"></script>
             <script src="{{ asset('vendor/select2/select2.js') }}"></script>
+            <script src="{{ asset('ext/ckeditor/ckeditor.js') }}"></script>
             <script src="{{ asset('vendor/fancybox/source/jquery.fancybox.js') }}"></script>
             <script src="{{ asset('bundles/zenstruckform/js/helper.js') }}"></script>
             <script src="{{ asset('bundles/zenstruckdashboard/js/helper.js') }}"></script>
