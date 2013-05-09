@@ -6,6 +6,7 @@
         remote.update,
         remote.build_info,
         remote.vendors,
+        remote.assets_install,
         remote.reset_db,
         remote.populate_db,
         remote.clear_cache"
@@ -49,6 +50,12 @@
     <target name="remote.populate_db">
         <exec executable="ssh" failonerror="true">
             <arg line="${env.ssh_user}@${env.ssh_host} 'php ${env.server_path}/app/console sandbox:fixtures:load'"/>
+        </exec>
+    </target>
+
+    <target name="remote.assets_install">
+        <exec executable="ssh" failonerror="true">
+            <arg line="${env.ssh_user}@${env.ssh_host} 'php ${env.server_path}/app/console assetic:dump --no-debug'"/>
         </exec>
     </target>
 

@@ -6,13 +6,18 @@
         <title>{% block meta_title %}{{ block('title') }}{% endblock %} - Zenstruck Sandbox</title>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         {% block stylesheets %}
-            <link href="{{ asset('vendor/bootstrap/docs/assets/css/bootstrap.css') }}" rel="stylesheet" />
-            <link href="{{ asset('vendor/bootstrap/docs/assets/css/bootstrap-responsive.css') }}" rel="stylesheet" />
-            <link href="{{ asset('vendor/select2/select2.css') }}" rel="stylesheet" />
-            <link href="{{ asset('vendor/fancybox/source/jquery.fancybox.css') }}" rel="stylesheet" />
-            <link href="{{ asset('bundles/zenstruckdashboard/css/twitter.css') }}" rel="stylesheet" />
-            <link href="{{ asset('bundles/zenstruckmedia/css/twitter.css') }}" rel="stylesheet" />
-            <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+            {% stylesheets output='_static/css/style.css' filter='cssrewrite,?uglifycss'
+                'vendor/bootstrap/docs/assets/css/bootstrap.css'
+                'vendor/bootstrap/docs/assets/css/bootstrap-responsive.css'
+                'vendor/select2/select2.css'
+                'vendor/fancybox/source/jquery.fancybox.css'
+                'bundles/zenstruckdashboard/css/twitter.css'
+                'bundles/zenstruckmedia/css/twitter.css'
+                'css/style.css'
+            %}
+
+                <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+            {% endstylesheets %}
         {% endblock %}
     </head>
     <body>
@@ -52,16 +57,20 @@
                 var CKEDITOR_BASEPATH = '/ext/ckeditor/';
             </script>
 
-            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-            <script src="{{ asset('vendor/bootstrap/docs/assets/js/bootstrap.js') }}"></script>
-            <script src="{{ asset('vendor/hinclude/hinclude.js') }}"></script>
-            <script src="{{ asset('vendor/select2/select2.js') }}"></script>
-            <script src="{{ asset('ext/ckeditor/ckeditor.js') }}"></script>
-            <script src="{{ asset('vendor/fancybox/source/jquery.fancybox.js') }}"></script>
-            <script src="{{ asset('bundles/zenstruckform/js/helper.js') }}"></script>
-            <script src="{{ asset('bundles/zenstruckdashboard/js/helper.js') }}"></script>
-            <script src="{{ asset('bundles/zenstruckmedia/js/twitter.js') }}"></script>
-            <script src="{{ asset('js/script.js') }}"></script>
+            {% javascripts output='_static/js/script.js' filter='?uglifyjs2'
+                '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js'
+                'vendor/bootstrap/docs/assets/js/bootstrap.js'
+                'vendor/hinclude/hinclude.js'
+                'vendor/select2/select2.js'
+                'ext/ckeditor/ckeditor.js'
+                'vendor/fancybox/source/jquery.fancybox.js'
+                'bundles/zenstruckform/js/helper.js'
+                'bundles/zenstruckdashboard/js/helper.js'
+                'bundles/zenstruckmedia/js/twitter.js'
+                'js/script.js'
+            %}
+                <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
         {% endblock %}
     </body>
 </html>
