@@ -12,6 +12,7 @@ jms_di_extra:
 zenstruck_media:
     default_layout: ::base.html.twig
     media_form_type: true
+    slugable_filename_filter: true
     filesystems:
         Files:
             root_dir: %kernel.root_dir%/../web/files/files
@@ -19,6 +20,7 @@ zenstruck_media:
         Images:
             root_dir: %kernel.root_dir%/../web/files/images
             web_prefix: /files/images
+            allowed_extensions: jpg, gif, png
 
 zenstruck_form:
     form_types:

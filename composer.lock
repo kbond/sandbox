@@ -1991,19 +1991,23 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kbond/ZenstruckMediaBundle.git",
-                "reference": "0fa7803a1f4dbe652caf677ea80f33faa551dde6"
+                "reference": "6206c87f9839afe1e4a1cce4ab2813f93c788579"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kbond/ZenstruckMediaBundle/zipball/0fa7803a1f4dbe652caf677ea80f33faa551dde6",
-                "reference": "0fa7803a1f4dbe652caf677ea80f33faa551dde6",
+                "url": "https://api.github.com/repos/kbond/ZenstruckMediaBundle/zipball/6206c87f9839afe1e4a1cce4ab2813f93c788579",
+                "reference": "6206c87f9839afe1e4a1cce4ab2813f93c788579",
                 "shasum": ""
             },
             "require": {
                 "symfony/symfony": "~2.1"
             },
             "require-dev": {
-                "satooshi/php-coveralls": "~0.6"
+                "satooshi/php-coveralls": "~0.6",
+                "zenstruck/slugify-bundle": "~1.0"
+            },
+            "suggest": {
+                "zenstruck/slugify-bundle": "For the SlugableFilenameFilter"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -2032,7 +2036,7 @@
                 "source": "https://github.com/kbond/ZenstruckMediaBundle/tree/master",
                 "issues": "https://github.com/kbond/ZenstruckMediaBundle/issues"
             },
-            "time": "2013-05-09 16:19:23"
+            "time": "2013-05-09 20:29:41"
         },
         {
             "name": "zenstruck/slugify-bundle",
