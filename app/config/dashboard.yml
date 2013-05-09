@@ -83,6 +83,8 @@ zenstruck_dashboard:
                     uri: http://zenstruck.com
                 Article Admin:
                     route: article
+                Media Manager:
+                    route: zenstruck_media_list
         Dropdown:
             items:
                 ZenstruckFormBundle:

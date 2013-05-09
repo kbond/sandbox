@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "822c8fcf33855fb47bd108690982cece",
+    "hash": "68c3d31cd6ce2cc85a53b858600092b8",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -1985,6 +1985,56 @@
             "time": "2013-04-29 18:18:50"
         },
         {
+            "name": "zenstruck/media-bundle",
+            "version": "dev-master",
+            "target-dir": "Zenstruck/MediaBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kbond/ZenstruckMediaBundle.git",
+                "reference": "fb252afbaf3cf2f8a0f84b07d85fe7283adc3690"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kbond/ZenstruckMediaBundle/zipball/fb252afbaf3cf2f8a0f84b07d85fe7283adc3690",
+                "reference": "fb252afbaf3cf2f8a0f84b07d85fe7283adc3690",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/symfony": "~2.1"
+            },
+            "require-dev": {
+                "satooshi/php-coveralls": "~0.6"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Zenstruck\\MediaBundle": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Bond",
+                    "email": "kevinbond@gmail.com"
+                }
+            ],
+            "description": "Provides a simple media/file management GUI for Symfony2",
+            "homepage": "http://zenstruck.com/project/ZenstruckMediaBundle",
+            "keywords": [
+                "administration",
+                "file",
+                "manager",
+                "media"
+            ],
+            "support": {
+                "source": "https://github.com/kbond/ZenstruckMediaBundle/tree/master",
+                "issues": "https://github.com/kbond/ZenstruckMediaBundle/issues"
+            },
+            "time": "2013-05-09 14:22:52"
+        },
+        {
             "name": "zenstruck/slugify-bundle",
             "version": "dev-master",
             "target-dir": "Zenstruck/SlugifyBundle",
@@ -2050,7 +2100,8 @@
         "zenstruck/dashboard-bundle": 20,
         "zenstruck/form-bundle": 20,
         "zenstruck/cache-bundle": 20,
-        "zenstruck/slugify-bundle": 20
+        "zenstruck/slugify-bundle": 20,
+        "zenstruck/media-bundle": 20
     },
     "platform": {
         "php": ">=5.3.3"
