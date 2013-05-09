@@ -1991,12 +1991,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kbond/ZenstruckMediaBundle.git",
-                "reference": "a027777bc27ef73d71468a96a270220bcb82c9e7"
+                "reference": "0fa7803a1f4dbe652caf677ea80f33faa551dde6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kbond/ZenstruckMediaBundle/zipball/a027777bc27ef73d71468a96a270220bcb82c9e7",
-                "reference": "a027777bc27ef73d71468a96a270220bcb82c9e7",
+                "url": "https://api.github.com/repos/kbond/ZenstruckMediaBundle/zipball/0fa7803a1f4dbe652caf677ea80f33faa551dde6",
+                "reference": "0fa7803a1f4dbe652caf677ea80f33faa551dde6",
                 "shasum": ""
             },
             "require": {
@@ -2032,7 +2032,7 @@
                 "source": "https://github.com/kbond/ZenstruckMediaBundle/tree/master",
                 "issues": "https://github.com/kbond/ZenstruckMediaBundle/issues"
             },
-            "time": "2013-05-09 15:07:12"
+            "time": "2013-05-09 16:19:23"
         },
         {
             "name": "zenstruck/slugify-bundle",
