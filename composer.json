@@ -51,7 +51,7 @@
         "zenstruck/form-bundle": "dev-master",
         "zenstruck/cache-bundle": "dev-master",
         "zenstruck/slugify-bundle": "dev-master",
-        "zenstruck/media-bundle": "dev-master"
+        "zenstruck/media-bundle": "dev-angular"
     },
     "scripts": {
         "post-install-cmd": [
@@ -71,6 +71,7 @@
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",
+        "symfony-assets-install": "symlink",
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
         }
