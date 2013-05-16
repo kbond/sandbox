@@ -32,14 +32,13 @@
         "doctrine/orm": ">=2.2.3,<2.4-dev",
         "doctrine/doctrine-bundle": "1.1.*",
         "twig/extensions": "1.0.*@dev",
-        "symfony/assetic-bundle": "2.1.*",
+        "symfony/assetic-bundle": "~2.3",
         "symfony/swiftmailer-bundle": "2.1.*",
         "symfony/monolog-bundle": "2.1.*",
         "sensio/distribution-bundle": "2.1.*",
         "sensio/framework-extra-bundle": "2.1.*",
         "sensio/generator-bundle": "2.1.*",
         "jms/di-extra-bundle": "~1.3",
-        "kriswallsmith/assetic": "1.1.*@dev",
 
         "sensiolabs/security-checker": "dev-master",
         "nelmio/alice": "1.*",
@@ -51,7 +50,7 @@
         "zenstruck/form-bundle": "dev-master",
         "zenstruck/cache-bundle": "dev-master",
         "zenstruck/slugify-bundle": "dev-master",
-        "zenstruck/media-bundle": "dev-angular"
+        "zenstruck/media-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

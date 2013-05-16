@@ -11,8 +11,8 @@ $(function() {
 
     $('.wysiwyg').each(function() {
         CKEDITOR.replace($(this).attr('name'), {
-            filebrowserBrowseUrl: '/media',
-            filebrowserImageBrowseUrl: '/media?layout=window&filesystem=Images&lock=true'
+            filebrowserBrowseUrl: '/media?layout=popup',
+            filebrowserImageBrowseUrl: '/media?layout=popup&filesystem=Images&lock=true'
         });
     });
 });

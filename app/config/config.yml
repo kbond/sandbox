@@ -12,7 +12,7 @@ jms_di_extra:
 zenstruck_media:
     default_layout: ::base.html.twig
     media_form_type: true
-    slugable_filename_filter: true
+    slugify_filename_filter: true
     filesystems:
         Files:
             root_dir: %kernel.root_dir%/../web/files/files
