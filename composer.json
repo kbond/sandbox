@@ -45,6 +45,7 @@
         "zendframework/zend-crypt": "~2.0,!=2.1.1",
         "incenteev/composer-parameter-handler": "~2.0",
         "jms/serializer-bundle": "~0.11",
+        "igorw/file-serve-bundle": "~1.0",
 
         "zenstruck/dashboard-bundle": "dev-master",
         "zenstruck/form-bundle": "dev-master",

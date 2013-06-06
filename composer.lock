@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "0faa0f9f6a304daa4c9650d8a732f158",
+    "hash": "140724833f7041b9ce11f6ac73496b4f",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -35,8 +35,8 @@
             "authors": [
                 {
                     "name": "Florian Eckerstorfer",
-                    "email": "florian@theroadtojoy.at",
-                    "homepage": "http://florianeckerstorfer.com",
+                    "email": "florian@eckerstorfer.co",
+                    "homepage": "http://braincrafted.com",
                     "role": "Developer"
                 },
                 {
@@ -103,7 +103,7 @@
                     "email": "kontakt@beberlei.de"
                 },
                 {
-                    "name": "Johannes Schmitt",
+                    "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
                     "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
@@ -366,6 +366,59 @@
                 "fixtures"
             ],
             "time": "2012-10-29 02:32:06"
+        },
+        {
+            "name": "igorw/file-serve-bundle",
+            "version": "v1.0.2",
+            "target-dir": "Igorw/FileServeBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/igorw/IgorwFileServeBundle",
+                "reference": "v1.0.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/igorw/IgorwFileServeBundle/zipball/v1.0.2",
+                "reference": "v1.0.2",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/http-foundation": "2.*"
+            },
+            "require-dev": {
+                "symfony/framework-bundle": "2.*"
+            },
+            "suggest": {
+                "symfony/framework-bundle": "2.*"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Igorw\\FileServeBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Igor Wiedler",
+                    "email": "igor@wiedler.ch",
+                    "homepage": "http://wiedler.ch/igor/"
+                }
+            ],
+            "description": "Symfony2 Bundle for serving protected files.",
+            "keywords": [
+                "file-system",
+                "sendfile"
+            ],
+            "time": "2012-10-24 07:48:24"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -899,16 +952,16 @@
         },
         {
             "name": "kriswallsmith/assetic",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kriswallsmith/assetic.git",
-                "reference": "v1.1.0"
+                "reference": "v1.1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/v1.1.0",
-                "reference": "v1.1.0",
+                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/v1.1.1",
+                "reference": "v1.1.1",
                 "shasum": ""
             },
             "require": {
@@ -966,20 +1019,20 @@
                 "compression",
                 "minification"
             ],
-            "time": "2013-05-16 05:28:39"
+            "time": "2013-06-01 22:13:43"
         },
         {
             "name": "kriswallsmith/buzz",
-            "version": "v0.9",
+            "version": "v0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kriswallsmith/Buzz.git",
-                "reference": "v0.9"
+                "reference": "v0.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kriswallsmith/Buzz/zipball/v0.9",
-                "reference": "v0.9",
+                "url": "https://api.github.com/repos/kriswallsmith/Buzz/zipball/v0.10",
+                "reference": "v0.10",
                 "shasum": ""
             },
             "require": {
@@ -1014,7 +1067,7 @@
                 "curl",
                 "http client"
             ],
-            "time": "2013-02-19 00:26:38"
+            "time": "2013-05-19 03:41:15"
         },
         {
             "name": "monolog/monolog",
@@ -1210,7 +1263,7 @@
             ],
             "authors": [
                 {
-                    "name": "Johannes Schmitt",
+                    "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
                     "homepage": "https://github.com/schmittjoh",
                     "role": "Developer of wrapped JMSSerializerBundle"
@@ -1270,17 +1323,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v2.1.10",
+            "version": "v2.1.11",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
-                "url": "https://github.com/sensio/SensioDistributionBundle.git",
-                "reference": "v2.1.10"
+                "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
+                "reference": "v2.1.11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensio/SensioDistributionBundle/zipball/v2.1.10",
-                "reference": "v2.1.10",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/v2.1.11",
+                "reference": "v2.1.11",
                 "shasum": ""
             },
             "require": {
@@ -1316,17 +1369,17 @@
         },
         {
             "name": "sensio/framework-extra-bundle",
-            "version": "v2.1.10",
+            "version": "v2.1.11",
             "target-dir": "Sensio/Bundle/FrameworkExtraBundle",
             "source": {
                 "type": "git",
-                "url": "https://github.com/sensio/SensioFrameworkExtraBundle.git",
-                "reference": "v2.1.10"
+                "url": "https://github.com/sensiolabs/SensioFrameworkExtraBundle.git",
+                "reference": "v2.1.11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensio/SensioFrameworkExtraBundle/zipball/v2.1.10",
-                "reference": "v2.1.10",
+                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/v2.1.11",
+                "reference": "v2.1.11",
                 "shasum": ""
             },
             "require": {
@@ -1363,17 +1416,17 @@
         },
         {
             "name": "sensio/generator-bundle",
-            "version": "v2.1.10",
+            "version": "v2.1.11",
             "target-dir": "Sensio/Bundle/GeneratorBundle",
             "source": {
                 "type": "git",
-                "url": "https://github.com/sensio/SensioGeneratorBundle.git",
-                "reference": "v2.1.10"
+                "url": "https://github.com/sensiolabs/SensioGeneratorBundle.git",
+                "reference": "v2.1.11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensio/SensioGeneratorBundle/zipball/v2.1.10",
-                "reference": "v2.1.10",
+                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/v2.1.11",
+                "reference": "v2.1.11",
                 "shasum": ""
             },
             "require": {
@@ -1626,17 +1679,17 @@
         },
         {
             "name": "symfony/swiftmailer-bundle",
-            "version": "v2.1.10",
+            "version": "v2.1.11",
             "target-dir": "Symfony/Bundle/SwiftmailerBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/SwiftmailerBundle.git",
-                "reference": "v2.1.10"
+                "reference": "v2.1.11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/SwiftmailerBundle/zipball/v2.1.10",
-                "reference": "v2.1.10",
+                "url": "https://api.github.com/repos/symfony/SwiftmailerBundle/zipball/v2.1.11",
+                "reference": "v2.1.11",
                 "shasum": ""
             },
             "require": {
@@ -1681,16 +1734,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.1.10",
+            "version": "v2.1.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "v2.1.10"
+                "reference": "v2.1.11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/v2.1.10",
-                "reference": "v2.1.10",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/v2.1.11",
+                "reference": "v2.1.11",
                 "shasum": ""
             },
             "require": {
@@ -1765,7 +1818,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2013-05-06 11:01:51"
+            "time": "2013-06-02 12:29:05"
         },
         {
             "name": "twig/extensions",
@@ -1773,16 +1826,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig-extensions.git",
-                "reference": "v1.0.0"
+                "reference": "4239a9b107c17547da91d76005c996f08e164ae8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig-extensions/zipball/v1.0.0",
-                "reference": "v1.0.0",
+                "url": "https://api.github.com/repos/fabpot/Twig-extensions/zipball/4239a9b107c17547da91d76005c996f08e164ae8",
+                "reference": "4239a9b107c17547da91d76005c996f08e164ae8",
                 "shasum": ""
             },
             "require": {
-                "twig/twig": "1.*"
+                "twig/twig": ">=1.0,<2.0"
             },
             "type": "library",
             "extra": {
@@ -1812,20 +1865,20 @@
                 "i18n",
                 "text"
             ],
-            "time": "2013-02-28 14:21:30"
+            "time": "2013-06-07 09:36:35"
         },
         {
             "name": "twig/twig",
-            "version": "v1.13.0",
+            "version": "v1.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig.git",
-                "reference": "v1.13.0"
+                "reference": "v1.13.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/v1.13.0",
-                "reference": "v1.13.0",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/v1.13.1",
+                "reference": "v1.13.1",
                 "shasum": ""
             },
             "require": {
@@ -1861,7 +1914,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2013-05-10 15:12:43"
+            "time": "2013-06-06 06:06:01"
         },
         {
             "name": "zendframework/zend-crypt",
@@ -2043,19 +2096,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kbond/ZenstruckCacheBundle.git",
-                "reference": "e8507a6f51926d77669523106bf6fcb44d77e35b"
+                "reference": "7296729f9784fa04d69732fd32540ed20a6b9514"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kbond/ZenstruckCacheBundle/zipball/e8507a6f51926d77669523106bf6fcb44d77e35b",
-                "reference": "e8507a6f51926d77669523106bf6fcb44d77e35b",
+                "url": "https://api.github.com/repos/kbond/ZenstruckCacheBundle/zipball/7296729f9784fa04d69732fd32540ed20a6b9514",
+                "reference": "7296729f9784fa04d69732fd32540ed20a6b9514",
                 "shasum": ""
             },
             "require": {
                 "sensio/buzz-bundle": "~0.2",
-                "symfony/css-selector": "2.*",
-                "symfony/dom-crawler": "2.*",
-                "symfony/framework-bundle": "2.*"
+                "symfony/symfony": "2.*"
             },
             "suggest": {
                 "dpn/xml-sitemap-bundle": "Create a sitemap with Symfony"
@@ -2086,7 +2137,7 @@
                 "source": "https://github.com/kbond/ZenstruckCacheBundle/tree/master",
                 "issues": "https://github.com/kbond/ZenstruckCacheBundle/issues"
             },
-            "time": "2013-05-04 11:51:07"
+            "time": "2013-06-05 14:33:25"
         },
         {
             "name": "zenstruck/dashboard-bundle",
@@ -2095,16 +2146,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kbond/ZenstruckDashboardBundle.git",
-                "reference": "96c23dbf93626e779edf7c56ccdf84e67f59c2c4"
+                "reference": "a3c52a9cb445549d3defd6ded6e2a589c0af331d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kbond/ZenstruckDashboardBundle/zipball/96c23dbf93626e779edf7c56ccdf84e67f59c2c4",
-                "reference": "96c23dbf93626e779edf7c56ccdf84e67f59c2c4",
+                "url": "https://api.github.com/repos/kbond/ZenstruckDashboardBundle/zipball/a3c52a9cb445549d3defd6ded6e2a589c0af331d",
+                "reference": "a3c52a9cb445549d3defd6ded6e2a589c0af331d",
                 "shasum": ""
             },
             "require": {
-                "knplabs/knp-menu": "~1.1",
+                "knplabs/knp-menu": ">=1.1",
                 "symfony/symfony": "~2.1"
             },
             "type": "symfony-bundle",
@@ -2134,7 +2185,7 @@
                 "source": "https://github.com/kbond/ZenstruckDashboardBundle/tree/master",
                 "issues": "https://github.com/kbond/ZenstruckDashboardBundle/issues"
             },
-            "time": "2013-05-02 15:17:36"
+            "time": "2013-06-07 12:55:22"
         },
         {
             "name": "zenstruck/form-bundle",
@@ -2143,12 +2194,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kbond/ZenstruckFormBundle.git",
-                "reference": "8c1c55571abbbeb0736720348be10780d6be1b5b"
+                "reference": "e1686dcd0d370d79cb1e92f2f2ba7a1d7797beeb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kbond/ZenstruckFormBundle/zipball/8c1c55571abbbeb0736720348be10780d6be1b5b",
-                "reference": "8c1c55571abbbeb0736720348be10780d6be1b5b",
+                "url": "https://api.github.com/repos/kbond/ZenstruckFormBundle/zipball/e1686dcd0d370d79cb1e92f2f2ba7a1d7797beeb",
+                "reference": "e1686dcd0d370d79cb1e92f2f2ba7a1d7797beeb",
                 "shasum": ""
             },
             "require": {
@@ -2193,7 +2244,7 @@
                 "source": "https://github.com/kbond/ZenstruckFormBundle/tree/master",
                 "issues": "https://github.com/kbond/ZenstruckFormBundle/issues"
             },
-            "time": "2013-05-10 13:45:01"
+            "time": "2013-06-05 14:21:50"
         },
         {
             "name": "zenstruck/media-bundle",
@@ -2202,12 +2253,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kbond/ZenstruckMediaBundle.git",
-                "reference": "aa28e956acd799c50985558667021bf2786a7d70"
+                "reference": "a06426f465e0e1a9850c8cbb82c9164ab8a89801"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kbond/ZenstruckMediaBundle/zipball/aa28e956acd799c50985558667021bf2786a7d70",
-                "reference": "aa28e956acd799c50985558667021bf2786a7d70",
+                "url": "https://api.github.com/repos/kbond/ZenstruckMediaBundle/zipball/a06426f465e0e1a9850c8cbb82c9164ab8a89801",
+                "reference": "a06426f465e0e1a9850c8cbb82c9164ab8a89801",
                 "shasum": ""
             },
             "require": {
@@ -2215,10 +2266,10 @@
                 "symfony/symfony": "~2.1"
             },
             "require-dev": {
-                "satooshi/php-coveralls": "~0.6",
                 "zenstruck/slugify-bundle": "~1.0"
             },
             "suggest": {
+                "igorw/file-serve-bundle": "For secure filesystems",
                 "zenstruck/slugify-bundle": "For the SlugifyFilenameFilter"
             },
             "type": "symfony-bundle",
@@ -2248,7 +2299,7 @@
                 "source": "https://github.com/kbond/ZenstruckMediaBundle/tree/master",
                 "issues": "https://github.com/kbond/ZenstruckMediaBundle/issues"
             },
-            "time": "2013-05-16 18:00:33"
+            "time": "2013-06-07 13:45:10"
         },
         {
             "name": "zenstruck/slugify-bundle",

@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Sensio\Bundle\BuzzBundle\SensioBuzzBundle(),
+            new Igorw\FileServeBundle\IgorwFileServeBundle(),
 
             new Zenstruck\Bundle\FormBundle\ZenstruckFormBundle(),
             new Zenstruck\Bundle\DashboardBundle\ZenstruckDashboardBundle(),

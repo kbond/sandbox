@@ -43,11 +43,15 @@ class FixturesLoadCommand extends ContainerAwareCommand
 
         $filesystem = new Filesystem();
         $kernelDir = $this->getContainer()->getParameter('kernel.root_dir');
+
         $dest = $kernelDir. '/../web/files';
-
         $files = Finder::create()->in($dest);
-
         $filesystem->remove($files);
         $filesystem->mirror($kernelDir . '/../data/files', $dest);
+
+        $dest = $kernelDir. '/../uploads';
+        $files = Finder::create()->in($dest);
+        $filesystem->remove($files);
+        $filesystem->mirror($kernelDir . '/../data/files/files', $dest);
     }
 }

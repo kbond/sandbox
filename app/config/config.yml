@@ -21,6 +21,9 @@ zenstruck_media:
             root_dir: %kernel.root_dir%/../web/files/images
             web_prefix: /files/images
             allowed_extensions: jpg, gif, png
+        Secure:
+            root_dir: %kernel.root_dir%/../uploads
+            secure: true
 
 zenstruck_form:
     form_types:
