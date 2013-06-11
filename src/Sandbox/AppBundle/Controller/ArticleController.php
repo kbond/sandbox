@@ -112,7 +112,7 @@ class ArticleController extends Controller
 
     /**
      * @Route("/{id}/delete", name="article_delete")
-     * @Method("POST")
+     * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
     {
