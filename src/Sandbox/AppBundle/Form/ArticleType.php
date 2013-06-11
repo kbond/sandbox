@@ -44,6 +44,12 @@ class ArticleType extends AbstractType
                     'help' => 'Try typing a letter such as "o"',
                     'multiple' => true
                 ))
+            ->add('links', 'collection', array(
+                    'type' => new LinkType(),
+                    'allow_add' => true,
+                    'allow_delete' => true,
+                    'by_reference' => false
+                ));
         ;
     }
 

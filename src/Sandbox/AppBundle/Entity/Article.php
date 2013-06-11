@@ -58,6 +58,13 @@ class Article
     protected $tags;
 
     /**
+     * @Assert\Valid
+     *
+     * @ORM\OneToMany(targetEntity="Link", mappedBy="article", cascade={"persist"}, orphanRemoval=true)
+     */
+    protected $links;
+
+    /**
      * @ORM\Column(name="date", type="datetime", nullable=true)
      */
     protected $date;
@@ -65,6 +72,7 @@ class Article
     public function __construct()
     {
         $this->tags = new ArrayCollection();
+        $this->links = new ArrayCollection();
         $this->date = new \DateTime();
     }
 
@@ -159,5 +167,24 @@ class Article
     public function getMedia()
     {
         return $this->media;
+    }
+
+    /**
+     * @return Link[]
+     */
+    public function getLinks()
+    {
+        return $this->links;
+    }
+
+    public function addLink(Link $link)
+    {
+        $link->setArticle($this);
+        $this->links->add($link);
+    }
+
+    public function removeLink(Link $link)
+    {
+        $this->links->removeElement($link);
     }
 }

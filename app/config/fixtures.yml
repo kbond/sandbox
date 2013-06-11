@@ -14,3 +14,8 @@ Sandbox\AppBundle\Entity\Article:
         editor: @user*
         tags: <numberBetween(0, 3)>x @tag*
         date: <dateTimeBetween('-5 years')>
+
+Sandbox\AppBundle\Entity\Link:
+    link{1..30}:
+        url: <url()>
+        article: @post*
