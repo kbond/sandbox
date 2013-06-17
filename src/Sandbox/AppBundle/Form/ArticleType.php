@@ -12,6 +12,9 @@ class ArticleType extends AbstractType
     {
         $builder
             ->add('title')
+            ->add('cost', 'money', array(
+                    'currency' => 'USD'
+                ))
             ->add('body', null, array(
                     'attr' => array('class' => 'wysiwyg')
                 ))

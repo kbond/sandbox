@@ -1919,17 +1919,17 @@
         },
         {
             "name": "zendframework/zend-crypt",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "target-dir": "Zend/Crypt",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/Component_ZendCrypt.git",
-                "reference": "release-2.2.0rc3"
+                "reference": "release-2.2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/Component_ZendCrypt/zipball/release-2.2.0rc3",
-                "reference": "release-2.2.0rc3",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendCrypt/zipball/release-2.2.1",
+                "reference": "release-2.2.1",
                 "shasum": ""
             },
             "require": {
@@ -1958,21 +1958,21 @@
                 "crypt",
                 "zf2"
             ],
-            "time": "2013-05-01 21:52:52"
+            "time": "2013-06-12 19:48:13"
         },
         {
             "name": "zendframework/zend-math",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "target-dir": "Zend/Math",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/Component_ZendMath.git",
-                "reference": "release-2.2.0rc3"
+                "reference": "release-2.2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/Component_ZendMath/zipball/release-2.2.0rc3",
-                "reference": "release-2.2.0rc3",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendMath/zipball/release-2.2.1",
+                "reference": "release-2.2.1",
                 "shasum": ""
             },
             "require": {
@@ -2005,17 +2005,17 @@
         },
         {
             "name": "zendframework/zend-servicemanager",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "target-dir": "Zend/ServiceManager",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/Component_ZendServiceManager.git",
-                "reference": "release-2.2.0rc3"
+                "reference": "release-2.2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/Component_ZendServiceManager/zipball/release-2.2.0rc3",
-                "reference": "release-2.2.0rc3",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendServiceManager/zipball/release-2.2.1",
+                "reference": "release-2.2.1",
                 "shasum": ""
             },
             "require": {
@@ -2048,17 +2048,17 @@
         },
         {
             "name": "zendframework/zend-stdlib",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "target-dir": "Zend/Stdlib",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/Component_ZendStdlib.git",
-                "reference": "release-2.2.0rc3"
+                "reference": "release-2.2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/Component_ZendStdlib/zipball/release-2.2.0rc3",
-                "reference": "release-2.2.0rc3",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendStdlib/zipball/release-2.2.1",
+                "reference": "release-2.2.1",
                 "shasum": ""
             },
             "require": {
@@ -2088,7 +2088,7 @@
                 "stdlib",
                 "zf2"
             ],
-            "time": "2013-05-09 18:00:17"
+            "time": "2013-06-12 19:46:58"
         },
         {
             "name": "zenstruck/cache-bundle",
@@ -2195,12 +2195,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kbond/ZenstruckFormBundle.git",
-                "reference": "79833cde58f8c2065cd6ec6596bdb824efac6084"
+                "reference": "1c33f21ec638bc9707535e1a68179e80331403b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kbond/ZenstruckFormBundle/zipball/79833cde58f8c2065cd6ec6596bdb824efac6084",
-                "reference": "79833cde58f8c2065cd6ec6596bdb824efac6084",
+                "url": "https://api.github.com/repos/kbond/ZenstruckFormBundle/zipball/1c33f21ec638bc9707535e1a68179e80331403b7",
+                "reference": "1c33f21ec638bc9707535e1a68179e80331403b7",
                 "shasum": ""
             },
             "require": {
@@ -2245,7 +2245,7 @@
                 "source": "https://github.com/kbond/ZenstruckFormBundle/tree/master",
                 "issues": "https://github.com/kbond/ZenstruckFormBundle/issues"
             },
-            "time": "2013-06-11 14:23:40"
+            "time": "2013-06-17 13:54:30"
         },
         {
             "name": "zenstruck/media-bundle",

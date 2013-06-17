@@ -38,6 +38,15 @@ class Article
     protected $media;
 
     /**
+     * @Assert\Range(
+     *      min = "0"
+     * )
+     *
+     * @ORM\Column(name="cost", type="decimal", scale=2, nullable=true)
+     */
+    protected $cost;
+
+    /**
      * @Assert\NotNull
      *
      * @ORM\ManyToOne(targetEntity="Author", inversedBy="articles")
@@ -186,5 +195,15 @@ class Article
     public function removeLink(Link $link)
     {
         $this->links->removeElement($link);
+    }
+
+    public function setCost($cost)
+    {
+        $this->cost = $cost;
+    }
+
+    public function getCost()
+    {
+        return $this->cost;
     }
 }
