@@ -2195,12 +2195,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kbond/ZenstruckFormBundle.git",
-                "reference": "1c33f21ec638bc9707535e1a68179e80331403b7"
+                "reference": "e3fa2c70bd5fc8c457a37ac66704a3beb8012c0c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kbond/ZenstruckFormBundle/zipball/1c33f21ec638bc9707535e1a68179e80331403b7",
-                "reference": "1c33f21ec638bc9707535e1a68179e80331403b7",
+                "url": "https://api.github.com/repos/kbond/ZenstruckFormBundle/zipball/e3fa2c70bd5fc8c457a37ac66704a3beb8012c0c",
+                "reference": "e3fa2c70bd5fc8c457a37ac66704a3beb8012c0c",
                 "shasum": ""
             },
             "require": {
@@ -2245,7 +2245,7 @@
                 "source": "https://github.com/kbond/ZenstruckFormBundle/tree/master",
                 "issues": "https://github.com/kbond/ZenstruckFormBundle/issues"
             },
-            "time": "2013-06-17 13:54:30"
+            "time": "2013-06-17 15:27:38"
         },
         {
             "name": "zenstruck/media-bundle",
