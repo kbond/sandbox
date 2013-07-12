@@ -19,12 +19,10 @@ class AppKernel extends Kernel
             new JMS\AopBundle\JMSAopBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\SerializerBundle\JMSSerializerBundle(),
-            new Sensio\Bundle\BuzzBundle\SensioBuzzBundle(),
             new Igorw\FileServeBundle\IgorwFileServeBundle(),
 
             new Zenstruck\Bundle\FormBundle\ZenstruckFormBundle(),
             new Zenstruck\Bundle\DashboardBundle\ZenstruckDashboardBundle(),
-            new Zenstruck\Bundle\CacheBundle\ZenstruckCacheBundle(),
             new Zenstruck\SlugifyBundle\ZenstruckSlugifyBundle(),
             new Zenstruck\MediaBundle\ZenstruckMediaBundle(),
 

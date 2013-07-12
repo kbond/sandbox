@@ -33,9 +33,6 @@ zenstruck_form:
         help: true
         group: true
 
-zenstruck_cache:
-    sitemap_provider:     true
-
 framework:
     esi:             ~
     #translator:      { fallback: "%locale%" }
@@ -50,7 +47,6 @@ framework:
         engines: ['twig']
         assets_version: %app.build%
     default_locale:  "%locale%"
-    trust_proxy_headers: false # Deprecated in 2.0; will be removed in 2.3 (used trusted_proxies instead)
     trusted_proxies: ~
     session:         ~
 
