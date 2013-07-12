@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "bb6be5aec952371db4b6bd7bf700a5fd",
+    "hash": "06f5408bc70973a20dbe7d66cc2910b8",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -252,6 +252,69 @@
                 "persistence"
             ],
             "time": "2013-03-25 20:13:59"
+        },
+        {
+            "name": "doctrine/inflector",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/inflector.git",
+                "reference": "v1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/doctrine/inflector/archive/v1.0.zip",
+                "reference": "v1.0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Doctrine\\Common\\Inflector\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com",
+                    "homepage": "http://www.jwage.com/"
+                },
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com",
+                    "homepage": "http://www.instaclick.com"
+                },
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
+                },
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                },
+                {
+                    "name": "Johannes Schmitt",
+                    "email": "schmittjoh@gmail.com",
+                    "homepage": "http://jmsyst.com",
+                    "role": "Developer of wrapped JMSSerializerBundle"
+                }
+            ],
+            "description": "Common String Manipulations with regard to casing and singular/plural rules.",
+            "homepage": "http://www.doctrine-project.org",
+            "keywords": [
+                "inflection",
+                "pluarlize",
+                "singuarlize",
+                "string"
+            ],
+            "time": "2013-01-10 21:49:15"
         },
         {
             "name": "doctrine/orm",
@@ -2112,61 +2175,6 @@
             "time": "2013-06-12 19:46:58"
         },
         {
-            "name": "zenstruck/cache-bundle",
-            "version": "dev-master",
-            "target-dir": "Zenstruck/Bundle/CacheBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kbond/ZenstruckCacheBundle.git",
-                "reference": "23d05bc0b09e291817b36e610cbe9d382b69097f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kbond/ZenstruckCacheBundle/zipball/23d05bc0b09e291817b36e610cbe9d382b69097f",
-                "reference": "23d05bc0b09e291817b36e610cbe9d382b69097f",
-                "shasum": ""
-            },
-            "require": {
-                "symfony/symfony": "2.*"
-            },
-            "require-dev": {
-                "guzzle/http": "*",
-                "kriswallsmith/buzz": ">= 0.6"
-            },
-            "suggest": {
-                "dpn/xml-sitemap-bundle": "Create a sitemap with Symfony",
-                "guzzle/http": "To use Guzzle to fetch urls",
-                "kriswallsmith/buzz": "To use Buzz to fetch urls"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-0": {
-                    "Zenstruck\\Bundle\\CacheBundle": ""
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kevin Bond",
-                    "email": "kevinbond@gmail.com"
-                }
-            ],
-            "description": "Provides a httpcache warmup command for Symfony2",
-            "homepage": "http://zenstruck.com/project/ZenstruckCacheBundle",
-            "keywords": [
-                "cache",
-                "caching",
-                "httpcache"
-            ],
-            "support": {
-                "source": "https://github.com/kbond/ZenstruckCacheBundle/tree/master",
-                "issues": "https://github.com/kbond/ZenstruckCacheBundle/issues"
-            },
-            "time": "2013-06-21 20:15:47"
-        },
-        {
             "name": "zenstruck/dashboard-bundle",
             "version": "dev-master",
             "target-dir": "Zenstruck/Bundle/DashboardBundle",
@@ -2280,12 +2288,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kbond/ZenstruckMediaBundle.git",
-                "reference": "b2b728f93dd521aa7cddce633e10a048c4c14610"
+                "reference": "2909e6aa0d810d268ba3d8005cabfb581d1b0dfb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kbond/ZenstruckMediaBundle/zipball/b2b728f93dd521aa7cddce633e10a048c4c14610",
-                "reference": "b2b728f93dd521aa7cddce633e10a048c4c14610",
+                "url": "https://api.github.com/repos/kbond/ZenstruckMediaBundle/zipball/2909e6aa0d810d268ba3d8005cabfb581d1b0dfb",
+                "reference": "2909e6aa0d810d268ba3d8005cabfb581d1b0dfb",
                 "shasum": ""
             },
             "require": {
@@ -2326,7 +2334,55 @@
                 "source": "https://github.com/kbond/ZenstruckMediaBundle/tree/master",
                 "issues": "https://github.com/kbond/ZenstruckMediaBundle/issues"
             },
-            "time": "2013-06-11 19:47:56"
+            "time": "2013-07-12 20:14:57"
+        },
+        {
+            "name": "zenstruck/resource-bundle",
+            "version": "dev-master",
+            "target-dir": "Zenstruck/ResourceBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kbond/ZenstruckResourceBundle.git",
+                "reference": "e41599dc58c9e4534e1ff7a621f56bea529efecc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kbond/ZenstruckResourceBundle/zipball/e41599dc58c9e4534e1ff7a621f56bea529efecc",
+                "reference": "e41599dc58c9e4534e1ff7a621f56bea529efecc",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/inflector": "~1.0.0",
+                "symfony/symfony": "~2.3"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Zenstruck\\ResourceBundle": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Bond",
+                    "email": "kevinbond@gmail.com"
+                }
+            ],
+            "description": "Provides an easy way to create a RESTful CRUD for your entities.",
+            "homepage": "http://zenstruck.com/project/ZenstruckResourceBundle",
+            "keywords": [
+                "admin",
+                "administration",
+                "crud",
+                "resource"
+            ],
+            "support": {
+                "source": "https://github.com/kbond/ZenstruckResourceBundle/tree/master",
+                "issues": "https://github.com/kbond/ZenstruckResourceBundle/issues"
+            },
+            "time": "2013-07-12 21:54:43"
         },
         {
             "name": "zenstruck/slugify-bundle",
@@ -2391,7 +2447,7 @@
         "sensiolabs/security-checker": 20,
         "zenstruck/dashboard-bundle": 20,
         "zenstruck/form-bundle": 20,
-        "zenstruck/cache-bundle": 20,
+        "zenstruck/resource-bundle": 20,
         "zenstruck/slugify-bundle": 20,
         "zenstruck/media-bundle": 20
     },

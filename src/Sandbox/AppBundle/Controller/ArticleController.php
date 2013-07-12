@@ -3,134 +3,41 @@
 namespace Sandbox\AppBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Sandbox\AppBundle\Entity\Article;
-use Sandbox\AppBundle\Form\ArticleType;
+use Zenstruck\ResourceBundle\Config\Resource;
+use Zenstruck\ResourceBundle\Controller\ResourceController;
 use Zenstruck\Bundle\FormBundle\Form\GroupedFormView;
 
-/**
- * @Route("/article")
- */
-class ArticleController extends Controller
+class ArticleController extends ResourceController
 {
-    /**
-     * @Route("/", name="article")
-     * @Template()
-     */
-    public function indexAction()
+    public function editRandomAction()
     {
-        $em = $this->getDoctrine()->getManager();
+        $articles = $this->getCollection();
 
-        $entities = $em->getRepository('AppBundle:Article')->findAll();
+        shuffle($articles);
 
-        return array(
-            'entities' => $entities,
-        );
+        if (isset($articles[0])) {
+            return $this->util->redirect($this->util->generateUrl('edit_article', array('id' => $articles[0]->getId())));
+        }
+
+        return $this->util->redirect($this->util->generateUrl('new_article'));
     }
 
-    /**
-     * @Route("/edit/random", name="article_edit_random")
-     */
-    public function editRandom()
+    protected function renderResponse($action, $data = array())
     {
-        $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('AppBundle:Article')->findAll();
-
-        shuffle($entities);
-
-        if (isset($entities[0])) {
-            return $this->redirect($this->generateUrl('article_edit', array('id' => $entities[0]->getId())));
+        if (Resource::ACTION_LIST !== $action) {
+            $this->addBreadcrumb();
         }
 
-        return $this->redirect($this->generateUrl('article_new'));
-    }
-
-    /**
-     * @Route("/new", name="article_new")
-     * @Template()
-     */
-    public function newAction(Request $request)
-    {
-        $this->addBreadcrumb();
-        $entity = new Article();
-        $form   = $this->createForm(new ArticleType(), $entity);
-
-        if ('POST' === $request->getMethod()) {
-            $form->bind($request);
-
-            if ($form->isValid()) {
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($entity);
-                $em->flush();
-
-                return $this->redirect($this->generateUrl('article_edit', array('id' => $entity->getId())));
-            }
+        if (isset($data['form'])) {
+            $data['grouped_form'] = new GroupedFormView($data['form']);
+            unset($data['form']);
         }
 
-        return array(
-            'entity' => $entity,
-            'grouped_form' => new GroupedFormView($form->createView())
-        );
-    }
-
-    /**
-     * @Route("/{id}/edit", name="article_edit")
-     * @Template()
-     */
-    public function editAction($id, Request $request)
-    {
-        $this->addBreadcrumb();
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('AppBundle:Article')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Article entity.');
-        }
-
-        $form = $this->createForm(new ArticleType(), $entity);
-
-        if ('POST' === $request->getMethod()) {
-            $form->bind($request);
-
-            if ($form->isValid()) {
-                $em->persist($entity);
-                $em->flush();
-
-                return $this->redirect($this->generateUrl('article_edit', array('id' => $id)));
-            }
-        }
-
-        return array(
-            'entity' => $entity,
-            'grouped_form'   => new GroupedFormView($form->createView())
-        );
-    }
-
-    /**
-     * @Route("/{id}/delete", name="article_delete")
-     * @Method("DELETE")
-     */
-    public function deleteAction(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('AppBundle:Article')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Article entity.');
-        }
-
-        $em->remove($entity);
-        $em->flush();
-
-        return $this->redirect($this->generateUrl('article'));
+        return parent::renderResponse($action, $data);
     }
 
     protected function addBreadcrumb()
     {
-        $this->get('zenstruck_dashboard.manager')->addBreadcrumb('Articles', $this->generateUrl('article'));
+        $this->util->get('zenstruck_dashboard.manager')->addBreadcrumb('Articles', $this->util->generateUrl('list_articles'));
     }
 }

@@ -2,6 +2,10 @@ zenstruck_dashboard:
     resource: "@ZenstruckDashboardBundle/Resources/config/routing.xml"
     prefix:   /
 
+zenstruck_resource:
+    resource: .
+    type: zenstruck_resource
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation

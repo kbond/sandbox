@@ -82,7 +82,7 @@ zenstruck_dashboard:
                 Zenstruck Home:
                     uri: http://zenstruck.com
                 Article Admin:
-                    route: article
+                    route: list_articles
                 Media Manager:
                     route: zenstruck_media_index
         Dropdown:

@@ -9,6 +9,16 @@ jms_di_extra:
         bundles: [AppBundle]
     doctrine_integration: false
 
+zenstruck_resource:
+    controllers:
+        article:
+            entity: AppBundle:Article
+            controller_class: Sandbox\AppBundle\Controller\ArticleController
+            routing:
+                extra_routes:
+                    edit_random:
+                        pattern: /edit/random
+
 zenstruck_media:
     default_layout: ::base.html.twig
     media_form_type: true

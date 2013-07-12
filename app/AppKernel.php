@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new Zenstruck\Bundle\DashboardBundle\ZenstruckDashboardBundle(),
             new Zenstruck\SlugifyBundle\ZenstruckSlugifyBundle(),
             new Zenstruck\MediaBundle\ZenstruckMediaBundle(),
+            new Zenstruck\ResourceBundle\ZenstruckResourceBundle(),
 
             new Sandbox\AppBundle\AppBundle(),
         );
