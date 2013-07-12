@@ -1,6 +1,14 @@
 {
-    "name": "symfony/framework-standard-edition",
-    "description": "The \"Symfony Standard Edition\" distribution",
+    "name": "zenstruck/sandbox",
+    "description": "Source for http://sandbox.zenstruck.com",
+    "homepage": "http://sandbox.zenstruck.com/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kevin Bond",
+            "email": "kevinbond@gmail.com"
+        }
+    ],
     "autoload": {
         "psr-0": { "": "src/" }
     },
