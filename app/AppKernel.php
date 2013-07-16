@@ -21,11 +21,13 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Igorw\FileServeBundle\IgorwFileServeBundle(),
 
+            new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new Zenstruck\Bundle\FormBundle\ZenstruckFormBundle(),
             new Zenstruck\Bundle\DashboardBundle\ZenstruckDashboardBundle(),
             new Zenstruck\SlugifyBundle\ZenstruckSlugifyBundle(),
             new Zenstruck\MediaBundle\ZenstruckMediaBundle(),
             new Zenstruck\ResourceBundle\ZenstruckResourceBundle(),
+            new Zenstruck\DataGridBundle\ZenstruckDataGridBundle(),
 
             new Sandbox\AppBundle\AppBundle(),
         );

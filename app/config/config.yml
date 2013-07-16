@@ -18,6 +18,11 @@ zenstruck_resource:
                 extra_routes:
                     edit_random:
                         pattern: /edit/random
+            grid:
+                fields:
+                    title: ~
+                    date:
+                        format: 'Y-m-d'
 
 zenstruck_media:
     default_layout: ::base.html.twig

@@ -2,37 +2,36 @@
 
 {% block title %}Article list{% endblock %}
 
+{% block grid_action_label %}
+    <th>Actions</th>
+{% endblock %}
+
+{% block grid_action %}
+    <td>
+        <a class="btn btn-small" href="{{ path('edit_article', { 'id': object.id }) }}"><i class="icon-pencil"></i> Edit</a>
+    </td>
+{% endblock %}
+
 {% block body %}
     <style type="text/css">
         th, td {
             vertical-align: middle!important;
         }
+        table tfoot tr td {
+            border-top-width: 3px!important;
+        }
+        .pagination {
+            text-align: center;
+        }
     </style>
 
-    <table class="table table-striped table-hover table-bordered">
-        <thead>
-        <tr>
-            <th>Title</th>
-            <th>Date</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for article in articles %}
-            <tr>
-                <td>{{ article.title }}</td>
-                <td>{% if article.date %}{{ article.date|date('Y-m-d') }}{% endif %}</td>
-                <td>
-                    <a class="btn btn-small" href="{{ path('edit_article', { 'id': article.id }) }}">Edit</a>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div style="position: relative">
+        <p class="text-right" style="position: absolute; top: -100px; right: 0;">
+            <a class="btn btn-primary" href="{{ path('new_article') }}">Create a new entry</a>
+        </p>
 
-    <p>
-        <a class="btn btn-primary" href="{{ path('new_article') }}">Create a new entry</a>
-    </p>
+        {{ grid(grid, _self) }}
+    </div>
 {% endblock %}
 
 

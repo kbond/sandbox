@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "06f5408bc70973a20dbe7d66cc2910b8",
+    "hash": "f83138cda634367ebb5d30abc17bce92",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -1203,6 +1203,68 @@
             "time": "2013-04-15 14:47:44"
         },
         {
+            "name": "pagerfanta/pagerfanta",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/whiteoctober/Pagerfanta.git",
+                "reference": "v1.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/whiteoctober/Pagerfanta/zipball/v1.0.0",
+                "reference": "v1.0.0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "doctrine/mongodb-odm": "*",
+                "doctrine/orm": "2.*",
+                "mandango/mandango": "*",
+                "propel/propel1": ">=1.6,<2.0",
+                "solarium/solarium": "dev-develop"
+            },
+            "suggest": {
+                "doctrine/mongodb-odm": "To use the DoctrineODMMongoDBAdapter.",
+                "doctrine/orm": "To use the DoctrineORMAdapter.",
+                "mandango/mandango": "To use the MandangoAdapter.",
+                "propel/propel1": "To use the PropelAdapter",
+                "solarium/solarium": "To use the SolariumAdapter."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Pagerfanta\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pablo Díez",
+                    "email": "pablodip@gmail.com",
+                    "homepage": "http://github.com/pablodip"
+                }
+            ],
+            "description": "Pagination for PHP 5.3",
+            "keywords": [
+                "page",
+                "pagination",
+                "paginator",
+                "paging"
+            ],
+            "time": "2013-04-24 11:35:36"
+        },
+        {
             "name": "phpcollection/phpcollection",
             "version": "0.2.0",
             "source": {
@@ -2002,6 +2064,55 @@
             "time": "2013-06-06 06:06:01"
         },
         {
+            "name": "white-october/pagerfanta-bundle",
+            "version": "v1.0.0",
+            "target-dir": "WhiteOctober/PagerfantaBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/whiteoctober/WhiteOctoberPagerfantaBundle.git",
+                "reference": "v1.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/whiteoctober/WhiteOctoberPagerfantaBundle/zipball/v1.0.0",
+                "reference": "v1.0.0",
+                "shasum": ""
+            },
+            "require": {
+                "pagerfanta/pagerfanta": "1.0.*",
+                "symfony/framework-bundle": ">=2.1,<3.0",
+                "symfony/property-access": ">=2.2,<3.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "WhiteOctober\\PagerfantaBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pablo Díez",
+                    "email": "pablodip@gmail.com",
+                    "homepage": "http://github.com/pablodip"
+                }
+            ],
+            "description": "Bundle to use Pagerfanta with Symfony2",
+            "keywords": [
+                "page",
+                "paging"
+            ],
+            "time": "2013-06-06 08:08:38"
+        },
+        {
             "name": "zendframework/zend-crypt",
             "version": "2.2.1",
             "target-dir": "Zend/Crypt",
@@ -2223,6 +2334,57 @@
             "time": "2013-06-11 18:28:56"
         },
         {
+            "name": "zenstruck/datagrid-bundle",
+            "version": "dev-master",
+            "target-dir": "Zenstruck/DataGridBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kbond/ZenstruckDataGridBundle.git",
+                "reference": "6ef2678ec46934812103e43443213ff467fce8cc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kbond/ZenstruckDataGridBundle/zipball/6ef2678ec46934812103e43443213ff467fce8cc",
+                "reference": "6ef2678ec46934812103e43443213ff467fce8cc",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/symfony": "~2.3"
+            },
+            "suggest": {
+                "white-october/pagerfanta-bundle": "For paginated grids.",
+                "zenstruck/resource-bundle": "For creating RESTful cruds."
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Zenstruck\\DataGridBundle": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Bond",
+                    "email": "kevinbond@gmail.com"
+                }
+            ],
+            "description": "Provides a sortable/filterable/paginated datagrid for your entities.",
+            "homepage": "http://zenstruck.com/project/ZenstruckDataGridBundle",
+            "keywords": [
+                "admin",
+                "administration",
+                "datagrid",
+                "grid"
+            ],
+            "support": {
+                "source": "https://github.com/kbond/ZenstruckDataGridBundle/tree/master",
+                "issues": "https://github.com/kbond/ZenstruckDataGridBundle/issues"
+            },
+            "time": "2013-07-16 18:03:00"
+        },
+        {
             "name": "zenstruck/form-bundle",
             "version": "dev-master",
             "target-dir": "Zenstruck/Bundle/FormBundle",
@@ -2343,12 +2505,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kbond/ZenstruckResourceBundle.git",
-                "reference": "e41599dc58c9e4534e1ff7a621f56bea529efecc"
+                "reference": "4254914a5817d4d049ff6f336ce48a80a891c57c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kbond/ZenstruckResourceBundle/zipball/e41599dc58c9e4534e1ff7a621f56bea529efecc",
-                "reference": "e41599dc58c9e4534e1ff7a621f56bea529efecc",
+                "url": "https://api.github.com/repos/kbond/ZenstruckResourceBundle/zipball/4254914a5817d4d049ff6f336ce48a80a891c57c",
+                "reference": "4254914a5817d4d049ff6f336ce48a80a891c57c",
                 "shasum": ""
             },
             "require": {
@@ -2382,7 +2544,7 @@
                 "source": "https://github.com/kbond/ZenstruckResourceBundle/tree/master",
                 "issues": "https://github.com/kbond/ZenstruckResourceBundle/issues"
             },
-            "time": "2013-07-12 21:54:43"
+            "time": "2013-07-16 18:03:47"
         },
         {
             "name": "zenstruck/slugify-bundle",
@@ -2449,7 +2611,8 @@
         "zenstruck/form-bundle": 20,
         "zenstruck/resource-bundle": 20,
         "zenstruck/slugify-bundle": 20,
-        "zenstruck/media-bundle": 20
+        "zenstruck/media-bundle": 20,
+        "zenstruck/datagrid-bundle": 20
     },
     "platform": {
         "php": ">=5.3.3"
