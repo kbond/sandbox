@@ -2,7 +2,6 @@
 
 namespace Sandbox\AppBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
 use Zenstruck\ResourceBundle\Config\Resource;
 use Zenstruck\ResourceBundle\Controller\ResourceController;
 use Zenstruck\Bundle\FormBundle\Form\GroupedFormView;
