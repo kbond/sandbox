@@ -6,6 +6,10 @@
     <th>Actions</th>
 {% endblock %}
 
+{% block grid_value_cost %}
+    <td>$ {{ value|number_format(2) }}</td>
+{% endblock %}
+
 {% block grid_action %}
     <td>
         <a class="btn btn-small" href="{{ path('edit_article', { 'id': object.id }) }}"><i class="icon-pencil"></i> Edit</a>

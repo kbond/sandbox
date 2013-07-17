@@ -7,7 +7,7 @@ Sandbox\AppBundle\Entity\Tag:
         name: <word()>
 
 Sandbox\AppBundle\Entity\Article:
-    post{1..10}:
+    post{1..30}:
         title: <text(100)>
         body: <text(500)>
         cost: <randomFloat(1, 0, 100.00)>

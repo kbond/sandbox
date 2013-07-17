@@ -22,6 +22,9 @@ zenstruck_resource:
                 fields:
                     title:
                         sortable: true
+                    author: ~
+                    cost:
+                        sortable: true
                     date:
                         format: 'Y-m-d'
                         sortable: true
