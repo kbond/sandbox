@@ -20,9 +20,11 @@ zenstruck_resource:
                         pattern: /edit/random
             grid:
                 fields:
-                    title: ~
+                    title:
+                        sortable: true
                     date:
                         format: 'Y-m-d'
+                        sortable: true
 
 zenstruck_media:
     default_layout: ::base.html.twig
