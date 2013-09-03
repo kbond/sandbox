@@ -6,9 +6,11 @@
     <form class="form-horizontal" action="{{ path('post_article') }}" method="post" novalidate="novalidate" {{ form_enctype(grouped_form.form) }}>
         {% include 'AppBundle:Article:_grouped_form.html.twig' with { 'grouped_form': grouped_form } %}
 
-        <div class="form-actions">
-            <button class="btn btn-primary" type="submit">Create</button>
-            <a class="btn" href="{{ path('list_articles') }}">Cancel</a>
+        <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+                <button class="btn btn-primary" type="submit">Create</button>
+                <a class="btn btn-default" href="{{ path('list_articles') }}">Cancel</a>
+            </div>
         </div>
     </form>
 {% endblock %}

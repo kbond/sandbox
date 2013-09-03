@@ -7,10 +7,12 @@
         {% include 'AppBundle:Article:_grouped_form.html.twig' with { 'grouped_form': grouped_form } %}
 
         <input type="hidden" name="_method" value="PUT" />
-        <div class="form-actions">
-            <button class="btn btn-primary" type="submit">Edit</button>
-            <a class="btn" href="{{ path('list_articles') }}">Cancel</a>
-            <a class="btn offset1 btn-danger method-delete" href="{{ path('delete_article', { 'id': article.id }) }}">Delete</a>
+        <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+                <button class="btn btn-primary" type="submit">Edit</button>
+                <a class="btn btn-default" href="{{ path('list_articles') }}">Cancel</a>
+                <a class="btn offset1 btn-danger method-delete" href="{{ path('delete_article', { 'id': article.id }) }}">Delete</a>
+            </div>
         </div>
     </form>
 {% endblock %}
