@@ -7,11 +7,10 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         {% block stylesheets %}
             {% stylesheets output='_static/css/style.css' filter='cssrewrite,?uglifycss'
-                'vendor/bootstrap/docs/assets/css/bootstrap.css'
-                'vendor/bootstrap/docs/assets/css/bootstrap-responsive.css'
+                'vendor/bootstrap/dist/css/bootstrap.css'
                 'vendor/select2/select2.css'
                 'vendor/fancybox/source/jquery.fancybox.css'
-                'bundles/zenstruckdashboard/css/bootstrap2.css'
+                'bundles/zenstruckdashboard/css/bootstrap3.css'
                 'bundles/zenstruckmedia/css/twitter.css'
                 'bundles/zenstruckdatagrid/css/twitter.css'
                 'css/style.css'
@@ -60,7 +59,7 @@
 
             {% javascripts output='_static/js/script.js' filter='?uglifyjs2'
                 '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js'
-                'vendor/bootstrap/docs/assets/js/bootstrap.js'
+                'vendor/bootstrap/dist/js/bootstrap.js'
                 '//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js'
                 'vendor/ngUpload/ng-upload.min.js'
                 'bundles/zenstruckmedia/js/app.js'

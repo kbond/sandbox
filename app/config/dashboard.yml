@@ -2,12 +2,13 @@ zenstruck_dashboard:
     title: Zenstruck Sandbox
     user_service: true
     layout: ::base.html.twig
+    theme: ZenstruckDashboardBundle:Bootstrap3
     dashboard_template: AppBundle:Widget:dashboard.html.twig
     theme_options:
         inverse: true
-        column1width: span3
-        column2width: span6
-        column3width: span3
+        column1width: col-lg-3
+        column2width: col-lg-6
+        column3width: col-lg-3
     widgets:
         menu_group:
             title: Menu Group Widget
@@ -110,11 +111,11 @@ zenstruck_dashboard:
                 link1:
                     label: Site Source
                     uri: https://github.com/kbond/sandbox
-                    icon: icon-eye-open
+                    icon: glyphicon glyphicon-eye-open
         user:
             label: "User: {{user}} Actions"
             group: secondary
-            icon: icon-user
+            icon: glyphicon glyphicon-user
             items:
                 Unsecure Link:
                     uri: /
@@ -125,4 +126,4 @@ zenstruck_dashboard:
                 Logout:
                     label: Logout <user>
                     uri: /logout
-                    icon: icon-off
+                    icon: glyphicon glyphicon-off

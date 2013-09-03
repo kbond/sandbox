@@ -4,7 +4,7 @@
     "select2": "~3.3.0",
     "jquery": "~1.10",
     "hinclude": "git://github.com/mnot/hinclude.git#0.9.5",
-    "bootstrap": "2.3.1",
+    "bootstrap": "3.0.0",
     "fancybox": "2.1.4",
     "ngUpload": "~0.3.4"
   },
