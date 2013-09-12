@@ -52,6 +52,9 @@ zenstruck_form:
         ajax_entity_controller: true
         help: true
         group: true
+        theme: true
+    theme_options:
+        control_width: col-md-4
 
 framework:
     esi:             ~

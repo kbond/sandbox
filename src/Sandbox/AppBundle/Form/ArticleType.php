@@ -16,7 +16,8 @@ class ArticleType extends AbstractType
                     'currency' => 'USD'
                 ))
             ->add('body', null, array(
-                    'attr' => array('class' => 'wysiwyg')
+                    'attr' => array('class' => 'wysiwyg'),
+                    'theme_options' => array('control_width' => 'col-md-10')
                 ))
             ->add('media', 'zenstruck_media', array(
                     'required' => false,
@@ -51,7 +52,8 @@ class ArticleType extends AbstractType
                     'type' => new LinkType(),
                     'allow_add' => true,
                     'allow_delete' => true,
-                    'by_reference' => false
+                    'by_reference' => false,
+                    'theme_options' => array('control_width' => 'col-md-10')
                 ));
         ;
     }
