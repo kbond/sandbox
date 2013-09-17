@@ -7,16 +7,16 @@
     "packages": [
         {
             "name": "cocur/slugify",
-            "version": "v0.2.2",
+            "version": "v0.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cocur/slugify.git",
-                "reference": "v0.2.2"
+                "reference": "d04cef7c6e33cd6ae2519f801e84b9e92a1926d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cocur/slugify/zipball/v0.2.2",
-                "reference": "v0.2.2",
+                "url": "https://api.github.com/repos/cocur/slugify/zipball/d04cef7c6e33cd6ae2519f801e84b9e92a1926d0",
+                "reference": "d04cef7c6e33cd6ae2519f801e84b9e92a1926d0",
                 "shasum": ""
             },
             "require": {
@@ -35,8 +35,8 @@
             "authors": [
                 {
                     "name": "Florian Eckerstorfer",
-                    "email": "florian@eckerstorfer.co",
-                    "homepage": "http://braincrafted.com",
+                    "email": "florian@theroadtojoy.at",
+                    "homepage": "http://florianeckerstorfer.com",
                     "role": "Developer"
                 },
                 {
@@ -49,7 +49,7 @@
                 "slug",
                 "slugify"
             ],
-            "time": "2013-03-08 07:15:42"
+            "time": "2013-06-22 21:34:34"
         },
         {
             "name": "doctrine/annotations",
@@ -1003,16 +1003,16 @@
         },
         {
             "name": "jms/metadata",
-            "version": "1.4.1",
+            "version": "1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/metadata.git",
-                "reference": "0af8423dc23dfeed1592426106d2ffbc69f68057"
+                "reference": "246d7096801ce29b5aea30a1abf0277ccfb9f055"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/metadata/zipball/0af8423dc23dfeed1592426106d2ffbc69f68057",
-                "reference": "0af8423dc23dfeed1592426106d2ffbc69f68057",
+                "url": "https://api.github.com/repos/schmittjoh/metadata/zipball/246d7096801ce29b5aea30a1abf0277ccfb9f055",
+                "reference": "246d7096801ce29b5aea30a1abf0277ccfb9f055",
                 "shasum": ""
             },
             "require": {
@@ -1038,9 +1038,9 @@
             ],
             "authors": [
                 {
-                    "name": "Johannes Schmitt",
+                    "name": "Johannes M. Schmitt",
                     "email": "schmittjoh@gmail.com",
-                    "homepage": "https://github.com/schmittjoh",
+                    "homepage": "http://jmsyst.com",
                     "role": "Developer of wrapped JMSSerializerBundle"
                 }
             ],
@@ -1051,7 +1051,7 @@
                 "xml",
                 "yaml"
             ],
-            "time": "2013-08-27 18:10:33"
+            "time": "2013-09-13 09:05:44"
         },
         {
             "name": "jms/parser-lib",
@@ -2667,12 +2667,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kbond/ZenstruckFormBundle.git",
-                "reference": "900ed7e5eedbede2f75a6a38e7e3e89d5c70177e"
+                "reference": "906f0b85b39e10fc411133e27888cdb5950aa563"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kbond/ZenstruckFormBundle/zipball/900ed7e5eedbede2f75a6a38e7e3e89d5c70177e",
-                "reference": "900ed7e5eedbede2f75a6a38e7e3e89d5c70177e",
+                "url": "https://api.github.com/repos/kbond/ZenstruckFormBundle/zipball/906f0b85b39e10fc411133e27888cdb5950aa563",
+                "reference": "906f0b85b39e10fc411133e27888cdb5950aa563",
                 "shasum": ""
             },
             "require": {
@@ -2714,10 +2714,10 @@
                 "form"
             ],
             "support": {
-                "source": "https://github.com/kbond/ZenstruckFormBundle/tree/v1.3.0",
+                "source": "https://github.com/kbond/ZenstruckFormBundle/tree/master",
                 "issues": "https://github.com/kbond/ZenstruckFormBundle/issues"
             },
-            "time": "2013-09-12 14:54:00"
+            "time": "2013-09-13 13:51:43"
         },
         {
             "name": "zenstruck/media-bundle",
@@ -2829,12 +2829,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kbond/ZenstruckSlugifyBundle.git",
-                "reference": "31d90467ef1353a6ea30c5ba51eacfdf318563bc"
+                "reference": "8dc0fea4d76b0b85c609deea6e3c61a306207ec0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kbond/ZenstruckSlugifyBundle/zipball/31d90467ef1353a6ea30c5ba51eacfdf318563bc",
-                "reference": "31d90467ef1353a6ea30c5ba51eacfdf318563bc",
+                "url": "https://api.github.com/repos/kbond/ZenstruckSlugifyBundle/zipball/8dc0fea4d76b0b85c609deea6e3c61a306207ec0",
+                "reference": "8dc0fea4d76b0b85c609deea6e3c61a306207ec0",
                 "shasum": ""
             },
             "require": {
@@ -2871,7 +2871,7 @@
                 "source": "https://github.com/kbond/ZenstruckSlugifyBundle/tree/master",
                 "issues": "https://github.com/kbond/ZenstruckSlugifyBundle/issues"
             },
-            "time": "2013-04-17 14:29:47"
+            "time": "2013-09-17 15:13:30"
         }
     ],
     "packages-dev": [
