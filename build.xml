@@ -12,6 +12,8 @@
         remote.clear_cache"
     />
 
+    <target name="nightly" depends="remote.populate_db" />
+
     <target name="remote.build_info">
         <exec executable="ssh" failonerror="true">
             <arg line="${env.ssh_user}@${env.ssh_host} 'echo ${env.BUILD_NUMBER} > ${env.server_path}/.buildinfo'"/>
