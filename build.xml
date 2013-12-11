@@ -33,31 +33,31 @@
 
         <!-- web vendors -->
         <exec executable="ssh" failonerror="true">
-            <arg line="${env.ssh_user}@${env.ssh_host} 'cd ${env.server_path} &amp;&amp; bower install --no-color'"/>
+            <arg line="${env.ssh_user}@${env.ssh_host} 'cd ${env.server_path} &amp;&amp; bower install --no-color --allow-root'"/>
         </exec>
     </target>
 
     <target name="remote.reset_db">
         <exec executable="ssh" failonerror="true">
-            <arg line="${env.ssh_user}@${env.ssh_host} 'php ${env.server_path}/app/console doctrine:database:drop --force'"/>
+            <arg line="${env.ssh_user}@${env.ssh_host} 'php ${env.server_path}/app/console doctrine:database:drop --force --env=${env.environment}'"/>
         </exec>
         <exec executable="ssh" failonerror="true">
-            <arg line="${env.ssh_user}@${env.ssh_host} 'php ${env.server_path}/app/console doctrine:database:create'"/>
+            <arg line="${env.ssh_user}@${env.ssh_host} 'php ${env.server_path}/app/console doctrine:database:create --env=${env.environment}'"/>
         </exec>
         <exec executable="ssh" failonerror="true">
-            <arg line="${env.ssh_user}@${env.ssh_host} 'php ${env.server_path}/app/console doctrine:schema:create'"/>
+            <arg line="${env.ssh_user}@${env.ssh_host} 'php ${env.server_path}/app/console doctrine:schema:create --env=${env.environment}'"/>
         </exec>
     </target>
 
     <target name="remote.populate_db">
         <exec executable="ssh" failonerror="true">
-            <arg line="${env.ssh_user}@${env.ssh_host} 'php ${env.server_path}/app/console sandbox:fixtures:load'"/>
+            <arg line="${env.ssh_user}@${env.ssh_host} 'php ${env.server_path}/app/console sandbox:fixtures:load --env=${env.environment}'"/>
         </exec>
     </target>
 
     <target name="remote.assets_install">
         <exec executable="ssh" failonerror="true">
-            <arg line="${env.ssh_user}@${env.ssh_host} 'php ${env.server_path}/app/console assetic:dump --no-debug'"/>
+            <arg line="${env.ssh_user}@${env.ssh_host} 'php ${env.server_path}/app/console assetic:dump --no-debug --env=${env.environment}'"/>
         </exec>
     </target>
 
