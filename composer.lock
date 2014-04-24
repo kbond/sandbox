@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "f0d8f929031502d15b00cc2603925d1a",
+    "hash": "04c4b49df71d3934e0b77b60e30b89c5",
     "packages": [
         {
             "name": "cocur/slugify",

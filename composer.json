@@ -12,28 +12,6 @@
     "autoload": {
         "psr-0": { "": "src/" }
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "git@github.com:kbond/ZenstruckFormBundle.git"
-        },
-        {
-            "type": "vcs",
-            "url": "git@github.com:kbond/ZenstruckDashboardBundle.git"
-        },
-        {
-            "type": "vcs",
-            "url": "git@github.com:kbond/ZenstruckMediaBundle.git"
-        },
-        {
-            "type": "vcs",
-            "url": "git@github.com:kbond/ZenstruckResourceBundle.git"
-        },
-        {
-            "type": "vcs",
-            "url": "git@github.com:kbond/ZenstruckDataGridBundle.git"
-        }
-    ],
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "~2.4",
