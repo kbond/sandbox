@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "04c4b49df71d3934e0b77b60e30b89c5",
+    "hash": "52d95e262ad9c526ad2549ef8e6450d3",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -719,59 +719,6 @@
                 "fixtures"
             ],
             "time": "2013-12-16 21:56:48"
-        },
-        {
-            "name": "igorw/file-serve-bundle",
-            "version": "v1.0.3",
-            "target-dir": "Igorw/FileServeBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/igorw/IgorwFileServeBundle.git",
-                "reference": "844688877af17556189bb570c2c00ec434fd04bd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/igorw/IgorwFileServeBundle/zipball/844688877af17556189bb570c2c00ec434fd04bd",
-                "reference": "844688877af17556189bb570c2c00ec434fd04bd",
-                "shasum": ""
-            },
-            "require": {
-                "symfony/http-foundation": "2.*"
-            },
-            "require-dev": {
-                "symfony/framework-bundle": "2.*"
-            },
-            "suggest": {
-                "symfony/framework-bundle": "2.*"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Igorw\\FileServeBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Igor Wiedler",
-                    "email": "igor@wiedler.ch",
-                    "homepage": "http://wiedler.ch/igor/"
-                }
-            ],
-            "description": "Symfony2 Bundle for serving protected files.",
-            "keywords": [
-                "file-system",
-                "sendfile"
-            ],
-            "time": "2014-01-06 20:35:51"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -2774,24 +2721,23 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kbond/ZenstruckMediaBundle.git",
-                "reference": "e8c27651aac657447ab5aabc3fdf216e61f66a83"
+                "reference": "f828a7dc88fe83c28b859d020c26a4889ceb4c6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kbond/ZenstruckMediaBundle/zipball/e8c27651aac657447ab5aabc3fdf216e61f66a83",
-                "reference": "e8c27651aac657447ab5aabc3fdf216e61f66a83",
+                "url": "https://api.github.com/repos/kbond/ZenstruckMediaBundle/zipball/f828a7dc88fe83c28b859d020c26a4889ceb4c6c",
+                "reference": "f828a7dc88fe83c28b859d020c26a4889ceb4c6c",
                 "shasum": ""
             },
             "require": {
                 "jms/serializer": "~0.11",
-                "symfony/symfony": "~2.1"
+                "symfony/symfony": "~2.2"
             },
             "require-dev": {
                 "cocur/slugify": "~0.8"
             },
             "suggest": {
                 "cocur/slugify": "CocurSlugifyBundle is required for SlugifyFilenameFilter",
-                "igorw/file-serve-bundle": "For secure filesystems",
                 "zenstruck/slugify-bundle": "If not using CocurSlugifyBundle, then this is required for the SlugifyFilenameFilter"
             },
             "type": "symfony-bundle",
@@ -2800,13 +2746,15 @@
                     "Zenstruck\\MediaBundle": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
                     "name": "Kevin Bond",
-                    "email": "kevinbond@gmail.com"
+                    "email": "kevinbond@gmail.com",
+                    "homepage": "http://zenstruck.com"
                 }
             ],
             "description": "Provides a simple media/file management GUI for Symfony2",
@@ -2817,11 +2765,7 @@
                 "manager",
                 "media"
             ],
-            "support": {
-                "source": "https://github.com/kbond/ZenstruckMediaBundle/tree/v0.1.3",
-                "issues": "https://github.com/kbond/ZenstruckMediaBundle/issues"
-            },
-            "time": "2014-04-18 14:13:37"
+            "time": "2014-04-24 18:16:48"
         },
         {
             "name": "zenstruck/resource-bundle",
