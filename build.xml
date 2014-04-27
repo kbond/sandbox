@@ -6,10 +6,10 @@
         remote.update,
         remote.build_info,
         remote.vendors,
-        remote.assets_install,
+        remote.clear_cache,
         remote.reset_db,
         remote.populate_db,
-        remote.clear_cache"
+        remote.assets_install"
     />
 
     <target name="nightly" depends="remote.populate_db" />
