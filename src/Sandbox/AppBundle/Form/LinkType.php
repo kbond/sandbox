@@ -12,6 +12,13 @@ class LinkType extends AbstractType
     {
         $builder
             ->add('url')
+            ->add('author', 'zenstruck_ajax_entity', array(
+                    'class' => 'AppBundle:Author',
+                    'property' => 'name',
+                    'placeholder' => 'Link Author',
+                    'help' => 'Try typing a letter such as "k"',
+                    'use_controller' => true
+                ))
         ;
     }
 

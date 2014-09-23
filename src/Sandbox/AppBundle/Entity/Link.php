@@ -32,6 +32,12 @@ class Link
      */
     protected $article;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Author")
+     * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
+     */
+    protected $author;
+
     public function getId()
     {
         return $this->id;
@@ -55,5 +61,15 @@ class Link
     public function getUrl()
     {
         return $this->url;
+    }
+
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    public function setAuthor($author)
+    {
+        $this->author = $author;
     }
 }
